@@ -11,7 +11,7 @@ const games = [
       "Fly through the Indonesian night. Dodge trees, utility poles, rooftops, cables, and anything else the night decides to throw at you.",
     category: "ARCADE",
     status: "READY",
-    icon: "✦",
+    icon: "01",
     featured: true,
   },
   {
@@ -23,7 +23,7 @@ const games = [
       "Reveal safe cells, mark suspicious ones, and avoid shipping the bug. Classic Minesweeper mechanics without unnecessary reinvention.",
     category: "PUZZLE",
     status: "READY",
-    icon: "×",
+    icon: "DB",
     featured: false,
   },
   {
@@ -86,6 +86,14 @@ const upcoming = [
     status: "READY",
   },
 ];
+
+const arcadeSignals = [
+  "08 GAMES",
+  "00 ACCOUNTS",
+  "∞ RETRIES",
+];
+
+const yearLabel = String(year);
 ---
 
 <!doctype html>
@@ -105,7 +113,7 @@ const upcoming = [
 
     <meta
       name="theme-color"
-      content="#0b0b0b"
+      content="#101010"
     />
 
     <meta
@@ -133,10 +141,17 @@ const upcoming = [
       href="https://jembertojogja.github.io/play"
     />
 
-    <title>Game Lab — JemberToJogja</title>
+    <title>
+      Game Lab — JemberToJogja
+    </title>
   </head>
 
   <body>
+    <div
+      class="cursor-glow"
+      aria-hidden="true"
+    ></div>
+
     <!-- =========================================================
          HEADER
     ========================================================== -->
@@ -148,7 +163,10 @@ const upcoming = [
           class="brand"
           aria-label="JemberToJogja home"
         >
-          <span class="brand-mark">JTJ</span>
+          <span class="brand-mark">
+            JTJ
+          </span>
+
           <span class="brand-name">
             JEMBERTOJOGJA
           </span>
@@ -167,29 +185,27 @@ const upcoming = [
           </a>
 
           <a
-            href="/play"
-            class="active"
-          >
-            Play
-          </a>
-
-          <a
             href="https://github.com/JemberToJogja"
             target="_blank"
             rel="noopener noreferrer"
           >
             GitHub ↗
           </a>
+
+          <a
+            href="/play"
+            class="active nav-play"
+          >
+            Play
+          </a>
         </nav>
 
         <a
-          href="https://github.com/JemberToJogja"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="mobile-github"
-          aria-label="Open JemberToJogja on GitHub"
+          href="/play"
+          class="mobile-play"
+          aria-label="Game Lab"
         >
-          ↗
+          PLAY
         </a>
       </div>
     </header>
@@ -199,15 +215,33 @@ const upcoming = [
            HERO
       ========================================================== -->
 
-      <section class="hero">
+      <section class="hero reveal-section">
+        <div
+          class="hero-grid-bg"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="hero-orbit hero-orbit-one"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="hero-orbit hero-orbit-two"
+          aria-hidden="true"
+        ></div>
+
         <div class="container">
           <div class="hero-meta">
-            <span>
-              JEMBERTOJOGJA / PLAY
-            </span>
+            <a
+              href="/"
+              class="back-link"
+            >
+              ← Back home
+            </a>
 
             <span>
-              GAME LAB / {year}
+              GAME LAB / {yearLabel}
             </span>
           </div>
 
@@ -217,37 +251,101 @@ const upcoming = [
                 THE UNNECESSARY DEPARTMENT
               </p>
 
-              <h1>
-                Games.
+              <h1 class="hero-title">
                 <span>
-                  Because why not?
+                  GAMES.
+                </span>
+
+                <span>
+                  BECAUSE WHY NOT?
                 </span>
               </h1>
+
+              <p class="hero-copy">
+                Small browser games built for serious
+                activities such as avoiding trees,
+                hunting bugs, defending warungs,
+                tracing crashes, and tapping pixels
+                under pressure.
+              </p>
+
+              <div class="hero-actions">
+                <a
+                  href="#arcade"
+                  class="hero-button primary magnetic"
+                >
+                  START PLAYING
+                  <span>↓</span>
+                </a>
+
+                <a
+                  href="/"
+                  class="hero-button secondary magnetic"
+                >
+                  BACK HOME
+                </a>
+              </div>
             </div>
 
             <div class="hero-secondary">
-              <p>
-                Small browser games built for serious
-                activities such as avoiding trees, hunting
-                bugs, defending warungs, tracing crashes,
-                and tapping pixels under pressure.
-              </p>
+              <div class="hero-terminal">
+                <div class="terminal-bar">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+
+                  <strong>
+                    JTJ://PLAY
+                  </strong>
+                </div>
+
+                <div class="terminal-body">
+                  <span class="terminal-muted">
+                    $ ./game-lab
+                  </span>
+
+                  <span>
+                    loading games...
+                  </span>
+
+                  <span>
+                    08 modules found
+                  </span>
+
+                  <span>
+                    00 accounts required
+                  </span>
+
+                  <span class="terminal-cursor">
+                    _
+                  </span>
+                </div>
+              </div>
 
               <div class="hero-stats">
-                <div>
-                  <strong>08</strong>
-                  <span>GAMES</span>
-                </div>
+                {
+                  arcadeSignals.map((signal, index) => (
+                    <div
+                      class="hero-stat"
+                      style={`--delay: ${index * 90}ms`}
+                    >
+                      <strong>
+                        {index === 0
+                          ? "08"
+                          : index === 1
+                            ? "00"
+                            : "∞"}
+                      </strong>
 
-                <div>
-                  <strong>00</strong>
-                  <span>ACCOUNTS</span>
-                </div>
-
-                <div>
-                  <strong>∞</strong>
-                  <span>RETRIES</span>
-                </div>
+                      <span>
+                        {signal
+                          .replace("08 ", "")
+                          .replace("00 ", "")
+                          .replace("∞ ", "")}
+                      </span>
+                    </div>
+                  ))
+                }
               </div>
             </div>
           </div>
@@ -264,9 +362,14 @@ const upcoming = [
            ARCADE
       ========================================================== -->
 
-      <section class="arcade-section">
+      <section
+        class="arcade-section reveal-section"
+        id="arcade"
+      >
+        <div class="arcade-grid-bg" aria-hidden="true"></div>
+
         <div class="container">
-          <div class="section-heading">
+          <div class="section-heading reveal-item">
             <div class="section-heading-main">
               <span class="section-number">
                 01
@@ -277,7 +380,9 @@ const upcoming = [
                   CHOOSE YOUR PROBLEM
                 </p>
 
-                <h2>Game Arcade</h2>
+                <h2>
+                  GAME ARCADE
+                </h2>
               </div>
             </div>
 
@@ -290,7 +395,7 @@ const upcoming = [
 
           <div class="game-grid">
             {
-              games.map((game) => (
+              games.map((game, index) => (
                 <article
                   class:list={[
                     "game-card",
@@ -298,8 +403,10 @@ const upcoming = [
                       "game-card-featured":
                         game.featured,
                     },
+                    "reveal-item",
                   ]}
                   data-game-card={game.id}
+                  style={`--delay: ${index * 70}ms`}
                 >
                   <div class="game-card-top">
                     <span class="game-index">
@@ -314,7 +421,10 @@ const upcoming = [
                   <div class="game-preview">
                     {game.featured ? (
                       <div class="preview-kuntilanak">
-                        <div class="preview-stars">
+                        <div
+                          class="preview-stars"
+                          aria-hidden="true"
+                        >
                           <i></i>
                           <i></i>
                           <i></i>
@@ -325,7 +435,8 @@ const upcoming = [
 
                         <div class="preview-moon"></div>
 
-                        <div class="preview-wire"></div>
+                        <div class="preview-wire preview-wire-a"></div>
+                        <div class="preview-wire preview-wire-b"></div>
 
                         <div class="preview-pole"></div>
 
@@ -335,13 +446,18 @@ const upcoming = [
                         <div class="preview-ghost">
                           <div class="preview-ghost-head"></div>
                           <div class="preview-ghost-body"></div>
+
+                          <span class="preview-ghost-eye left"></span>
+                          <span class="preview-ghost-eye right"></span>
                         </div>
 
-                        <div class="preview-badge">
-                          <span>01</span>
+                        <div class="preview-hud">
+                          <span>
+                            ALT 091
+                          </span>
 
                           <strong>
-                            KUNTILANAK FLY
+                            001240
                           </strong>
                         </div>
                       </div>
@@ -362,10 +478,7 @@ const upcoming = [
                             Array.from({
                               length: 36,
                             }).map(
-                              (
-                                _,
-                                index,
-                              ) => (
+                              (_, index) => (
                                 <span
                                   class:list={[
                                     "debugger-cell",
@@ -397,11 +510,9 @@ const upcoming = [
                                       ].includes(
                                         index,
                                       ),
-
                                       mine:
                                         index ===
                                         26,
-
                                       flag:
                                         index ===
                                           10 ||
@@ -413,12 +524,12 @@ const upcoming = [
                                   {
                                     index ===
                                     26
-                                      ? "×"
+                                      ? "X"
                                       : index ===
                                             10 ||
                                           index ===
                                             16
-                                        ? "⚑"
+                                        ? "F"
                                         : [
                                               0,
                                               1,
@@ -437,7 +548,8 @@ const upcoming = [
                                             ].includes(
                                               index,
                                             )
-                                          ? (index % 3) +
+                                          ? (index %
+                                              3) +
                                             1
                                           : ""
                                   }
@@ -453,6 +565,10 @@ const upcoming = [
                           <span></span>
                           <span></span>
                           <span></span>
+
+                          <strong>
+                            COMMIT
+                          </strong>
                         </div>
 
                         <div class="terminal-line">
@@ -479,7 +595,13 @@ const upcoming = [
                           </span>
                         </div>
 
-                        <div class="terminal-cursor"></div>
+                        <div class="terminal-line active">
+                          <small>04</small>
+
+                          <span>
+                            _ 
+                          </span>
+                        </div>
                       </div>
                     ) : (
                       <div class="preview-2048">
@@ -513,7 +635,7 @@ const upcoming = [
 
                     <button
                       type="button"
-                      class="play-button"
+                      class="play-button magnetic"
                       data-launch-game={game.id}
                     >
                       PLAY
@@ -562,6 +684,7 @@ const upcoming = [
                   id="close-game"
                   type="button"
                   class="stage-back"
+                  aria-label="Close current game"
                 >
                   ← ARCADE
                 </button>
@@ -596,7 +719,7 @@ const upcoming = [
                 </p>
 
                 <h2>
-                  Pick something.
+                  PICK SOMETHING.
                 </h2>
 
                 <p>
@@ -623,9 +746,9 @@ const upcoming = [
            FEATURED KUNTILANAK
       ========================================================== -->
 
-      <section class="featured-section">
+      <section class="featured-section reveal-section">
         <div class="container">
-          <div class="feature-topline">
+          <div class="feature-topline reveal-item">
             <span class="section-kicker">
               FEATURED / 01
             </span>
@@ -636,7 +759,7 @@ const upcoming = [
           </div>
 
           <div class="feature-layout">
-            <div class="feature-art">
+            <div class="feature-art reveal-item">
               <div class="art-grid"></div>
 
               <div class="art-moon"></div>
@@ -658,8 +781,20 @@ const upcoming = [
                 <div class="art-ghost-eye right"></div>
               </div>
 
+              <div class="art-data art-data-top">
+                <span>ALTITUDE</span>
+                <strong>091</strong>
+              </div>
+
+              <div class="art-data art-data-bottom">
+                <span>HIGH SCORE</span>
+                <strong>001240</strong>
+              </div>
+
               <div class="art-footer">
-                <span>01</span>
+                <span>
+                  01
+                </span>
 
                 <strong>
                   KUNTILANAK FLY
@@ -667,15 +802,15 @@ const upcoming = [
               </div>
             </div>
 
-            <div class="feature-content">
+            <div class="feature-content reveal-item">
               <p class="section-kicker">
                 SIDE-SCROLLING ARCADE
               </p>
 
               <h2>
-                Fly first.
+                FLY FIRST.
                 <span>
-                  Think later.
+                  THINK LATER.
                 </span>
               </h2>
 
@@ -721,7 +856,7 @@ const upcoming = [
 
               <button
                 type="button"
-                class="wide-button"
+                class="wide-button magnetic"
                 data-launch-game="kuntilanak"
               >
                 PLAY KUNTILANAK FLY
@@ -736,18 +871,18 @@ const upcoming = [
            DEBUGGER
       ========================================================== -->
 
-      <section class="debugger-section">
+      <section class="debugger-section reveal-section">
         <div class="container">
           <div class="debugger-layout">
-            <div class="debugger-content">
+            <div class="debugger-content reveal-item">
               <p class="section-kicker">
                 CLASSIC PUZZLE
               </p>
 
               <h2>
-                Find the bugs.
+                FIND THE BUGS.
                 <span>
-                  Do not become one.
+                  DO NOT BECOME ONE.
                 </span>
               </h2>
 
@@ -766,7 +901,7 @@ const upcoming = [
 
               <button
                 type="button"
-                class="wide-button"
+                class="wide-button magnetic"
                 data-launch-game="debugger"
               >
                 OPEN DEBUGGER
@@ -774,7 +909,7 @@ const upcoming = [
               </button>
             </div>
 
-            <div class="minesweeper-showcase">
+            <div class="minesweeper-showcase reveal-item">
               <div class="mine-topbar">
                 <div>
                   <span>
@@ -791,7 +926,7 @@ const upcoming = [
                   aria-label="Minesweeper preview"
                   tabindex="-1"
                 >
-                  :)
+                  B
                 </button>
 
                 <div>
@@ -810,10 +945,7 @@ const upcoming = [
                   Array.from({
                     length: 36,
                   }).map(
-                    (
-                      _,
-                      index,
-                    ) => (
+                    (_, index) => (
                       <span
                         class:list={[
                           "mine-tile",
@@ -845,11 +977,9 @@ const upcoming = [
                             ].includes(
                               index,
                             ),
-
                             mine:
                               index ===
                               26,
-
                             flagged:
                               index === 10 ||
                               index === 16,
@@ -858,10 +988,10 @@ const upcoming = [
                       >
                         {
                           index === 26
-                            ? "×"
+                            ? "X"
                             : index === 10 ||
                                 index === 16
-                              ? "⚑"
+                              ? "F"
                               : [
                                     0,
                                     1,
@@ -880,7 +1010,9 @@ const upcoming = [
                                   ].includes(
                                     index,
                                   )
-                                ? (index % 3) + 1
+                                ? (index %
+                                    3) +
+                                  1
                                 : ""
                         }
                       </span>
@@ -900,12 +1032,12 @@ const upcoming = [
       </section>
 
       <!-- =========================================================
-           UPCOMING / ADDITIONAL GAMES
+           MORE GAMES
       ========================================================== -->
 
-      <section class="upcoming-section">
+      <section class="upcoming-section reveal-section">
         <div class="container">
-          <div class="section-heading">
+          <div class="section-heading reveal-item">
             <div class="section-heading-main">
               <span class="section-number">
                 02
@@ -917,7 +1049,7 @@ const upcoming = [
                 </p>
 
                 <h2>
-                  More games?
+                  MORE GAMES?
                 </h2>
               </div>
             </div>
@@ -931,79 +1063,59 @@ const upcoming = [
 
           <div class="upcoming-grid">
             {
-              upcoming.map((game) => {
-                const isReady =
-                  game.status === "READY";
+              upcoming.map((game, index) => (
+                <article
+                  class="upcoming-card reveal-item"
+                  data-launch-game={game.id}
+                  role="button"
+                  tabindex="0"
+                  aria-label={`Play ${game.title}`}
+                  style={`--delay: ${index * 80}ms`}
+                >
+                  <span class="upcoming-number">
+                    {game.number}
+                  </span>
 
-                return (
-                  <article
-                    class="upcoming-card"
-                    data-launch-game={
-                      isReady
-                        ? game.id
-                        : undefined
-                    }
-                    role={
-                      isReady
-                        ? "button"
-                        : undefined
-                    }
-                    tabindex={
-                      isReady
-                        ? 0
-                        : undefined
-                    }
-                    aria-label={
-                      isReady
-                        ? `Play ${game.title}`
-                        : undefined
-                    }
-                  >
-                    <span class="upcoming-number">
-                      {game.number}
+                  <div class="upcoming-content">
+                    <span class="upcoming-status">
+                      {game.status}
                     </span>
 
-                    <div class="upcoming-content">
-                      <span class="upcoming-status">
-                        {game.status}
-                      </span>
+                    <h3>
+                      {game.title}
+                    </h3>
 
-                      <h3>
-                        {game.title}
-                      </h3>
+                    <p>
+                      {game.description}
+                    </p>
+                  </div>
 
-                      <p>
-                        {game.description}
-                      </p>
-                    </div>
-
-                    <span class="upcoming-arrow">
-                      ↗
-                    </span>
-                  </article>
-                );
-              })
+                  <span class="upcoming-arrow">
+                    ↗
+                  </span>
+                </article>
+              ))
             }
           </div>
         </div>
       </section>
 
       <!-- =========================================================
-           PHILOSOPHY
+           RULES
       ========================================================== -->
 
-      <section class="rules-section">
+      <section class="rules-section reveal-section">
         <div class="container">
-          <div class="rules-card">
+          <div class="rules-card reveal-item">
             <div class="rules-main">
               <p class="section-kicker">
                 GAME LAB RULES
               </p>
 
               <h2>
-                We kept
+                WE KEPT
                 <span>
-                  it simple.
+                  IT SIMPLE.
                 </span>
               </h2>
 
@@ -1065,9 +1177,9 @@ const upcoming = [
               </p>
 
               <h2>
-                Fair.
+                FAIR.
                 <span>
-                  Go build something.
+                  GO BUILD SOMETHING.
                 </span>
               </h2>
             </div>
@@ -1100,7 +1212,9 @@ const upcoming = [
     <footer class="site-footer">
       <div class="container footer-inner">
         <div class="footer-brand">
-          <span>JTJ</span>
+          <span>
+            JTJ
+          </span>
 
           <div>
             <strong>
@@ -1108,16 +1222,15 @@ const upcoming = [
             </strong>
 
             <small>
-              GAME LAB / {year}
+              GAME LAB / {yearLabel}
             </small>
           </div>
         </div>
 
         <p>
-          Built with Astro.
-          Hosted on GitHub Pages.
-          The games are free.
-          The bugs are not.
+          Small games.
+          Questionable decisions.
+          Repeat until satisfied.
         </p>
 
         <span class="footer-end">
@@ -1151,16 +1264,786 @@ const upcoming = [
 
       <a
         href="/play"
-        class="active"
+        class="active play-item"
       >
         <span>▶</span>
         Play
       </a>
     </nav>
+
+    <script>
+      type GameId =
+        | "kuntilanak"
+        | "debugger"
+        | "commit-type"
+        | "system-2048"
+        | "receh-run"
+        | "warung-defense"
+        | "stack-trace"
+        | "pixel-panic";
+
+      type Destroyer =
+        | (() => void)
+        | null;
+
+      type GameModule = {
+        mountGame: (
+          root: HTMLElement,
+        ) =>
+          | void
+          | (() => void)
+          | Promise<
+              void | (() => void)
+            >;
+      };
+
+      function getRequiredElement<
+        T extends Element,
+      >(selector: string): T {
+        const element =
+          document.querySelector<T>(
+            selector,
+          );
+
+        if (!element) {
+          throw new Error(
+            `[Game Lab] Missing element: ${selector}`,
+          );
+        }
+
+        return element;
+      }
+
+      const gameStage =
+        getRequiredElement<HTMLElement>(
+          "#game-stage-shell",
+        );
+
+      const stageTitle =
+        getRequiredElement<HTMLElement>(
+          "#stage-current-game",
+        );
+
+      const stageStatus =
+        getRequiredElement<HTMLElement>(
+          "#stage-status-text",
+        );
+
+      const stageContent =
+        getRequiredElement<HTMLElement>(
+          "#stage-content",
+        );
+
+      const closeGame =
+        getRequiredElement<HTMLButtonElement>(
+          "#close-game",
+        );
+
+      const gameTitles: Record<
+        GameId,
+        string
+      > = {
+        kuntilanak:
+          "KUNTILANAK FLY",
+
+        debugger:
+          "DEBUGGER",
+
+        "commit-type":
+          "COMMIT TYPE",
+
+        "system-2048":
+          "SYSTEM 2048",
+
+        "receh-run":
+          "RECEH RUN",
+
+        "warung-defense":
+          "WARUNG DEFENSE",
+
+        "stack-trace":
+          "STACK TRACE",
+
+        "pixel-panic":
+          "PIXEL PANIC",
+      };
+
+      const keyboardGames: Record<
+        string,
+        GameId
+      > = {
+        "1": "kuntilanak",
+        "2": "debugger",
+        "3": "commit-type",
+        "4": "system-2048",
+        "5": "receh-run",
+        "6": "warung-defense",
+        "7": "stack-trace",
+        "8": "pixel-panic",
+      };
+
+      const gameNumbers: Record<
+        GameId,
+        string
+      > = {
+        kuntilanak: "01",
+        debugger: "02",
+        "commit-type": "03",
+        "system-2048": "04",
+        "receh-run": "05",
+        "warung-defense": "06",
+        "stack-trace": "07",
+        "pixel-panic": "08",
+      };
+
+      let activeDestroyer:
+        Destroyer = null;
+
+      function renderEmptyState() {
+        stageContent.innerHTML = `
+          <div class="stage-empty">
+            <span class="stage-empty-number">
+              00
+            </span>
+
+            <p class="stage-empty-kicker">
+              GAME LAB
+            </p>
+
+            <h2>
+              PICK SOMETHING.
+            </h2>
+
+            <p>
+              Your productivity can wait five minutes.
+              Probably.
+            </p>
+
+            <div class="stage-empty-rule">
+              <span></span>
+
+              <small>
+                SELECT A GAME ABOVE
+              </small>
+
+              <span></span>
+            </div>
+          </div>
+        `;
+      }
+
+      function destroyActiveGame() {
+        const destroyer =
+          activeDestroyer;
+
+        activeDestroyer = null;
+
+        if (
+          typeof destroyer !==
+          "function"
+        ) {
+          return;
+        }
+
+        try {
+          destroyer();
+        } catch (error) {
+          console.warn(
+            "[Game Lab] Cleanup failed.",
+            error,
+          );
+        }
+      }
+
+      function showComingSoon(
+        gameId: GameId,
+      ) {
+        stageTitle.textContent =
+          gameTitles[gameId];
+
+        stageStatus.textContent =
+          "IN DEVELOPMENT";
+
+        stageContent.innerHTML = `
+          <div class="stage-empty">
+            <span class="stage-empty-number">
+              ${gameNumbers[gameId]}
+            </span>
+
+            <p class="stage-empty-kicker">
+              GAME LAB
+            </p>
+
+            <h2>
+              COMING SOON.
+            </h2>
+
+            <p>
+              This game is wired into the arcade,
+              but the actual game module is not ready yet.
+            </p>
+
+            <div class="stage-empty-rule">
+              <span></span>
+
+              <small>
+                MODULE UNDER CONSTRUCTION
+              </small>
+
+              <span></span>
+            </div>
+          </div>
+        `;
+
+        gameStage.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+
+      async function mountLoadedGame(
+        gameId: GameId,
+        module: GameModule,
+      ) {
+        if (
+          typeof module.mountGame !==
+          "function"
+        ) {
+          throw new Error(
+            `${gameId}.ts must export mountGame().`,
+          );
+        }
+
+        stageContent.innerHTML = "";
+
+        const result =
+          await module.mountGame(
+            stageContent,
+          );
+
+        if (
+          typeof result ===
+          "function"
+        ) {
+          activeDestroyer =
+            result;
+        } else {
+          activeDestroyer = null;
+        }
+
+        stageStatus.textContent =
+          "PLAYING";
+      }
+
+      async function launchGame(
+        gameId: GameId,
+      ) {
+        destroyActiveGame();
+
+        stageTitle.textContent =
+          gameTitles[gameId];
+
+        stageStatus.textContent =
+          "LOADING";
+
+        stageContent.innerHTML = `
+          <div class="stage-empty">
+            <span class="stage-empty-number">
+              ${gameNumbers[gameId]}
+            </span>
+
+            <p class="stage-empty-kicker">
+              INITIALIZING
+            </p>
+
+            <h2>
+              LOADING GAME.
+            </h2>
+
+            <p>
+              Please pretend this is suspense.
+            </p>
+          </div>
+        `;
+
+        gameStage.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+
+        try {
+          switch (gameId) {
+            case "kuntilanak": {
+              const module =
+                await import(
+                  "../games/kuntilanak"
+                );
+
+              await mountLoadedGame(
+                gameId,
+                module,
+              );
+
+              return;
+            }
+
+            case "debugger": {
+              const module =
+                await import(
+                  "../games/debugger"
+                );
+
+              await mountLoadedGame(
+                gameId,
+                module,
+              );
+
+              return;
+            }
+
+            case "commit-type": {
+              const module =
+                await import(
+                  "../games/commit-type"
+                );
+
+              await mountLoadedGame(
+                gameId,
+                module,
+              );
+
+              return;
+            }
+
+            case "system-2048": {
+              const module =
+                await import(
+                  "../games/system-2048"
+                );
+
+              await mountLoadedGame(
+                gameId,
+                module,
+              );
+
+              return;
+            }
+
+            case "receh-run": {
+              const module =
+                await import(
+                  "../games/receh-run"
+                );
+
+              await mountLoadedGame(
+                gameId,
+                module,
+              );
+
+              return;
+            }
+
+            case "warung-defense": {
+              const module =
+                await import(
+                  "../games/warung-defense"
+                );
+
+              await mountLoadedGame(
+                gameId,
+                module,
+              );
+
+              return;
+            }
+
+            case "stack-trace": {
+              const module =
+                await import(
+                  "../games/stack-trace"
+                );
+
+              await mountLoadedGame(
+                gameId,
+                module,
+              );
+
+              return;
+            }
+
+            case "pixel-panic": {
+              const module =
+                await import(
+                  "../games/pixel-panic"
+                );
+
+              await mountLoadedGame(
+                gameId,
+                module,
+              );
+
+              return;
+            }
+
+            default: {
+              showComingSoon(
+                gameId,
+              );
+
+              return;
+            }
+          }
+        } catch (error) {
+          console.error(
+            `[Game Lab] Failed to load "${gameId}".`,
+            error,
+          );
+
+          activeDestroyer = null;
+
+          stageStatus.textContent =
+            "ERROR";
+
+          stageContent.innerHTML = `
+            <div class="stage-empty">
+              <span class="stage-empty-number">
+                !!
+              </span>
+
+              <p class="stage-empty-kicker">
+                GAME LOAD ERROR
+              </p>
+
+              <h2>
+                SOMETHING BROKE.
+              </h2>
+
+              <p>
+                The game module could not be loaded.
+                Check the browser console for the exact error.
+              </p>
+
+              <div class="stage-empty-rule">
+                <span></span>
+
+                <small>
+                  CHECK GAME MODULE
+                </small>
+
+                <span></span>
+              </div>
+            </div>
+          `;
+        }
+      }
+
+      function closeActiveGame() {
+        destroyActiveGame();
+
+        stageTitle.textContent =
+          "NO GAME SELECTED";
+
+        stageStatus.textContent =
+          "READY";
+
+        renderEmptyState();
+
+        document
+          .querySelector<HTMLElement>(
+            ".arcade-section",
+          )
+          ?.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+      }
+
+      function getGameIdFromElement(
+        element: Element,
+      ): GameId | null {
+        const raw =
+          element.getAttribute(
+            "data-launch-game",
+          );
+
+        if (
+          raw === "kuntilanak" ||
+          raw === "debugger" ||
+          raw === "commit-type" ||
+          raw === "system-2048" ||
+          raw === "receh-run" ||
+          raw === "warung-defense" ||
+          raw === "stack-trace" ||
+          raw === "pixel-panic"
+        ) {
+          return raw;
+        }
+
+        return null;
+      }
+
+      document.addEventListener(
+        "click",
+        (event) => {
+          const target =
+            event.target;
+
+          if (
+            !(target instanceof Element)
+          ) {
+            return;
+          }
+
+          const launchTarget =
+            target.closest<HTMLElement>(
+              "[data-launch-game]",
+            );
+
+          if (launchTarget) {
+            const gameId =
+              getGameIdFromElement(
+                launchTarget,
+              );
+
+            if (gameId) {
+              void launchGame(
+                gameId,
+              );
+            }
+
+            return;
+          }
+
+          const closeTarget =
+            target.closest(
+              "#close-game",
+            );
+
+          if (closeTarget) {
+            closeActiveGame();
+          }
+        },
+      );
+
+      document.addEventListener(
+        "keydown",
+        (event) => {
+          const target =
+            event.target;
+
+          if (
+            target instanceof
+              HTMLInputElement ||
+            target instanceof
+              HTMLTextAreaElement ||
+            target instanceof
+              HTMLSelectElement
+          ) {
+            return;
+          }
+
+          if (
+            event.key ===
+              "Enter" ||
+            event.key ===
+              " "
+          ) {
+            if (
+              target instanceof
+              HTMLElement
+            ) {
+              const launchTarget =
+                target.closest<HTMLElement>(
+                  "[data-launch-game]",
+                );
+
+              if (launchTarget) {
+                const gameId =
+                  getGameIdFromElement(
+                    launchTarget,
+                  );
+
+                if (gameId) {
+                  event.preventDefault();
+
+                  void launchGame(
+                    gameId,
+                  );
+
+                  return;
+                }
+              }
+            }
+          }
+
+          if (
+            event.key ===
+            "Escape"
+          ) {
+            if (
+              typeof activeDestroyer ===
+              "function"
+            ) {
+              closeActiveGame();
+            }
+
+            return;
+          }
+
+          if (
+            target instanceof
+            HTMLButtonElement
+          ) {
+            return;
+          }
+
+          const gameId =
+            keyboardGames[
+              event.key
+            ];
+
+          if (gameId) {
+            event.preventDefault();
+
+            void launchGame(
+              gameId,
+            );
+          }
+        },
+      );
+
+      closeGame.setAttribute(
+        "aria-label",
+        "Close current game",
+      );
+
+      const revealSections =
+        document.querySelectorAll(
+          ".reveal-section",
+        );
+
+      const observer =
+        new IntersectionObserver(
+          (entries) => {
+            entries.forEach(
+              (entry) => {
+                if (
+                  entry.isIntersecting
+                ) {
+                  entry.target.classList.add(
+                    "is-visible",
+                  );
+
+                  observer.unobserve(
+                    entry.target,
+                  );
+                }
+              },
+            );
+          },
+          {
+            threshold: 0.08,
+            rootMargin:
+              "0px 0px -8% 0px",
+          },
+        );
+
+      revealSections.forEach(
+        (section) => {
+          observer.observe(
+            section,
+          );
+        },
+      );
+
+      const magneticElements =
+        document.querySelectorAll(
+          ".magnetic",
+        );
+
+      magneticElements.forEach(
+        (element) => {
+          element.addEventListener(
+            "pointermove",
+            (event) => {
+              if (
+                window.innerWidth <
+                900
+              ) {
+                return;
+              }
+
+              const rect =
+                element.getBoundingClientRect();
+
+              const x =
+                (event.clientX -
+                  rect.left -
+                  rect.width / 2) *
+                0.07;
+
+              const y =
+                (event.clientY -
+                  rect.top -
+                  rect.height / 2) *
+                0.07;
+
+              element.style.setProperty(
+                "--mx",
+                `${x}px`,
+              );
+
+              element.style.setProperty(
+                "--my",
+                `${y}px`,
+              );
+            },
+          );
+
+          element.addEventListener(
+            "pointerleave",
+            () => {
+              element.style.setProperty(
+                "--mx",
+                "0px",
+              );
+
+              element.style.setProperty(
+                "--my",
+                "0px",
+              );
+            },
+          );
+        },
+      );
+
+      const cursorGlow =
+        document.querySelector(
+          ".cursor-glow",
+        );
+
+      if (
+        cursorGlow &&
+        window.innerWidth >=
+          900
+      ) {
+        window.addEventListener(
+          "pointermove",
+          (event) => {
+            cursorGlow.style.transform =
+              `translate3d(${event.clientX}px, ${event.clientY}px, 0)`;
+          },
+        );
+      }
+    </script>
   </body>
 </html>
 
 <style>
+  /* =============================================================
+     BASE
+  ============================================================= */
+
   :global(*) {
     box-sizing: border-box;
   }
@@ -1173,8 +2056,11 @@ const upcoming = [
 
   :global(body) {
     margin: 0;
+    overflow-x: hidden;
+
     background: #090909;
     color: #eeeae1;
+
     font-family:
       Inter,
       ui-sans-serif,
@@ -1183,6 +2069,7 @@ const upcoming = [
       BlinkMacSystemFont,
       "Segoe UI",
       sans-serif;
+
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -1203,7 +2090,11 @@ const upcoming = [
   }
 
   .container {
-    width: min(100% - 28px, 1220px);
+    width: min(
+      calc(100% - 28px),
+      1220px
+    );
+
     margin-inline: auto;
   }
 
@@ -1231,40 +2122,120 @@ const upcoming = [
 
   .section-kicker {
     margin: 0;
+
     color: #72706a;
+
     font-size: 8px;
     font-weight: 800;
+
     line-height: 1.2;
+
     letter-spacing: 0.14em;
   }
 
   .section-number {
     color: #494946;
+
     font-size: 9px;
     font-weight: 800;
   }
 
+  .cursor-glow {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    z-index: 250;
+
+    width: 22px;
+    height: 22px;
+
+    pointer-events: none;
+
+    border-radius: 50%;
+
+    background: rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+    filter: blur(3px);
+
+    transform:
+      translate3d(
+        -50px,
+        -50px,
+        0
+      );
+
+    opacity: 0;
+
+    mix-blend-mode: difference;
+  }
+
+  @media (min-width: 900px) {
+    .cursor-glow {
+      opacity: 1;
+    }
+  }
+
+  /* =============================================================
+     HEADER
+  ============================================================= */
+
   .site-header {
     position: sticky;
+
     top: 0;
+
     z-index: 100;
-    background: #0a0a0a;
-    border-bottom: 1px solid #242424;
+
+    background:
+      rgba(
+        10,
+        10,
+        10,
+        0.95
+      );
+
+    color: #f2f0ea;
+
+    border-bottom:
+      1px
+      solid
+      #292929;
+
+    backdrop-filter:
+      blur(12px);
   }
 
   .header-inner {
-    width: min(100% - 20px, 1220px);
+    width: min(
+      calc(100% - 20px),
+      1220px
+    );
+
     min-height: 62px;
+
     margin-inline: auto;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
+    gap: 16px;
   }
 
   .brand {
     display: inline-flex;
+
     align-items: center;
+
     gap: 10px;
   }
 
@@ -1273,6 +2244,7 @@ const upcoming = [
     height: 34px;
 
     display: grid;
+
     place-items: center;
 
     background: #eeeae1;
@@ -1280,13 +2252,39 @@ const upcoming = [
 
     font-size: 9px;
     font-weight: 950;
+
     letter-spacing: -0.04em;
+
+    transition:
+      transform
+      160ms
+      ease,
+      background-color
+      160ms
+      ease;
+  }
+
+  .brand:hover .brand-mark {
+    transform:
+      rotate(-5deg)
+      scale(1.04);
+
+    background: #dce5d3;
   }
 
   .brand-name {
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+
     color: #f0ede5;
+
     font-size: 11px;
+
     font-weight: 850;
+
     letter-spacing: 0.1em;
   }
 
@@ -1294,52 +2292,17 @@ const upcoming = [
     display: none;
   }
 
-  .mobile-github {
-    width: 38px;
-    height: 38px;
+  .mobile-play {
+    padding:
+      9px
+      11px;
 
-    display: grid;
-    place-items: center;
+    border:
+      1px
+      solid
+      #474747;
 
-    border: 1px solid #393939;
-    color: #eeeae1;
-
-    font-size: 16px;
-  }
-
-  .hero {
-    background: #0d0d0d;
-    border-bottom: 1px solid #252525;
-  }
-
-  .hero-meta {
-    min-height: 48px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 14px;
-
-    border-bottom: 1px solid #252525;
-
-    color: #65635e;
-    font-size: 7px;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-  }
-
-  .hero-layout {
-    display: grid;
-    gap: 42px;
-
-    padding: 48px 0 38px;
-  }
-
-  .hero-kicker {
-    margin: 0 0 13px;
-
-    color: #818079;
+    color: #f0ede5;
 
     font-family:
       "SFMono-Regular",
@@ -1349,81 +2312,414 @@ const upcoming = [
       monospace;
 
     font-size: 8px;
+    font-weight: 900;
+
+    letter-spacing: 0.08em;
+  }
+
+  /* =============================================================
+     HERO
+  ============================================================= */
+
+  .hero {
+    position: relative;
+
+    overflow: hidden;
+
+    background: #0d0d0d;
+
+    border-bottom:
+      1px
+      solid
+      #252525;
+  }
+
+  .hero-grid-bg {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.65;
+
+    background-image:
+      linear-gradient(
+        rgba(
+          255,
+          255,
+          255,
+          0.026
+        )
+        1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(
+          255,
+          255,
+          255,
+          0.026
+        )
+        1px,
+        transparent 1px
+      );
+
+    background-size:
+      28px
+      28px;
+
+    mask-image:
+      linear-gradient(
+        to bottom,
+        black,
+        transparent
+      );
+
+    animation:
+      grid-drift
+      12s
+      linear
+      infinite;
+  }
+
+  .hero-orbit {
+    position: absolute;
+
+    border:
+      1px
+      solid
+      rgba(
+        255,
+        255,
+        255,
+        0.05
+      );
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    animation:
+      orbit-float
+      9s
+      ease-in-out
+      infinite;
+  }
+
+  .hero-orbit-one {
+    width: 270px;
+    height: 270px;
+
+    right: -145px;
+    top: 38px;
+  }
+
+  .hero-orbit-two {
+    width: 155px;
+    height: 155px;
+
+    right: -88px;
+    top: 95px;
+
+    animation-delay: -3s;
+  }
+
+  .hero .container {
+    position: relative;
+
+    z-index: 2;
+  }
+
+  .hero-meta {
+    min-height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 14px;
+
+    border-bottom:
+      1px
+      solid
+      #252525;
+
+    color: #65635e;
+
+    font-size: 7px;
+
     font-weight: 800;
+
+    letter-spacing: 0.1em;
+  }
+
+  .back-link {
+    color: #8d8981;
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+    letter-spacing: 0;
+  }
+
+  .hero-layout {
+    display: grid;
+
+    gap: 40px;
+
+    padding:
+      53px
+      0
+      38px;
+  }
+
+  .hero-primary {
+    min-width: 0;
+  }
+
+  .hero-kicker {
+    margin:
+      0
+      0
+      14px;
+
+    color: #7f7d76;
+
+    font-family:
+      "SFMono-Regular",
+      "Cascadia Code",
+      "Roboto Mono",
+      Consolas,
+      monospace;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
     letter-spacing: 0.13em;
   }
 
-  .hero h1 {
-    max-width: 850px;
+  .hero-title {
     margin: 0;
+
+    overflow: hidden;
 
     color: #f0ede5;
 
-    font-size: clamp(60px, 17vw, 144px);
-    font-weight: 950;
-    line-height: 0.84;
+    font-size:
+      clamp(
+        64px,
+        18vw,
+        146px
+      );
 
-    letter-spacing: -0.085em;
+    font-weight: 950;
+
+    line-height: 0.79;
+
+    letter-spacing: -0.095em;
   }
 
-  .hero h1 span {
+  .hero-title span {
     display: block;
-    color: #696762;
+
+    opacity: 0;
+
+    transform:
+      translateY(110%)
+      rotate(3deg);
+
+    animation:
+      hero-title-in
+      850ms
+      cubic-bezier(
+        .16,
+        1,
+        .3,
+        1
+      )
+      forwards;
+  }
+
+  .hero-title span:last-child {
+    color: #68665f;
+
+    animation-delay: 110ms;
+  }
+
+  .hero-copy {
+    max-width: 580px;
+
+    margin:
+      22px
+      0
+      0;
+
+    color: #99958d;
+
+    font-size: 13px;
+
+    line-height: 1.72;
+
+    opacity: 0;
+
+    transform:
+      translateY(15px);
+
+    animation:
+      fade-up
+      700ms
+      320ms
+      cubic-bezier(
+        .16,
+        1,
+        .3,
+        1
+      )
+      forwards;
+  }
+
+  .hero-actions {
+    display: grid;
+
+    gap: 8px;
+
+    margin-top: 23px;
+
+    opacity: 0;
+
+    transform:
+      translateY(15px);
+
+    animation:
+      fade-up
+      700ms
+      420ms
+      cubic-bezier(
+        .16,
+        1,
+        .3,
+        1
+      )
+      forwards;
+  }
+
+  .hero-button {
+    min-height: 47px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    border:
+      1px
+      solid
+      transparent;
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.08em;
+
+    transform:
+      translate3d(
+        var(--mx, 0),
+        var(--my, 0),
+        0
+      );
+
+    transition:
+      transform
+        160ms
+        cubic-bezier(
+          .2,
+          .8,
+          .2,
+          1
+        ),
+      background-color
+        140ms ease,
+      border-color
+        140ms ease;
+  }
+
+  .hero-button.primary {
+    background: #eeeae1;
+    color: #111111;
+  }
+
+  .hero-button.primary:hover {
+    background: #ffffff;
+  }
+
+  .hero-button.secondary {
+    border-color: #3d3d3d;
+    color: #ddd9d1;
+  }
+
+  .hero-button.secondary:hover {
+    background: #1b1b1b;
   }
 
   .hero-secondary {
     max-width: 520px;
   }
 
-  .hero-secondary > p {
-    margin: 0;
+  .hero-terminal {
+    overflow: hidden;
 
-    color: #aaa79f;
+    border:
+      1px
+      solid
+      #30302e;
 
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1.7;
+    background: #121212;
   }
 
-  .hero-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-
-    margin-top: 26px;
-
-    border-top: 1px solid #2c2c2c;
-    border-bottom: 1px solid #2c2c2c;
-  }
-
-  .hero-stats > div {
-    min-height: 78px;
+  .terminal-bar {
+    min-height: 40px;
 
     display: flex;
-    flex-direction: column;
-    justify-content: center;
 
-    padding: 11px;
+    align-items: center;
 
-    border-right: 1px solid #2c2c2c;
+    gap: 5px;
+
+    padding:
+      0
+      10px;
+
+    background: #171717;
+
+    border-bottom:
+      1px
+      solid
+      #2a2a28;
   }
 
-  .hero-stats > div:last-child {
-    border-right: 0;
+  .terminal-bar > span {
+    width: 6px;
+    height: 6px;
+
+    background: #55544f;
+
+    border-radius: 50%;
   }
 
-  .hero-stats strong {
-    color: #f0ede5;
+  .terminal-bar strong {
+    margin-left: 7px;
 
-    font-size: 28px;
-    line-height: 1;
-
-    letter-spacing: -0.065em;
-  }
-
-  .hero-stats span {
-    margin-top: 5px;
-
-    color: #67655f;
+    color: #66645f;
 
     font-family:
       "SFMono-Regular",
@@ -1434,32 +2730,231 @@ const upcoming = [
 
     font-size: 7px;
     font-weight: 800;
-    letter-spacing: 0.1em;
+
+    letter-spacing: 0.08em;
+  }
+
+  .terminal-body {
+    display: grid;
+
+    gap: 9px;
+
+    min-height: 148px;
+
+    padding: 15px;
+
+    color: #97938b;
+
+    font-family:
+      "SFMono-Regular",
+      "Cascadia Code",
+      "Roboto Mono",
+      Consolas,
+      monospace;
+
+    font-size: 8px;
+
+    line-height: 1.55;
+  }
+
+  .terminal-muted {
+    color: #4c4b47;
+  }
+
+  .terminal-cursor {
+    width: fit-content;
+
+    color: #eeeae1;
+
+    animation:
+      cursor-blink
+      1.2s
+      steps(2)
+      infinite;
+  }
+
+  .hero-stats {
+    display: grid;
+
+    grid-template-columns:
+      repeat(
+        3,
+        1fr
+      );
+
+    margin-top: 10px;
+
+    border-top:
+      1px
+      solid
+      #2c2c2a;
+
+    border-bottom:
+      1px
+      solid
+      #2c2c2a;
+  }
+
+  .hero-stat {
+    min-height: 73px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 4px;
+
+    padding:
+      10px;
+
+    border-right:
+      1px
+      solid
+      #2c2c2a;
+
+    opacity: 0;
+
+    transform:
+      translateY(12px);
+
+    animation:
+      stat-in
+      650ms
+      cubic-bezier(
+        .16,
+        1,
+        .3,
+        1
+      )
+      forwards;
+
+    animation-delay:
+      var(--delay, 0ms);
+  }
+
+  .hero-stat:last-child {
+    border-right: 0;
+  }
+
+  .hero-stat strong {
+    color: #efebe2;
+
+    font-size: 26px;
+
+    line-height: 0.85;
+
+    letter-spacing: -0.07em;
+  }
+
+  .hero-stat span {
+    color: #5f5d57;
+
+    font-size: 6px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
   }
 
   .hero-footer {
     display: flex;
+
     flex-wrap: wrap;
+
     gap: 7px;
 
-    padding-bottom: 20px;
+    padding-bottom: 19px;
 
-    color: #595752;
+    color: #54524d;
 
     font-size: 7px;
+
     font-weight: 800;
+
     letter-spacing: 0.1em;
   }
 
   .hero-footer span + span::before {
     content: "/";
+
     margin-right: 7px;
-    color: #3f3e3b;
+
+    color: #393835;
+  }
+
+  /* =============================================================
+     ARCADE
+  ============================================================= */
+
+  .arcade-section {
+    position: relative;
+
+    overflow: hidden;
+
+    padding:
+      58px
+      0
+      70px;
+
+    background: #101010;
+  }
+
+  .arcade-grid-bg {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.4;
+
+    background-image:
+      linear-gradient(
+        rgba(
+          255,
+          255,
+          255,
+          0.02
+        )
+        1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(
+          255,
+          255,
+          255,
+          0.02
+        )
+        1px,
+        transparent 1px
+      );
+
+    background-size:
+      25px
+      25px;
+
+    animation:
+      grid-drift
+      14s
+      linear
+      infinite;
+  }
+
+  .arcade-section .container {
+    position: relative;
+
+    z-index: 2;
   }
 
   .section-heading {
     display: flex;
+
     flex-direction: column;
+
     gap: 14px;
 
     margin-bottom: 26px;
@@ -1467,7 +2962,9 @@ const upcoming = [
 
   .section-heading-main {
     display: flex;
+
     align-items: flex-start;
+
     gap: 13px;
   }
 
@@ -1476,8 +2973,15 @@ const upcoming = [
 
     color: #eeeae1;
 
-    font-size: clamp(44px, 12vw, 92px);
+    font-size:
+      clamp(
+        44px,
+        12vw,
+        92px
+      );
+
     font-weight: 950;
+
     line-height: 0.86;
 
     letter-spacing: -0.075em;
@@ -1489,17 +2993,15 @@ const upcoming = [
     color: #66645f;
 
     font-size: 10px;
-    font-weight: 650;
-    line-height: 1.6;
-  }
 
-  .arcade-section {
-    padding: 58px 0 70px;
-    background: #101010;
+    font-weight: 650;
+
+    line-height: 1.6;
   }
 
   .game-grid {
     display: grid;
+
     gap: 12px;
   }
 
@@ -1507,6 +3009,7 @@ const upcoming = [
     position: relative;
 
     display: flex;
+
     flex-direction: column;
 
     min-height: 500px;
@@ -1514,19 +3017,74 @@ const upcoming = [
     padding: 16px;
 
     background: #161616;
-    border: 1px solid #2d2d2d;
+
+    border:
+      1px
+      solid
+      #2d2d2d;
+
+    opacity: 0;
+
+    transform:
+      translateY(30px);
+
+    transition:
+      opacity
+        700ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        ),
+      transform
+        700ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        ),
+      border-color
+        160ms ease,
+      background-color
+        160ms ease;
+  }
+
+  .is-visible .game-card {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+
+    transition-delay:
+      var(--delay, 0ms);
+  }
+
+  .game-card:hover {
+    border-color: #41413e;
+    background: #191919;
   }
 
   .game-card-featured {
     min-height: 540px;
+
     background: #121212;
+
     border-color: #383838;
+  }
+
+  .game-card-featured:hover {
+    background: #151515;
   }
 
   .game-card-top {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
     gap: 12px;
   }
 
@@ -1535,7 +3093,9 @@ const upcoming = [
     color: #696761;
 
     font-size: 7px;
+
     font-weight: 800;
+
     letter-spacing: 0.1em;
   }
 
@@ -1553,16 +3113,45 @@ const upcoming = [
     overflow: hidden;
 
     background: #0b0b0b;
-    border: 1px solid #2a2a2a;
+
+    border:
+      1px
+      solid
+      #2a2a2a;
   }
+
+  /* =============================================================
+     KUNTILANAK PREVIEW
+  ============================================================= */
 
   .preview-kuntilanak {
     position: absolute;
+
     inset: 0;
 
     overflow: hidden;
 
     background: #0a0d10;
+  }
+
+  .preview-kuntilanak::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border:
+      1px
+      solid
+      rgba(
+        255,
+        255,
+        255,
+        0.04
+      );
+
+    pointer-events: none;
   }
 
   .preview-stars i {
@@ -1572,7 +3161,14 @@ const upcoming = [
     height: 2px;
 
     background: #d5d0c5;
+
     border-radius: 50%;
+
+    animation:
+      star-flicker
+      2.4s
+      ease-in-out
+      infinite;
   }
 
   .preview-stars i:nth-child(1) {
@@ -1583,26 +3179,41 @@ const upcoming = [
   .preview-stars i:nth-child(2) {
     top: 26%;
     left: 29%;
+
+    animation-delay:
+      -0.5s;
   }
 
   .preview-stars i:nth-child(3) {
     top: 15%;
     left: 53%;
+
+    animation-delay:
+      -0.9s;
   }
 
   .preview-stars i:nth-child(4) {
     top: 31%;
     left: 67%;
+
+    animation-delay:
+      -1.1s;
   }
 
   .preview-stars i:nth-child(5) {
     top: 21%;
     left: 82%;
+
+    animation-delay:
+      -0.3s;
   }
 
   .preview-stars i:nth-child(6) {
     top: 42%;
     left: 74%;
+
+    animation-delay:
+      -1.5s;
   }
 
   .preview-moon {
@@ -1615,27 +3226,56 @@ const upcoming = [
     height: 58px;
 
     background: #e7dfc8;
+
     border-radius: 50%;
+
+    box-shadow:
+      0
+      0
+      0
+      8px
+      rgba(
+        231,
+        223,
+        200,
+        0.04
+      );
   }
 
   .preview-wire {
     position: absolute;
 
-    top: 76px;
     left: -10%;
 
     width: 120%;
     height: 1px;
 
     background: #484846;
+  }
 
-    transform: rotate(3deg);
+  .preview-wire-a {
+    top: 66px;
+
+    transform:
+      rotate(
+        3deg
+      );
+  }
+
+  .preview-wire-b {
+    top: 87px;
+
+    transform:
+      rotate(
+        -4deg
+      );
   }
 
   .preview-pole {
     position: absolute;
 
     right: 25%;
+
     bottom: 0;
 
     width: 6px;
@@ -1660,6 +3300,7 @@ const upcoming = [
 
   .preview-tree {
     position: absolute;
+
     bottom: 0;
 
     width: 17px;
@@ -1675,6 +3316,7 @@ const upcoming = [
     position: absolute;
 
     background: #060606;
+
     border-radius: 50%;
   }
 
@@ -1700,6 +3342,7 @@ const upcoming = [
 
   .preview-tree-right {
     right: 7%;
+
     height: 67px;
   }
 
@@ -1711,6 +3354,12 @@ const upcoming = [
 
     width: 42px;
     height: 66px;
+
+    animation:
+      preview-ghost-float
+      2.4s
+      ease-in-out
+      infinite;
   }
 
   .preview-ghost-head {
@@ -1723,6 +3372,7 @@ const upcoming = [
     height: 31px;
 
     background: #eee9dd;
+
     border-radius: 50%;
   }
 
@@ -1737,31 +3387,60 @@ const upcoming = [
 
     background: #eee9dd;
 
-    clip-path: polygon(
-      0 0,
-      100% 0,
-      87% 100%,
-      66% 73%,
-      49% 100%,
-      30% 74%,
-      8% 100%
-    );
+    clip-path:
+      polygon(
+        0 0,
+        100% 0,
+        87% 100%,
+        66% 73%,
+        49% 100%,
+        30% 74%,
+        8% 100%
+      );
   }
 
-  .preview-badge {
+  .preview-ghost-eye {
     position: absolute;
 
+    top: 14px;
+
+    width: 4px;
+    height: 5px;
+
+    background: #1d1d1d;
+
+    border-radius: 50%;
+  }
+
+  .preview-ghost-eye.left {
+    left: 16px;
+  }
+
+  .preview-ghost-eye.right {
+    left: 27px;
+  }
+
+  .preview-hud {
+    position: absolute;
+
+    left: 11px;
     right: 11px;
     bottom: 10px;
-    left: 11px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
+    gap: 10px;
 
     padding-top: 8px;
 
-    border-top: 1px solid #30302e;
+    border-top:
+      1px
+      solid
+      #30302e;
 
     color: #bab7ae;
 
@@ -1773,43 +3452,58 @@ const upcoming = [
       monospace;
 
     font-size: 6px;
+
     font-weight: 800;
+
     letter-spacing: 0.1em;
   }
 
+  /* =============================================================
+     DEBUGGER PREVIEW
+  ============================================================= */
+
   .preview-debugger {
     position: absolute;
+
     inset: 13px;
   }
 
   .debugger-header {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     margin-bottom: 5px;
 
-    padding: 6px 7px;
+    padding:
+      6px
+      7px;
 
     background: #202020;
-    border: 1px solid #353535;
+
+    border:
+      1px
+      solid
+      #353535;
 
     color: #7d7b75;
 
-    font-family:
-      "SFMono-Regular",
-      "Cascadia Code",
-      "Roboto Mono",
-      Consolas,
-      monospace;
-
     font-size: 6px;
+
     font-weight: 800;
   }
 
   .debugger-grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+
+    grid-template-columns:
+      repeat(
+        6,
+        1fr
+      );
+
     gap: 2px;
 
     padding: 3px;
@@ -1821,6 +3515,7 @@ const upcoming = [
     aspect-ratio: 1;
 
     display: grid;
+
     place-items: center;
 
     background: #343432;
@@ -1835,6 +3530,7 @@ const upcoming = [
       monospace;
 
     font-size: 7px;
+
     font-weight: 900;
 
     box-shadow:
@@ -1844,6 +3540,7 @@ const upcoming = [
 
   .debugger-cell.open {
     background: #474642;
+
     box-shadow: none;
   }
 
@@ -1853,18 +3550,29 @@ const upcoming = [
 
   .debugger-cell.mine {
     background: #713e39;
+
     color: #f4ede3;
+
     box-shadow: none;
   }
 
+  /* =============================================================
+     TERMINAL PREVIEW
+  ============================================================= */
+
   .preview-terminal {
     position: absolute;
+
     inset: 17px;
 
     padding: 11px;
 
     background: #0d0d0d;
-    border: 1px solid #303030;
+
+    border:
+      1px
+      solid
+      #303030;
 
     font-family:
       "SFMono-Regular",
@@ -1876,6 +3584,9 @@ const upcoming = [
 
   .terminal-top {
     display: flex;
+
+    align-items: center;
+
     gap: 4px;
 
     margin-bottom: 14px;
@@ -1884,18 +3595,35 @@ const upcoming = [
   .terminal-top span {
     width: 6px;
     height: 6px;
-    border-radius: 50%;
+
     background: #484743;
+
+    border-radius: 50%;
+  }
+
+  .terminal-top strong {
+    margin-left: auto;
+
+    color: #595752;
+
+    font-size: 6px;
+
+    letter-spacing: 0.08em;
   }
 
   .terminal-line {
     display: grid;
-    grid-template-columns: 20px 1fr;
+
+    grid-template-columns:
+      20px
+      1fr;
+
     gap: 7px;
 
     margin-top: 9px;
 
     font-size: 7px;
+
     line-height: 1.5;
   }
 
@@ -1905,14 +3633,19 @@ const upcoming = [
 
   .terminal-line strong {
     color: #aaa8a1;
+
     font-weight: 700;
   }
 
   .terminal-line em {
     overflow: hidden;
+
     color: #efeadf;
+
     font-style: normal;
+
     text-overflow: ellipsis;
+
     white-space: nowrap;
   }
 
@@ -1920,36 +3653,80 @@ const upcoming = [
     color: #5d5b56;
   }
 
-  .terminal-cursor {
-    width: 5px;
-    height: 10px;
+  .terminal-line.active span {
+    color: #eeeae1;
 
-    margin: 12px 0 0 27px;
-
-    background: #e9e4d9;
+    animation:
+      cursor-blink
+      1.1s
+      steps(2)
+      infinite;
   }
+
+  /* =============================================================
+     2048 PREVIEW
+  ============================================================= */
 
   .preview-2048 {
     position: absolute;
+
     inset: 27px;
 
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+
+    grid-template-columns:
+      repeat(
+        2,
+        1fr
+      );
+
     gap: 6px;
   }
 
   .preview-2048 span {
     display: grid;
+
     place-items: center;
 
     background: #1d1d1b;
-    border: 1px solid #34332f;
+
+    border:
+      1px
+      solid
+      #34332f;
 
     color: #ebe6db;
 
     font-size: 30px;
+
     font-weight: 950;
+
     letter-spacing: -0.06em;
+
+    transition:
+      transform
+      300ms
+      ease;
+  }
+
+  .game-card:hover .preview-2048 span:nth-child(1) {
+    transform:
+      translate(-2px, -2px);
+  }
+
+  .game-card:hover .preview-2048 span:nth-child(2) {
+    transform:
+      translate(2px, -2px);
+  }
+
+  .game-card:hover .preview-2048 span:nth-child(3) {
+    transform:
+      translate(-2px, 2px);
+  }
+
+  .game-card:hover .preview-2048 span:nth-child(4) {
+    transform:
+      translate(2px, 2px);
   }
 
   .preview-2048 span:nth-child(2) {
@@ -1964,8 +3741,13 @@ const upcoming = [
     background: #514a3d;
   }
 
+  /* =============================================================
+     GAME CARD
+  ============================================================= */
+
   .game-card-content {
     flex: 1;
+
     margin-top: 18px;
   }
 
@@ -1973,17 +3755,29 @@ const upcoming = [
     color: #6e6c66;
 
     font-size: 7px;
+
     font-weight: 800;
+
     letter-spacing: 0.1em;
   }
 
   .game-card h3 {
-    margin: 7px 0 0;
+    margin:
+      7px
+      0
+      0;
 
     color: #efebe2;
 
-    font-size: clamp(34px, 9vw, 62px);
+    font-size:
+      clamp(
+        34px,
+        9vw,
+        62px
+      );
+
     font-weight: 950;
+
     line-height: 0.84;
 
     letter-spacing: -0.075em;
@@ -1991,30 +3785,43 @@ const upcoming = [
 
   .game-description {
     max-width: 620px;
-    margin: 17px 0 0;
+
+    margin:
+      17px
+      0
+      0;
 
     color: #85827b;
 
     font-size: 12px;
+
     line-height: 1.68;
   }
 
   .game-card-footer {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     gap: 12px;
 
     margin-top: 24px;
+
     padding-top: 14px;
 
-    border-top: 1px solid #2a2a28;
+    border-top:
+      1px
+      solid
+      #2a2a28;
   }
 
   .game-status {
     display: inline-flex;
+
     align-items: center;
+
     gap: 6px;
 
     color: #727069;
@@ -2027,7 +3834,9 @@ const upcoming = [
       monospace;
 
     font-size: 7px;
+
     font-weight: 800;
+
     letter-spacing: 0.09em;
   }
 
@@ -2036,48 +3845,104 @@ const upcoming = [
     height: 6px;
 
     background: #6e9b61;
+
     border-radius: 50%;
+
+    box-shadow:
+      0
+      0
+      0
+      3px
+      rgba(
+        110,
+        155,
+        97,
+        0.08
+      );
   }
 
   .play-button,
   .wide-button {
     appearance: none;
+
     -webkit-appearance: none;
 
     display: inline-flex;
+
     align-items: center;
+
     justify-content: center;
+
     gap: 9px;
 
     min-height: 43px;
 
-    padding: 0 14px;
+    padding:
+      0
+      14px;
 
-    border: 1px solid #eeeae1;
+    border:
+      1px
+      solid
+      #eeeae1;
+
     background: #eeeae1;
+
     color: #101010;
 
     cursor: pointer;
 
     font-size: 9px;
+
     font-weight: 900;
+
     letter-spacing: 0.07em;
 
     touch-action: manipulation;
 
+    transform:
+      translate3d(
+        var(--mx, 0),
+        var(--my, 0),
+        0
+      );
+
     transition:
-      transform 120ms ease,
-      background-color 120ms ease,
-      color 120ms ease;
+      transform
+        160ms
+        cubic-bezier(
+          .2,
+          .8,
+          .2,
+          1
+        ),
+      background-color
+        120ms ease,
+      color
+        120ms ease;
+  }
+
+  .play-button:hover,
+  .wide-button:hover {
+    background: #ffffff;
   }
 
   .play-button:active,
   .wide-button:active {
-    transform: translateY(1px);
+    transform:
+      translateY(1px);
   }
 
+  /* =============================================================
+     STAGE
+  ============================================================= */
+
   .stage-section {
-    padding: 18px 0 70px;
+    padding:
+      18px
+      0
+      70px;
+
     background: #080808;
   }
 
@@ -2085,25 +3950,50 @@ const upcoming = [
     overflow: hidden;
 
     background: #101010;
-    border: 1px solid #2b2b2b;
+
+    border:
+      1px
+      solid
+      #2b2b2b;
+
+    box-shadow:
+      0
+      20px
+      45px
+      rgba(
+        0,
+        0,
+        0,
+        0.18
+      );
   }
 
   .stage-window-bar {
     min-height: 43px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
-    padding: 0 11px;
+    padding:
+      0
+      11px;
 
     background: #151515;
-    border-bottom: 1px solid #2a2a2a;
+
+    border-bottom:
+      1px
+      solid
+      #2a2a2a;
   }
 
   .window-brand {
     display: flex;
+
     align-items: center;
+
     gap: 5px;
   }
 
@@ -2112,6 +4002,7 @@ const upcoming = [
     height: 7px;
 
     background: #4a4a48;
+
     border-radius: 50%;
   }
 
@@ -2120,22 +4011,20 @@ const upcoming = [
 
     color: #807e78;
 
-    font-family:
-      "SFMono-Regular",
-      "Cascadia Code",
-      "Roboto Mono",
-      Consolas,
-      monospace;
-
     font-size: 7px;
+
     font-weight: 800;
+
     letter-spacing: 0.1em;
   }
 
   .stage-status {
     color: #5f5d58;
+
     font-size: 7px;
+
     font-weight: 800;
+
     letter-spacing: 0.08em;
   }
 
@@ -2143,32 +4032,44 @@ const upcoming = [
     min-height: 49px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     gap: 14px;
 
-    padding: 0 12px;
+    padding:
+      0
+      12px;
 
     background: #0d0d0d;
-    border-bottom: 1px solid #292929;
+
+    border-bottom:
+      1px
+      solid
+      #292929;
   }
 
   .stage-toolbar-main {
     min-width: 0;
 
     display: flex;
+
     align-items: center;
+
     gap: 8px;
   }
 
   .stage-back {
     appearance: none;
+
     -webkit-appearance: none;
 
     padding: 0;
 
     border: 0;
+
     background: transparent;
 
     color: #e5e1d7;
@@ -2183,7 +4084,9 @@ const upcoming = [
       monospace;
 
     font-size: 8px;
+
     font-weight: 850;
+
     letter-spacing: 0.05em;
   }
 
@@ -2197,10 +4100,13 @@ const upcoming = [
     color: #77756f;
 
     font-size: 7px;
+
     font-weight: 800;
+
     letter-spacing: 0.07em;
 
     text-overflow: ellipsis;
+
     white-space: nowrap;
   }
 
@@ -2208,7 +4114,9 @@ const upcoming = [
     color: #474641;
 
     font-size: 6px;
+
     font-weight: 800;
+
     letter-spacing: 0.08em;
   }
 
@@ -2216,16 +4124,27 @@ const upcoming = [
     min-height: 510px;
 
     display: grid;
+
     place-items: center;
 
     background: #0f0f0f;
   }
 
   .stage-empty {
-    width: min(100% - 42px, 520px);
+    width: min(
+      calc(100% - 42px),
+      520px
+    );
 
     text-align: center;
+
     color: #e9e5dc;
+
+    animation:
+      empty-breathe
+      3s
+      ease-in-out
+      infinite;
   }
 
   .stage-empty-number {
@@ -2233,60 +4152,75 @@ const upcoming = [
 
     color: #30302e;
 
-    font-family:
-      "SFMono-Regular",
-      "Cascadia Code",
-      "Roboto Mono",
-      Consolas,
-      monospace;
-
     font-size: 73px;
+
     font-weight: 950;
+
     line-height: 0.85;
+
     letter-spacing: -0.1em;
   }
 
   .stage-empty-kicker {
-    margin: 20px 0 0;
+    margin:
+      20px
+      0
+      0;
 
     color: #66635d;
 
-    font-family:
-      "SFMono-Regular",
-      "Cascadia Code",
-      "Roboto Mono",
-      Consolas,
-      monospace;
-
     font-size: 7px;
+
     font-weight: 800;
+
     letter-spacing: 0.12em;
   }
 
   .stage-empty h2 {
-    margin: 9px 0 0;
+    margin:
+      9px
+      0
+      0;
 
-    font-size: clamp(38px, 10vw, 66px);
+    font-size:
+      clamp(
+        38px,
+        10vw,
+        66px
+      );
+
     font-weight: 950;
+
     line-height: 0.87;
+
     letter-spacing: -0.075em;
   }
 
   .stage-empty p:not(.stage-empty-kicker) {
     max-width: 330px;
 
-    margin: 14px auto 0;
+    margin:
+      14px
+      auto
+      0;
 
     color: #77746d;
 
     font-size: 12px;
+
     line-height: 1.6;
   }
 
   .stage-empty-rule {
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+
+    grid-template-columns:
+      1fr
+      auto
+      1fr;
+
     align-items: center;
+
     gap: 10px;
 
     margin-top: 27px;
@@ -2294,37 +4228,46 @@ const upcoming = [
 
   .stage-empty-rule span {
     height: 1px;
+
     background: #2c2c2a;
   }
 
   .stage-empty-rule small {
     color: #55534e;
 
-    font-family:
-      "SFMono-Regular",
-      "Cascadia Code",
-      "Roboto Mono",
-      Consolas,
-      monospace;
-
     font-size: 6px;
+
     font-weight: 800;
+
     letter-spacing: 0.1em;
   }
 
+  /* =============================================================
+     FEATURED SECTION
+  ============================================================= */
+
   .featured-section {
-    padding: 64px 0;
+    padding:
+      64px
+      0;
 
     background: #0d0d0d;
-    border-top: 1px solid #252525;
+
+    border-top:
+      1px
+      solid
+      #252525;
   }
 
   .feature-topline {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     gap: 12px;
+
     margin-bottom: 16px;
   }
 
@@ -2332,12 +4275,15 @@ const upcoming = [
     color: #53514c;
 
     font-size: 6px;
+
     font-weight: 800;
+
     letter-spacing: 0.1em;
   }
 
   .feature-layout {
     display: grid;
+
     gap: 28px;
   }
 
@@ -2349,11 +4295,49 @@ const upcoming = [
     overflow: hidden;
 
     background: #0b0b0b;
-    border: 1px solid #30302e;
+
+    border:
+      1px
+      solid
+      #30302e;
+
+    opacity: 0;
+
+    transform:
+      translateY(25px);
+
+    transition:
+      opacity
+        700ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        ),
+      transform
+        700ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        );
+
+    transition-delay:
+      var(--delay, 0ms);
+  }
+
+  .is-visible .feature-art {
+    opacity: 1;
+
+    transform:
+      translateY(0);
   }
 
   .art-grid {
     position: absolute;
+
     inset: 0;
   }
 
@@ -2372,6 +4356,7 @@ const upcoming = [
     width: 1px;
 
     background: #1f1f1d;
+
     box-shadow:
       120px 0 #1f1f1d,
       240px 0 #1f1f1d,
@@ -2381,11 +4366,13 @@ const upcoming = [
   .art-grid::after {
     right: 0;
     left: 0;
+
     top: 33.333%;
 
     height: 1px;
 
     background: #1f1f1d;
+
     box-shadow:
       0 100px #1f1f1d,
       0 200px #1f1f1d,
@@ -2402,13 +4389,21 @@ const upcoming = [
     height: 88px;
 
     background: #e8e0c9;
+
     border-radius: 50%;
+
+    animation:
+      moon-pulse
+      4s
+      ease-in-out
+      infinite;
   }
 
   .art-wire {
     position: absolute;
 
     left: -5%;
+
     width: 110%;
     height: 2px;
 
@@ -2417,12 +4412,20 @@ const upcoming = [
 
   .art-wire-a {
     top: 27%;
-    transform: rotate(4deg);
+
+    transform:
+      rotate(
+        4deg
+      );
   }
 
   .art-wire-b {
     top: 38%;
-    transform: rotate(-2deg);
+
+    transform:
+      rotate(
+        -2deg
+      );
   }
 
   .art-pole {
@@ -2468,6 +4471,7 @@ const upcoming = [
     position: absolute;
 
     background: #050505;
+
     border-radius: 50%;
   }
 
@@ -2506,7 +4510,17 @@ const upcoming = [
     width: 70px;
     height: 115px;
 
-    transform: translate(-50%, -50%);
+    transform:
+      translate(
+        -50%,
+        -50%
+      );
+
+    animation:
+      art-ghost-float
+      3.5s
+      ease-in-out
+      infinite;
   }
 
   .art-ghost-hair {
@@ -2518,10 +4532,18 @@ const upcoming = [
     width: 64px;
     height: 95px;
 
-    border: 10px solid #050505;
+    border:
+      10px
+      solid
+      #050505;
+
     border-top: 0;
 
-    border-radius: 0 0 34px 34px;
+    border-radius:
+      0
+      0
+      34px
+      34px;
   }
 
   .art-ghost-head {
@@ -2534,6 +4556,7 @@ const upcoming = [
     height: 54px;
 
     background: #eee9de;
+
     border-radius: 50%;
   }
 
@@ -2548,15 +4571,16 @@ const upcoming = [
 
     background: #eee9de;
 
-    clip-path: polygon(
-      0 0,
-      100% 0,
-      89% 100%,
-      70% 75%,
-      50% 100%,
-      30% 76%,
-      8% 100%
-    );
+    clip-path:
+      polygon(
+        0 0,
+        100% 0,
+        89% 100%,
+        70% 75%,
+        50% 100%,
+        30% 76%,
+        8% 100%
+      );
   }
 
   .art-ghost-eye {
@@ -2568,6 +4592,7 @@ const upcoming = [
     height: 5px;
 
     background: #191919;
+
     border-radius: 50%;
   }
 
@@ -2579,6 +4604,51 @@ const upcoming = [
     left: 40px;
   }
 
+  .art-data {
+    position: absolute;
+
+    display: grid;
+
+    gap: 3px;
+
+    font-family:
+      "SFMono-Regular",
+      "Cascadia Code",
+      "Roboto Mono",
+      Consolas,
+      monospace;
+  }
+
+  .art-data span {
+    color: #66635c;
+
+    font-size: 6px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+  }
+
+  .art-data strong {
+    color: #ddd9d1;
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.06em;
+  }
+
+  .art-data-top {
+    top: 20px;
+    right: 20px;
+  }
+
+  .art-data-bottom {
+    left: 20px;
+    bottom: 22px;
+  }
+
   .art-footer {
     position: absolute;
 
@@ -2587,12 +4657,17 @@ const upcoming = [
     left: 18px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     padding-top: 11px;
 
-    border-top: 1px solid #343431;
+    border-top:
+      1px
+      solid
+      #343431;
 
     color: #bcb8ae;
 
@@ -2604,21 +4679,66 @@ const upcoming = [
       monospace;
 
     font-size: 6px;
+
     font-weight: 800;
+
     letter-spacing: 0.1em;
   }
 
   .feature-content {
     max-width: 600px;
+
+    opacity: 0;
+
+    transform:
+      translateY(25px);
+
+    transition:
+      opacity
+        700ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        ),
+      transform
+        700ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        );
+
+    transition-delay:
+      120ms;
+  }
+
+  .is-visible .feature-content {
+    opacity: 1;
+
+    transform:
+      translateY(0);
   }
 
   .feature-content h2 {
-    margin: 8px 0 0;
+    margin:
+      8px
+      0
+      0;
 
     color: #eeeae1;
 
-    font-size: clamp(46px, 11vw, 84px);
+    font-size:
+      clamp(
+        46px,
+        11vw,
+        84px
+      );
+
     font-weight: 950;
+
     line-height: 0.86;
 
     letter-spacing: -0.08em;
@@ -2626,36 +4746,56 @@ const upcoming = [
 
   .feature-content h2 span {
     display: block;
+
     color: #65635e;
   }
 
   .feature-content > p:not(.section-kicker) {
     max-width: 570px;
 
-    margin: 18px 0 0;
+    margin:
+      18px
+      0
+      0;
 
     color: #85817a;
 
     font-size: 13px;
+
     line-height: 1.7;
   }
 
   .feature-list {
     margin-top: 23px;
 
-    border-top: 1px solid #292926;
-    border-bottom: 1px solid #292926;
+    border-top:
+      1px
+      solid
+      #292926;
+
+    border-bottom:
+      1px
+      solid
+      #292926;
   }
 
   .feature-list > div {
     display: grid;
-    grid-template-columns: 28px 1fr;
+
+    grid-template-columns:
+      28px
+      1fr;
 
     gap: 10px;
 
-    padding: 13px 0;
+    padding:
+      13px
+      0;
 
-    border-bottom: 1px solid #252522;
+    border-bottom:
+      1px
+      solid
+      #252522;
   }
 
   .feature-list > div:last-child {
@@ -2665,14 +4805,8 @@ const upcoming = [
   .feature-list span {
     color: #5f5c56;
 
-    font-family:
-      "SFMono-Regular",
-      "Cascadia Code",
-      "Roboto Mono",
-      Consolas,
-      monospace;
-
     font-size: 8px;
+
     font-weight: 800;
   }
 
@@ -2680,34 +4814,90 @@ const upcoming = [
     color: #ded9cf;
 
     font-size: 9px;
+
     font-weight: 900;
+
     letter-spacing: 0.05em;
   }
 
   .feature-content .wide-button {
     width: 100%;
+
     margin-top: 20px;
   }
 
+  /* =============================================================
+     DEBUGGER
+  ============================================================= */
+
   .debugger-section {
-    padding: 64px 0;
+    padding:
+      64px
+      0;
 
     background: #141413;
-    border-top: 1px solid #272725;
+
+    border-top:
+      1px
+      solid
+      #272725;
   }
 
   .debugger-layout {
     display: grid;
+
     gap: 28px;
   }
 
+  .debugger-content {
+    opacity: 0;
+
+    transform:
+      translateY(25px);
+
+    transition:
+      opacity
+        700ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        ),
+      transform
+        700ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        );
+  }
+
+  .is-visible .debugger-content {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+
   .debugger-content h2 {
-    margin: 8px 0 0;
+    margin:
+      8px
+      0
+      0;
 
     color: #eeeae1;
 
-    font-size: clamp(44px, 11vw, 84px);
+    font-size:
+      clamp(
+        44px,
+        11vw,
+        84px
+      );
+
     font-weight: 950;
+
     line-height: 0.86;
 
     letter-spacing: -0.08em;
@@ -2715,22 +4905,28 @@ const upcoming = [
 
   .debugger-content h2 span {
     display: block;
+
     color: #66635d;
   }
 
   .debugger-content > p:not(.section-kicker) {
     max-width: 560px;
 
-    margin: 18px 0 0;
+    margin:
+      18px
+      0
+      0;
 
     color: #838079;
 
     font-size: 13px;
+
     line-height: 1.7;
   }
 
   .debugger-content .wide-button {
     width: 100%;
+
     margin-top: 23px;
   }
 
@@ -2738,12 +4934,53 @@ const upcoming = [
     padding: 12px;
 
     background: #242423;
-    border: 1px solid #45443f;
+
+    border:
+      1px
+      solid
+      #45443f;
+
+    opacity: 0;
+
+    transform:
+      translateY(25px);
+
+    transition:
+      opacity
+        700ms
+        120ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        ),
+      transform
+        700ms
+        120ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        );
+  }
+
+  .is-visible .minesweeper-showcase {
+    opacity: 1;
+
+    transform:
+      translateY(0);
   }
 
   .mine-topbar {
     display: grid;
-    grid-template-columns: 1fr 48px 1fr;
+
+    grid-template-columns:
+      1fr
+      48px
+      1fr;
+
     gap: 8px;
 
     padding: 9px;
@@ -2753,7 +4990,9 @@ const upcoming = [
 
   .mine-topbar > div {
     display: flex;
+
     flex-direction: column;
+
     gap: 2px;
   }
 
@@ -2764,30 +5003,20 @@ const upcoming = [
   .mine-topbar span {
     color: #615f59;
 
-    font-family:
-      "SFMono-Regular",
-      "Cascadia Code",
-      "Roboto Mono",
-      Consolas,
-      monospace;
-
     font-size: 6px;
+
     font-weight: 800;
+
     letter-spacing: 0.09em;
   }
 
   .mine-topbar strong {
     color: #eeeae1;
 
-    font-family:
-      "SFMono-Regular",
-      "Cascadia Code",
-      "Roboto Mono",
-      Consolas,
-      monospace;
-
     font-size: 16px;
+
     font-weight: 900;
+
     line-height: 1;
   }
 
@@ -2796,6 +5025,7 @@ const upcoming = [
     height: 29px;
 
     display: grid;
+
     place-items: center;
 
     padding: 0;
@@ -2805,20 +5035,20 @@ const upcoming = [
     background: #aaa79f;
     color: #111111;
 
-    font-family:
-      "SFMono-Regular",
-      "Cascadia Code",
-      "Roboto Mono",
-      Consolas,
-      monospace;
-
     font-size: 9px;
+
     font-weight: 950;
   }
 
   .mine-board {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+
+    grid-template-columns:
+      repeat(
+        6,
+        1fr
+      );
+
     gap: 2px;
 
     padding: 3px;
@@ -2830,29 +5060,33 @@ const upcoming = [
     aspect-ratio: 1;
 
     display: grid;
+
     place-items: center;
 
     background: #333330;
 
     color: #bdb9af;
 
-    font-family:
-      "SFMono-Regular",
-      "Cascadia Code",
-      "Roboto Mono",
-      Consolas,
-      monospace;
-
     font-size: 10px;
+
     font-weight: 950;
 
     box-shadow:
-      inset 2px 2px 0 #4b4a45,
-      inset -2px -2px 0 #232321;
+      inset
+      2px
+      2px
+      0
+      #4b4a45,
+      inset
+      -2px
+      -2px
+      0
+      #232321;
   }
 
   .mine-tile.open {
     background: #494843;
+
     box-shadow: none;
   }
 
@@ -2862,7 +5096,9 @@ const upcoming = [
 
   .mine-tile.mine {
     background: #703f39;
+
     color: #f2ece2;
+
     box-shadow: none;
   }
 
@@ -2872,73 +5108,133 @@ const upcoming = [
     color: #66635d;
 
     font-size: 6px;
+
     font-weight: 800;
+
     letter-spacing: 0.08em;
   }
 
   .mine-footer span {
-    margin: 0 5px;
+    margin:
+      0
+      5px;
+
     color: #46453f;
   }
 
+  /* =============================================================
+     UPCOMING
+  ============================================================= */
+
   .upcoming-section {
-    padding: 64px 0;
+    padding:
+      64px
+      0;
 
     background: #0d0d0d;
-    border-top: 1px solid #242424;
+
+    border-top:
+      1px
+      solid
+      #242424;
   }
 
   .upcoming-grid {
     display: grid;
+
     gap: 10px;
   }
 
   .upcoming-card {
     display: grid;
-    grid-template-columns: 28px 1fr 20px;
+
+    grid-template-columns:
+      28px
+      1fr
+      20px;
 
     gap: 14px;
 
-    padding: 17px;
+    padding:
+      17px;
 
     background: #151515;
-    border: 1px solid #2b2b2b;
+
+    border:
+      1px
+      solid
+      #2b2b2b;
+
+    opacity: 0;
+
+    transform:
+      translateY(22px);
 
     transition:
-      border-color 120ms ease,
-      background-color 120ms ease,
-      transform 120ms ease;
+      opacity
+        650ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        ),
+      transform
+        650ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        ),
+      border-color
+        120ms ease,
+      background-color
+        120ms ease;
   }
 
-  .upcoming-card[data-launch-game] {
+  .is-visible .upcoming-card {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+
+    transition-delay:
+      var(--delay, 0ms);
+  }
+
+  .upcoming-card {
     cursor: pointer;
   }
 
-  .upcoming-card[data-launch-game]:hover {
+  .upcoming-card:hover {
     background: #181818;
+
     border-color: #41413e;
+
+    transform:
+      translateY(-2px);
   }
 
-  .upcoming-card[data-launch-game]:active {
-    transform: translateY(1px);
+  .upcoming-card:active {
+    transform:
+      translateY(1px);
   }
 
-  .upcoming-card[data-launch-game]:focus-visible {
-    outline: 2px solid #eeeae1;
+  .upcoming-card:focus-visible {
+    outline:
+      2px
+      solid
+      #eeeae1;
+
     outline-offset: 2px;
   }
 
   .upcoming-number {
     color: #5d5b56;
 
-    font-family:
-      "SFMono-Regular",
-      "Cascadia Code",
-      "Roboto Mono",
-      Consolas,
-      monospace;
-
     font-size: 8px;
+
     font-weight: 800;
   }
 
@@ -2946,69 +5242,143 @@ const upcoming = [
     color: #8b9b83;
 
     font-size: 6px;
+
     font-weight: 800;
+
     letter-spacing: 0.1em;
   }
 
   .upcoming-content h3 {
-    margin: 6px 0 0;
+    margin:
+      6px
+      0
+      0;
 
     color: #eeeae1;
 
     font-size: 22px;
+
     font-weight: 900;
+
     line-height: 0.95;
 
     letter-spacing: -0.04em;
   }
 
   .upcoming-content p {
-    margin: 8px 0 0;
+    margin:
+      8px
+      0
+      0;
 
     color: #77736c;
 
     font-size: 11px;
+
     line-height: 1.6;
   }
 
   .upcoming-arrow {
     color: #66635d;
 
-    font-family:
-      "SFMono-Regular",
-      "Cascadia Code",
-      "Roboto Mono",
-      Consolas,
-      monospace;
-
     font-size: 14px;
+
     font-weight: 800;
+
+    transition:
+      transform
+      140ms
+      ease;
   }
 
+  .upcoming-card:hover .upcoming-arrow {
+    transform:
+      translate(
+        3px,
+        -3px
+      );
+  }
+
+  /* =============================================================
+     RULES
+  ============================================================= */
+
   .rules-section {
-    padding: 64px 0;
+    padding:
+      64px
+      0;
 
     background: #111111;
-    border-top: 1px solid #242424;
+
+    border-top:
+      1px
+      solid
+      #242424;
   }
 
   .rules-card {
     display: grid;
+
     gap: 36px;
 
-    padding: 22px;
+    padding:
+      22px;
 
     background: #151515;
-    border: 1px solid #2e2e2e;
+
+    border:
+      1px
+      solid
+      #2e2e2e;
+
+    opacity: 0;
+
+    transform:
+      translateY(25px);
+
+    transition:
+      opacity
+        700ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        ),
+      transform
+        700ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        );
+  }
+
+  .is-visible .rules-card {
+    opacity: 1;
+
+    transform:
+      translateY(0);
   }
 
   .rules-main h2 {
-    margin: 8px 0 0;
+    margin:
+      8px
+      0
+      0;
 
     color: #eeeae1;
 
-    font-size: clamp(45px, 11vw, 86px);
+    font-size:
+      clamp(
+        45px,
+        11vw,
+        86px
+      );
+
     font-weight: 950;
+
     line-height: 0.85;
 
     letter-spacing: -0.08em;
@@ -3016,46 +5386,56 @@ const upcoming = [
 
   .rules-main h2 span {
     display: block;
+
     color: #66635d;
   }
 
   .rules-main > p:last-child {
     max-width: 500px;
 
-    margin: 17px 0 0;
+    margin:
+      17px
+      0
+      0;
 
     color: #87837c;
 
     font-size: 13px;
+
     line-height: 1.65;
   }
 
   .rules-list {
-    border-top: 1px solid #2a2a28;
+    border-top:
+      1px
+      solid
+      #2a2a28;
   }
 
   .rules-list > div {
     display: grid;
-    grid-template-columns: 28px 1fr;
+
+    grid-template-columns:
+      28px
+      1fr;
 
     gap: 11px;
 
-    padding: 14px 0;
+    padding:
+      14px
+      0;
 
-    border-bottom: 1px solid #2a2a28;
+    border-bottom:
+      1px
+      solid
+      #2a2a28;
   }
 
   .rules-list span {
     color: #5f5c57;
 
-    font-family:
-      "SFMono-Regular",
-      "Cascadia Code",
-      "Roboto Mono",
-      Consolas,
-      monospace;
-
     font-size: 7px;
+
     font-weight: 800;
   }
 
@@ -3063,22 +5443,35 @@ const upcoming = [
     color: #ddd8cf;
 
     font-size: 10px;
+
     font-weight: 900;
+
     letter-spacing: 0.06em;
   }
 
+  /* =============================================================
+     CTA
+  ============================================================= */
+
   .cta-section {
-    padding: 18px 0 0;
+    padding:
+      18px
+      0
+      0;
+
     background: #090909;
   }
 
   .cta-card {
     display: grid;
+
     gap: 28px;
 
-    padding: 24px;
+    padding:
+      24px;
 
     background: #ddd7cb;
+
     color: #111111;
   }
 
@@ -3087,10 +5480,20 @@ const upcoming = [
   }
 
   .cta-card h2 {
-    margin: 8px 0 0;
+    margin:
+      8px
+      0
+      0;
 
-    font-size: clamp(45px, 11vw, 92px);
+    font-size:
+      clamp(
+        45px,
+        11vw,
+        92px
+      );
+
     font-weight: 950;
+
     line-height: 0.85;
 
     letter-spacing: -0.08em;
@@ -3098,11 +5501,13 @@ const upcoming = [
 
   .cta-card h2 span {
     display: block;
+
     color: #737068;
   }
 
   .cta-actions {
     display: grid;
+
     gap: 9px;
   }
 
@@ -3110,14 +5515,22 @@ const upcoming = [
     min-height: 48px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
     gap: 9px;
 
-    border: 1px solid #111111;
+    border:
+      1px
+      solid
+      #111111;
 
     font-size: 9px;
+
     font-weight: 900;
+
     letter-spacing: 0.07em;
   }
 
@@ -3131,19 +5544,30 @@ const upcoming = [
     color: #111111;
   }
 
+  /* =============================================================
+     FOOTER
+  ============================================================= */
+
   .site-footer {
-    padding: 26px 0 95px;
+    padding:
+      26px
+      0
+      95px;
+
     background: #090909;
   }
 
   .footer-inner {
     display: grid;
+
     gap: 18px;
   }
 
   .footer-brand {
     display: flex;
+
     align-items: center;
+
     gap: 10px;
   }
 
@@ -3152,17 +5576,21 @@ const upcoming = [
     height: 30px;
 
     display: grid;
+
     place-items: center;
 
     background: #eeeae1;
+
     color: #111111;
 
     font-size: 8px;
+
     font-weight: 950;
   }
 
   .footer-brand div {
     display: grid;
+
     gap: 2px;
   }
 
@@ -3170,7 +5598,9 @@ const upcoming = [
     color: #ebe7de;
 
     font-size: 9px;
+
     font-weight: 900;
+
     letter-spacing: 0.08em;
   }
 
@@ -3178,7 +5608,9 @@ const upcoming = [
     color: #5e5b55;
 
     font-size: 6px;
+
     font-weight: 800;
+
     letter-spacing: 0.08em;
   }
 
@@ -3196,18 +5628,27 @@ const upcoming = [
       sans-serif;
 
     font-size: 11px;
+
     line-height: 1.6;
   }
 
   .footer-end {
     color: #eeeae1;
+
     font-size: 7px;
+
     font-weight: 900;
+
     letter-spacing: 0.09em;
   }
 
+  /* =============================================================
+     MOBILE NAV
+  ============================================================= */
+
   .mobile-nav {
     position: fixed;
+
     right: 0;
     bottom: 0;
     left: 0;
@@ -3215,20 +5656,35 @@ const upcoming = [
     z-index: 120;
 
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
 
-    padding-bottom: env(safe-area-inset-bottom);
+    grid-template-columns:
+      repeat(
+        4,
+        1fr
+      );
+
+    padding-bottom:
+      env(
+        safe-area-inset-bottom
+      );
 
     background: #0a0a0a;
-    border-top: 1px solid #2b2b2b;
+
+    border-top:
+      1px
+      solid
+      #2b2b2b;
   }
 
   .mobile-nav a {
     min-height: 61px;
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
+
     justify-content: center;
 
     gap: 5px;
@@ -3236,22 +5692,91 @@ const upcoming = [
     color: #69665f;
 
     font-size: 8px;
+
     font-weight: 800;
   }
 
   .mobile-nav a span {
     color: #eae6dd;
+
     font-size: 13px;
+
     line-height: 1;
+
+    transition:
+      transform
+      140ms
+      ease;
   }
 
-  .mobile-nav a.active {
+  .mobile-nav a.active,
+  .mobile-nav a.play-item {
     color: #eeeae1;
   }
 
+  .mobile-nav a.active span,
+  .mobile-nav a:hover span {
+    transform:
+      translateY(-2px);
+  }
+
+  .mobile-nav .play-item {
+    background: #181818;
+  }
+
+  .mobile-nav .play-item span {
+    color: #dce5d3;
+  }
+
+  /* =============================================================
+     REVEAL
+  ============================================================= */
+
+  .reveal-item {
+    opacity: 0;
+
+    transform:
+      translateY(25px);
+
+    transition:
+      opacity
+        700ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        ),
+      transform
+        700ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        );
+
+    transition-delay:
+      var(--delay, 0ms);
+  }
+
+  .is-visible .reveal-item {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+
+  /* =============================================================
+     TABLET
+  ============================================================= */
+
   @media (min-width: 700px) {
     .container {
-      width: min(100% - 48px, 1220px);
+      width: min(
+        calc(100% - 48px),
+        1220px
+      );
     }
 
     .hero-layout {
@@ -3263,7 +5788,23 @@ const upcoming = [
 
       gap: 70px;
 
-      padding: 66px 0 50px;
+      padding:
+        66px
+        0
+        50px;
+    }
+
+    .hero-actions {
+      display: flex;
+
+      align-items: center;
+    }
+
+    .hero-button {
+      width: auto;
+      padding:
+        0
+        17px;
     }
 
     .arcade-section,
@@ -3277,12 +5818,21 @@ const upcoming = [
 
     .section-heading {
       flex-direction: row;
+
       align-items: flex-end;
+
       justify-content: space-between;
     }
 
     .game-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns:
+        repeat(
+          2,
+          minmax(
+            0,
+            1fr
+          )
+        );
     }
 
     .game-card-featured {
@@ -3294,14 +5844,27 @@ const upcoming = [
     }
 
     .upcoming-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns:
+        repeat(
+          2,
+          minmax(
+            0,
+            1fr
+          )
+        );
     }
 
     .feature-layout,
     .debugger-layout {
       grid-template-columns:
-        minmax(0, 1.05fr)
-        minmax(0, 0.95fr);
+        minmax(
+          0,
+          1.05fr
+        )
+        minmax(
+          0,
+          0.95fr
+        );
 
       align-items: center;
 
@@ -3314,12 +5877,17 @@ const upcoming = [
 
     .rules-card {
       grid-template-columns:
-        minmax(0, 1fr)
-        minmax(320px, 0.7fr);
-
-      display: grid;
+        minmax(
+          0,
+          1fr
+        )
+        minmax(
+          320px,
+          0.7fr
+        );
 
       align-items: end;
+
       gap: 60px;
 
       padding: 36px;
@@ -3327,7 +5895,10 @@ const upcoming = [
 
     .cta-card {
       grid-template-columns:
-        minmax(0, 1fr)
+        minmax(
+          0,
+          1fr
+        )
         auto;
 
       align-items: end;
@@ -3342,7 +5913,10 @@ const upcoming = [
     }
 
     .footer-inner {
-      grid-template-columns: auto 1fr auto;
+      grid-template-columns:
+        auto
+        1fr
+        auto;
 
       align-items: end;
 
@@ -3358,6 +5932,10 @@ const upcoming = [
     }
   }
 
+  /* =============================================================
+     DESKTOP
+  ============================================================= */
+
   @media (min-width: 1000px) {
     .header-inner {
       min-height: 70px;
@@ -3366,25 +5944,38 @@ const upcoming = [
     .brand-mark {
       width: 37px;
       height: 37px;
+
+      flex-basis: 37px;
     }
 
-    .mobile-github {
+    .brand-name {
+      font-size: 13px;
+    }
+
+    .mobile-play,
+    .mobile-nav {
       display: none;
     }
 
     .desktop-nav {
       display: flex;
+
       align-items: center;
-      gap: 28px;
+
+      gap: 27px;
     }
 
     .desktop-nav a {
       color: #77756f;
+
       font-size: 10px;
+
       font-weight: 800;
 
       transition:
-        color 120ms ease;
+        color
+        120ms
+        ease;
     }
 
     .desktop-nav a:hover,
@@ -3392,8 +5983,26 @@ const upcoming = [
       color: #f0ede5;
     }
 
-    .hero h1 {
-      font-size: clamp(88px, 9.4vw, 144px);
+    .desktop-nav .nav-play {
+      padding:
+        8px
+        11px;
+
+      border:
+        1px
+        solid
+        #454545;
+
+      color: #f0ede5;
+    }
+
+    .hero-title {
+      font-size:
+        clamp(
+          88px,
+          9.4vw,
+          144px
+        );
     }
 
     .game-card {
@@ -3408,6 +6017,11 @@ const upcoming = [
       height: 260px;
     }
 
+    .game-card:hover {
+      transform:
+        translateY(-4px);
+    }
+
     .stage-content {
       min-height: 600px;
     }
@@ -3417,689 +6031,239 @@ const upcoming = [
     }
   }
 
+  /* =============================================================
+     KEYFRAMES
+  ============================================================= */
+
+  @keyframes hero-title-in {
+    from {
+      opacity: 0;
+
+      transform:
+        translateY(110%)
+        rotate(3deg);
+    }
+
+    to {
+      opacity: 1;
+
+      transform:
+        translateY(0)
+        rotate(0);
+    }
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+
+      transform:
+        translateY(15px);
+    }
+
+    to {
+      opacity: 1;
+
+      transform:
+        translateY(0);
+    }
+  }
+
+  @keyframes stat-in {
+    from {
+      opacity: 0;
+
+      transform:
+        translateY(12px);
+    }
+
+    to {
+      opacity: 1;
+
+      transform:
+        translateY(0);
+    }
+  }
+
+  @keyframes grid-drift {
+    from {
+      background-position:
+        0 0,
+        0 0;
+    }
+
+    to {
+      background-position:
+        25px 25px,
+        25px 25px;
+    }
+  }
+
+  @keyframes orbit-float {
+    0%,
+    100% {
+      transform:
+        translate3d(
+          0,
+          0,
+          0
+        )
+        rotate(0);
+    }
+
+    50% {
+      transform:
+        translate3d(
+          10px,
+          12px,
+          0
+        )
+        rotate(8deg);
+    }
+  }
+
+  @keyframes cursor-blink {
+    0%,
+    45% {
+      opacity: 1;
+    }
+
+    46%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes star-flicker {
+    0%,
+    100% {
+      opacity: 0.4;
+    }
+
+    50% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes preview-ghost-float {
+    0%,
+    100% {
+      transform:
+        translateY(0);
+    }
+
+    50% {
+      transform:
+        translateY(-8px);
+    }
+  }
+
+  @keyframes moon-pulse {
+    0%,
+    100% {
+      box-shadow:
+        0
+        0
+        0
+        8px
+        rgba(
+          231,
+          223,
+          200,
+          0.04
+        );
+    }
+
+    50% {
+      box-shadow:
+        0
+        0
+        0
+        14px
+        rgba(
+          231,
+          223,
+          200,
+          0.02
+        );
+    }
+  }
+
+  @keyframes art-ghost-float {
+    0%,
+    100% {
+      transform:
+        translate(
+          -50%,
+          -50%
+        )
+        translateY(0)
+        rotate(-2deg);
+    }
+
+    50% {
+      transform:
+        translate(
+          -50%,
+          -50%
+        )
+        translateY(-12px)
+        rotate(2deg);
+    }
+  }
+
+  @keyframes empty-breathe {
+    0%,
+    100% {
+      opacity: 0.88;
+    }
+
+    50% {
+      opacity: 1;
+    }
+  }
+
+  /* =============================================================
+     REDUCED MOTION
+  ============================================================= */
+
   @media (prefers-reduced-motion: reduce) {
     :global(html) {
       scroll-behavior: auto;
     }
 
-    .play-button,
-    .wide-button,
-    .desktop-nav a,
-    .upcoming-card {
-      transition: none;
+    .hero-title span,
+    .hero-copy,
+    .hero-actions,
+    .hero-grid-bg,
+    .hero-orbit,
+    .hero-stat,
+    .terminal-cursor,
+    .preview-stars i,
+    .preview-ghost,
+    .art-moon,
+    .art-ghost,
+    .art-grid,
+    .stage-empty {
+      animation: none !important;
+    }
+
+    .reveal-item,
+    .feature-art,
+    .feature-content,
+    .debugger-content,
+    .minesweeper-showcase,
+    .upcoming-card,
+    .rules-card {
+      opacity: 1 !important;
+
+      transform: none !important;
+
+      transition: none !important;
+    }
+
+    .cursor-glow {
+      display: none;
     }
   }
 </style>
-
-<script>
-  type GameId =
-    | "kuntilanak"
-    | "debugger"
-    | "commit-type"
-    | "system-2048"
-    | "receh-run"
-    | "warung-defense"
-    | "stack-trace"
-    | "pixel-panic";
-
-  type Destroyer =
-    | (() => void)
-    | null;
-
-  type GameModule = {
-    mountGame: (
-      root: HTMLElement,
-    ) =>
-      | void
-      | (() => void)
-      | Promise<
-          void | (() => void)
-        >;
-  };
-
-  function getRequiredElement<
-    T extends Element,
-  >(
-    selector: string,
-  ): T {
-    const element =
-      document.querySelector<T>(
-        selector,
-      );
-
-    if (!element) {
-      throw new Error(
-        `[Game Lab] Missing element: ${selector}`,
-      );
-    }
-
-    return element;
-  }
-
-  const gameStage =
-    getRequiredElement<HTMLElement>(
-      "#game-stage-shell",
-    );
-
-  const stageTitle =
-    getRequiredElement<HTMLElement>(
-      "#stage-current-game",
-    );
-
-  const stageStatus =
-    getRequiredElement<HTMLElement>(
-      "#stage-status-text",
-    );
-
-  const stageContent =
-    getRequiredElement<HTMLElement>(
-      "#stage-content",
-    );
-
-  const closeGame =
-    getRequiredElement<HTMLButtonElement>(
-      "#close-game",
-    );
-
-  const gameTitles: Record<
-    GameId,
-    string
-  > = {
-    kuntilanak:
-      "KUNTILANAK FLY",
-
-    debugger:
-      "DEBUGGER",
-
-    "commit-type":
-      "COMMIT TYPE",
-
-    "system-2048":
-      "SYSTEM 2048",
-
-    "receh-run":
-      "RECEH RUN",
-
-    "warung-defense":
-      "WARUNG DEFENSE",
-
-    "stack-trace":
-      "STACK TRACE",
-
-    "pixel-panic":
-      "PIXEL PANIC",
-  };
-
-  const keyboardGames: Record<
-    string,
-    GameId
-  > = {
-    "1": "kuntilanak",
-    "2": "debugger",
-    "3": "commit-type",
-    "4": "system-2048",
-    "5": "receh-run",
-    "6": "warung-defense",
-    "7": "stack-trace",
-    "8": "pixel-panic",
-  };
-
-  const gameNumbers: Record<
-    GameId,
-    string
-  > = {
-    kuntilanak: "01",
-    debugger: "02",
-    "commit-type": "03",
-    "system-2048": "04",
-    "receh-run": "05",
-    "warung-defense": "06",
-    "stack-trace": "07",
-    "pixel-panic": "08",
-  };
-
-  let activeDestroyer:
-    Destroyer = null;
-
-  function renderEmptyState() {
-    stageContent.innerHTML = `
-      <div class="stage-empty">
-        <span class="stage-empty-number">
-          00
-        </span>
-
-        <p class="stage-empty-kicker">
-          GAME LAB
-        </p>
-
-        <h2>
-          Pick something.
-        </h2>
-
-        <p>
-          Your productivity can wait five minutes.
-          Probably.
-        </p>
-
-        <div class="stage-empty-rule">
-          <span></span>
-
-          <small>
-            SELECT A GAME ABOVE
-          </small>
-
-          <span></span>
-        </div>
-      </div>
-    `;
-  }
-
-  function destroyActiveGame() {
-    const destroyer =
-      activeDestroyer;
-
-    activeDestroyer = null;
-
-    if (
-      typeof destroyer !==
-      "function"
-    ) {
-      return;
-    }
-
-    try {
-      destroyer();
-    } catch (error) {
-      console.warn(
-        "[Game Lab] Cleanup failed.",
-        error,
-      );
-    }
-  }
-
-  function showComingSoon(
-    gameId: GameId,
-  ) {
-    stageTitle.textContent =
-      gameTitles[gameId];
-
-    stageStatus.textContent =
-      "IN DEVELOPMENT";
-
-    stageContent.innerHTML = `
-      <div class="stage-empty">
-        <span class="stage-empty-number">
-          ${gameNumbers[gameId]}
-        </span>
-
-        <p class="stage-empty-kicker">
-          GAME LAB
-        </p>
-
-        <h2>
-          Coming soon.
-        </h2>
-
-        <p>
-          This game is wired into the arcade,
-          but the actual game module is not ready yet.
-        </p>
-
-        <div class="stage-empty-rule">
-          <span></span>
-
-          <small>
-            MODULE UNDER CONSTRUCTION
-          </small>
-
-          <span></span>
-        </div>
-      </div>
-    `;
-
-    gameStage.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  }
-
-  async function mountLoadedGame(
-    gameId: GameId,
-    module: GameModule,
-  ) {
-    if (
-      typeof module.mountGame !==
-      "function"
-    ) {
-      throw new Error(
-        `${gameId}.ts must export mountGame().`,
-      );
-    }
-
-    stageContent.innerHTML =
-      "";
-
-    const result =
-      await module.mountGame(
-        stageContent,
-      );
-
-    if (
-      typeof result ===
-      "function"
-    ) {
-      activeDestroyer =
-        result;
-    } else {
-      activeDestroyer =
-        null;
-    }
-
-    stageStatus.textContent =
-      "PLAYING";
-  }
-
-  async function launchGame(
-    gameId: GameId,
-  ) {
-    destroyActiveGame();
-
-    stageTitle.textContent =
-      gameTitles[gameId];
-
-    stageStatus.textContent =
-      "LOADING";
-
-    stageContent.innerHTML = `
-      <div class="stage-empty">
-        <span class="stage-empty-number">
-          ${gameNumbers[gameId]}
-        </span>
-
-        <p class="stage-empty-kicker">
-          INITIALIZING
-        </p>
-
-        <h2>
-          Loading game.
-        </h2>
-
-        <p>
-          Please pretend this is suspense.
-        </p>
-      </div>
-    `;
-
-    gameStage.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-
-    try {
-      switch (gameId) {
-        case "kuntilanak": {
-          const module =
-            await import(
-              "../games/kuntilanak"
-            );
-
-          await mountLoadedGame(
-            gameId,
-            module,
-          );
-
-          return;
-        }
-
-        case "debugger": {
-          const module =
-            await import(
-              "../games/debugger"
-            );
-
-          await mountLoadedGame(
-            gameId,
-            module,
-          );
-
-          return;
-        }
-
-        case "commit-type": {
-          const module =
-            await import(
-              "../games/commit-type"
-            );
-
-          await mountLoadedGame(
-            gameId,
-            module,
-          );
-
-          return;
-        }
-
-        case "system-2048": {
-          const module =
-            await import(
-              "../games/system-2048"
-            );
-
-          await mountLoadedGame(
-            gameId,
-            module,
-          );
-
-          return;
-        }
-
-        case "receh-run": {
-          const module =
-            await import(
-              "../games/receh-run"
-            );
-
-          await mountLoadedGame(
-            gameId,
-            module,
-          );
-
-          return;
-        }
-
-        case "warung-defense": {
-          const module =
-            await import(
-              "../games/warung-defense"
-            );
-
-          await mountLoadedGame(
-            gameId,
-            module,
-          );
-
-          return;
-        }
-
-        case "stack-trace": {
-          const module =
-            await import(
-              "../games/stack-trace"
-            );
-
-          await mountLoadedGame(
-            gameId,
-            module,
-          );
-
-          return;
-        }
-
-        case "pixel-panic": {
-          const module =
-            await import(
-              "../games/pixel-panic"
-            );
-
-          await mountLoadedGame(
-            gameId,
-            module,
-          );
-
-          return;
-        }
-
-        default: {
-          showComingSoon(
-            gameId,
-          );
-
-          return;
-        }
-      }
-    } catch (error) {
-      console.error(
-        `[Game Lab] Failed to load "${gameId}".`,
-        error,
-      );
-
-      activeDestroyer = null;
-
-      stageStatus.textContent =
-        "ERROR";
-
-      stageContent.innerHTML = `
-        <div class="stage-empty">
-          <span class="stage-empty-number">
-            !!
-          </span>
-
-          <p class="stage-empty-kicker">
-            GAME LOAD ERROR
-          </p>
-
-          <h2>
-            Something broke.
-          </h2>
-
-          <p>
-            The game module could not be loaded.
-            Check the browser console for the exact error.
-          </p>
-
-          <div class="stage-empty-rule">
-            <span></span>
-
-            <small>
-              CHECK GAME MODULE
-            </small>
-
-            <span></span>
-          </div>
-        </div>
-      `;
-    }
-  }
-
-  function closeActiveGame() {
-    destroyActiveGame();
-
-    stageTitle.textContent =
-      "NO GAME SELECTED";
-
-    stageStatus.textContent =
-      "READY";
-
-    renderEmptyState();
-
-    document
-      .querySelector<HTMLElement>(
-        ".arcade-section",
-      )
-      ?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-  }
-
-  function getGameIdFromElement(
-    element: Element,
-  ): GameId | null {
-    const raw =
-      element.getAttribute(
-        "data-launch-game",
-      );
-
-    if (
-      raw === "kuntilanak" ||
-      raw === "debugger" ||
-      raw === "commit-type" ||
-      raw === "system-2048" ||
-      raw === "receh-run" ||
-      raw === "warung-defense" ||
-      raw === "stack-trace" ||
-      raw === "pixel-panic"
-    ) {
-      return raw;
-    }
-
-    return null;
-  }
-
-  /*
-   * Mouse / touch / pointer activation.
-   *
-   * This intentionally targets any Element with
-   * data-launch-game, including upcoming cards.
-   */
-  document.addEventListener(
-    "click",
-    (event) => {
-      const target =
-        event.target;
-
-      if (
-        !(target instanceof Element)
-      ) {
-        return;
-      }
-
-      const launchTarget =
-        target.closest<HTMLElement>(
-          "[data-launch-game]",
-        );
-
-      if (launchTarget) {
-        const gameId =
-          getGameIdFromElement(
-            launchTarget,
-          );
-
-        if (gameId) {
-          void launchGame(
-            gameId,
-          );
-        }
-
-        return;
-      }
-
-      const closeTarget =
-        target.closest(
-          "#close-game",
-        );
-
-      if (closeTarget) {
-        closeActiveGame();
-      }
-    },
-  );
-
-  /*
-   * Keyboard shortcuts + accessible upcoming card activation.
-   */
-  document.addEventListener(
-    "keydown",
-    (event) => {
-      const target =
-        event.target;
-
-      if (
-        target instanceof
-          HTMLInputElement ||
-        target instanceof
-          HTMLTextAreaElement ||
-        target instanceof
-          HTMLSelectElement
-      ) {
-        return;
-      }
-
-      /*
-       * Enter / Space on an upcoming game card.
-       */
-      if (
-        event.key === "Enter" ||
-        event.key === " "
-      ) {
-        if (
-          target instanceof
-          HTMLElement
-        ) {
-          const launchTarget =
-            target.closest<HTMLElement>(
-              "[data-launch-game]",
-            );
-
-          if (launchTarget) {
-            const gameId =
-              getGameIdFromElement(
-                launchTarget,
-              );
-
-            if (gameId) {
-              event.preventDefault();
-
-              void launchGame(
-                gameId,
-              );
-
-              return;
-            }
-          }
-        }
-      }
-
-      /*
-       * Escape closes the active game.
-       */
-      if (
-        event.key ===
-        "Escape"
-      ) {
-        if (
-          typeof activeDestroyer ===
-          "function"
-        ) {
-          closeActiveGame();
-        }
-
-        return;
-      }
-
-      /*
-       * Number shortcuts 1–8.
-       */
-      if (
-        target instanceof
-        HTMLButtonElement
-      ) {
-        return;
-      }
-
-      const gameId =
-        keyboardGames[
-          event.key
-        ];
-
-      if (gameId) {
-        event.preventDefault();
-
-        void launchGame(
-          gameId,
-        );
-      }
-    },
-  );
-
-  /*
-   * One direct handler for the close button.
-   *
-   * The delegated click handler above already handles it,
-   * so this is intentionally omitted to avoid double cleanup.
-   */
-  closeGame.setAttribute(
-    "aria-label",
-    "Close current game",
-  );
-</script>

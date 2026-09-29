@@ -32,13 +32,19 @@ const members = [
     initials: "MD",
     role: "ANDROID & WEBSITE DEVELOPER",
     location: "PROBOLINGGO / EAST JAVA",
-    education: "POLITEKNIK NEGERI JEMBER",
+    education:
+      "POLITEKNIK NEGERI JEMBER",
     category: "ANDROID / WEB",
     description:
       "Developer working across Android and web development, with an interest in practical mobile and software projects.",
     story:
       "Daniel works across application development and web technology, bringing a mobile-oriented perspective into the projects built by the team.",
-    focus: ["Android", "Web Development", "Mobile", "Software"],
+    focus: [
+      "Android",
+      "Web Development",
+      "Mobile",
+      "Software",
+    ],
     project: "KabarU",
     projectDescription:
       "Campus information platform developed across web and mobile contexts.",
@@ -59,7 +65,12 @@ const members = [
       "Developer interested in frontend systems, Android applications, AI, and IoT.",
     story:
       "Habib works at the intersection of application development and emerging technology, with interests spanning mobile, web, artificial intelligence, and connected devices.",
-    focus: ["Android", "Web", "AI", "IoT"],
+    focus: [
+      "Android",
+      "Web",
+      "AI",
+      "IoT",
+    ],
     project: "Maw-Buket",
     projectDescription:
       "Web-based e-commerce system covering products, transactions, and online ordering.",
@@ -110,6 +121,17 @@ const stats = [
   },
 ];
 
+const teamSignals = [
+  "FULL-STACK",
+  "ANDROID",
+  "FRONT-END",
+  "QA",
+  "TESTING",
+  "WEB",
+  "MOBILE",
+  "IOT",
+];
+
 const year = new Date().getFullYear();
 ---
 
@@ -125,7 +147,7 @@ const year = new Date().getFullYear();
 
     <meta
       name="description"
-      content="People behind JemberToJogja — developers, software testers, mobile engineers, and builders."
+      content="People behind JemberToJogja — developers, QA, mobile engineers, frontend developers, and builders."
     />
 
     <meta
@@ -164,6 +186,11 @@ const year = new Date().getFullYear();
   </head>
 
   <body>
+    <div
+      class="cursor-glow"
+      aria-hidden="true"
+    ></div>
+
     <!-- =========================================================
          HEADER
     ========================================================== -->
@@ -199,16 +226,19 @@ const year = new Date().getFullYear();
             People
           </a>
 
-          <a href="/play">
-            Play
-          </a>
-
           <a
             href="https://github.com/JemberToJogja"
             target="_blank"
             rel="noopener noreferrer"
           >
             GitHub ↗
+          </a>
+
+          <a
+            href="/play"
+            class="nav-play"
+          >
+            Play
           </a>
         </nav>
 
@@ -226,10 +256,25 @@ const year = new Date().getFullYear();
 
     <main>
       <!-- =========================================================
-           PAGE HERO
+           HERO
       ========================================================== -->
 
-      <section class="page-hero">
+      <section class="page-hero reveal-section">
+        <div
+          class="hero-grid-bg"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="hero-orbit hero-orbit-one"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="hero-orbit hero-orbit-two"
+          aria-hidden="true"
+        ></div>
+
         <div class="container">
           <div class="hero-meta">
             <a
@@ -245,30 +290,49 @@ const year = new Date().getFullYear();
           </div>
 
           <div class="hero-main">
-            <div>
+            <div class="hero-main-copy">
               <p class="eyebrow">
                 THE HUMANS
               </p>
 
-              <h1>
-                People
+              <h1 class="hero-title">
                 <span>
-                  behind the work.
+                  PEOPLE
+                </span>
+
+                <span>
+                  BEHIND THE WORK.
                 </span>
               </h1>
-            </div>
 
-            <div class="hero-description">
-              <p>
+              <p class="hero-copy">
                 Developers, testers, students,
                 and builders working across software,
                 mobile, web, and technology in the field.
               </p>
+            </div>
+
+            <div class="hero-status">
+              <span>
+                TEAM SIZE
+              </span>
 
               <strong>
-                Four people. One team.
+                04
               </strong>
+
+              <small>
+                PEOPLE
+              </small>
             </div>
+          </div>
+
+          <div class="hero-bottom">
+            {
+              teamSignals.map((signal) => (
+                <span>{signal}</span>
+              ))
+            }
           </div>
         </div>
       </section>
@@ -277,11 +341,14 @@ const year = new Date().getFullYear();
            STATS
       ========================================================== -->
 
-      <section class="stats-section">
+      <section class="stats-section reveal-section">
         <div class="container stats-grid">
           {
-            stats.map((stat) => (
-              <div class="stat">
+            stats.map((stat, index) => (
+              <div
+                class="stat reveal-item"
+                style={`--delay: ${index * 80}ms`}
+              >
                 <strong>
                   {stat.value}
                 </strong>
@@ -299,9 +366,9 @@ const year = new Date().getFullYear();
            FEATURED PERSON
       ========================================================== -->
 
-      <section class="featured-section">
+      <section class="featured-section reveal-section">
         <div class="container">
-          <div class="section-label">
+          <div class="section-label reveal-item">
             <span class="section-kicker">
               FEATURED PROFILE
             </span>
@@ -311,9 +378,12 @@ const year = new Date().getFullYear();
             </span>
           </div>
 
-          <article class="featured-person">
+          <article
+            class="featured-person reveal-item"
+            style="--delay: 90ms"
+          >
             <div class="featured-top">
-              <div>
+              <div class="featured-top-left">
                 <span class="person-number">
                   {members[0].number}
                 </span>
@@ -325,17 +395,48 @@ const year = new Date().getFullYear();
 
               <span class="status-pill">
                 <span></span>
-                JEMBERTOJOGJA
+                ACTIVE
               </span>
             </div>
 
-            <div class="featured-initials">
-              {members[0].initials}
+            <div class="featured-visual">
+              <div
+                class="featured-visual-grid"
+                aria-hidden="true"
+              ></div>
+
+              <div
+                class="featured-crosshair featured-crosshair-one"
+                aria-hidden="true"
+              ></div>
+
+              <div
+                class="featured-crosshair featured-crosshair-two"
+                aria-hidden="true"
+              ></div>
+
+              <div class="featured-initials">
+                {members[0].initials}
+              </div>
+
+              <div class="featured-visual-label">
+                <span>
+                  PROFILE
+                </span>
+
+                <strong>
+                  FULL-STACK
+                </strong>
+              </div>
+
+              <div class="featured-visual-index">
+                01
+              </div>
             </div>
 
             <div class="featured-body">
               <div>
-                <p class="mono">
+                <p class="mono featured-role">
                   {members[0].role}
                 </p>
 
@@ -384,18 +485,16 @@ const year = new Date().getFullYear();
             <div class="featured-bottom">
               <div class="technology-list">
                 {
-                  members[0].focus.map(
-                    (item) => (
-                      <span>
-                        {item}
-                      </span>
-                    ),
-                  )
+                  members[0].focus.map((item) => (
+                    <span>
+                      {item}
+                    </span>
+                  ))
                 }
               </div>
 
               <a
-                class="button button-light"
+                class="button button-light magnetic"
                 href={members[0].linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -409,19 +508,19 @@ const year = new Date().getFullYear();
       </section>
 
       <!-- =========================================================
-           OTHER PEOPLE
+           OTHER MEMBERS
       ========================================================== -->
 
-      <section class="all-members-section">
+      <section class="all-members-section reveal-section">
         <div class="container">
-          <div class="section-heading">
+          <div class="section-heading reveal-item">
             <div>
               <p class="section-kicker">
                 THE REST OF THE TEAM
               </p>
 
               <h2>
-                More people.
+                MORE PEOPLE.
               </h2>
             </div>
 
@@ -434,15 +533,17 @@ const year = new Date().getFullYear();
 
           <div class="members-list">
             {
-              members.slice(1).map((member) => (
+              members.slice(1).map((member, index) => (
                 <article
                   class:list={[
                     "member-card",
                     `member-${member.accent}`,
+                    "reveal-item",
                   ]}
+                  style={`--delay: ${index * 100 + 80}ms`}
                 >
                   <div class="member-top">
-                    <div>
+                    <div class="member-top-left">
                       <span class="person-number">
                         {member.number}
                       </span>
@@ -458,8 +559,19 @@ const year = new Date().getFullYear();
                     </span>
                   </div>
 
-                  <div class="member-mark">
-                    {member.initials}
+                  <div class="member-visual">
+                    <div
+                      class="member-visual-grid"
+                      aria-hidden="true"
+                    ></div>
+
+                    <span class="member-mark">
+                      {member.initials}
+                    </span>
+
+                    <span class="member-visual-label">
+                      {member.category}
+                    </span>
                   </div>
 
                   <div class="member-content">
@@ -507,13 +619,11 @@ const year = new Date().getFullYear();
 
                     <div class="technology-list">
                       {
-                        member.focus.map(
-                          (item) => (
-                            <span>
-                              {item}
-                            </span>
-                          ),
-                        )
+                        member.focus.map((item) => (
+                          <span>
+                            {item}
+                          </span>
+                        ))
                       }
                     </div>
                   </div>
@@ -550,9 +660,14 @@ const year = new Date().getFullYear();
            INTERNSHIP
       ========================================================== -->
 
-      <section class="internship-section">
+      <section class="internship-section reveal-section">
+        <div
+          class="internship-grid-bg"
+          aria-hidden="true"
+        ></div>
+
         <div class="container">
-          <div class="internship-card">
+          <div class="internship-card reveal-item">
             <div class="internship-top">
               <span class="section-kicker light">
                 CURRENT CHAPTER
@@ -566,13 +681,13 @@ const year = new Date().getFullYear();
             <div class="internship-main">
               <div>
                 <p class="internship-kicker">
-                  ALL FOUR CURRENTLY
+                  THE TEAM CURRENTLY
                 </p>
 
                 <h2>
-                  Learning at
+                  LEARNING AT
                   <span>
-                    TechnoGIS Indonesia.
+                    TECHNOGIS.
                   </span>
                 </h2>
               </div>
@@ -590,7 +705,7 @@ const year = new Date().getFullYear();
                   href="https://www.technogis.co.id/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="button button-light"
+                  class="button button-light magnetic"
                 >
                   Visit TechnoGIS
                   <span>↗</span>
@@ -621,11 +736,11 @@ const year = new Date().getFullYear();
 
               <div>
                 <span>
-                  LOCATION
+                  MODE
                 </span>
 
                 <strong>
-                  YOGYAKARTA
+                  LEARNING
                 </strong>
               </div>
             </div>
@@ -637,28 +752,28 @@ const year = new Date().getFullYear();
            TEAM PHILOSOPHY
       ========================================================== -->
 
-      <section class="philosophy-section">
+      <section class="philosophy-section reveal-section">
         <div class="container philosophy-grid">
-          <div>
+          <div class="reveal-item">
             <p class="section-kicker">
               HOW WE WORK
             </p>
 
             <h2>
-              Different roles.
-              Shared curiosity.
+              DIFFERENT ROLES.
+              SHARED CURIOSITY.
             </h2>
           </div>
 
           <div class="philosophy-list">
-            <article>
+            <article class="reveal-item">
               <span class="mono">
                 01
               </span>
 
               <div>
                 <h3>
-                  Build.
+                  BUILD.
                 </h3>
 
                 <p>
@@ -669,14 +784,14 @@ const year = new Date().getFullYear();
               </div>
             </article>
 
-            <article>
+            <article class="reveal-item">
               <span class="mono">
                 02
               </span>
 
               <div>
                 <h3>
-                  Test.
+                  TEST.
                 </h3>
 
                 <p>
@@ -686,19 +801,19 @@ const year = new Date().getFullYear();
               </div>
             </article>
 
-            <article>
+            <article class="reveal-item">
               <span class="mono">
                 03
               </span>
 
               <div>
                 <h3>
-                  Learn.
+                  LEARN.
                 </h3>
 
                 <p>
                   Still students. Still experimenting.
-                  Still asking how hard it could possibly be.
+                  Still figuring out what works.
                 </p>
               </div>
             </article>
@@ -707,19 +822,82 @@ const year = new Date().getFullYear();
       </section>
 
       <!-- =========================================================
+           GAME CTA
+      ========================================================== -->
+
+      <section class="game-cta reveal-section">
+        <div class="game-cta-grid" aria-hidden="true"></div>
+
+        <div class="container">
+          <div class="game-cta-card reveal-item">
+            <div class="game-cta-top">
+              <span class="section-kicker">
+                DONE MEETING PEOPLE?
+              </span>
+
+              <span class="mono">
+                08 GAMES
+              </span>
+            </div>
+
+            <div class="game-cta-main">
+              <div>
+                <h2>
+                  GO
+                  <span>PLAY.</span>
+                </h2>
+
+                <p>
+                  The people are here.
+                  The games are over there.
+                </p>
+              </div>
+
+              <div class="game-cta-list">
+                <span>
+                  01 · KUNTILANAK FLY
+                </span>
+
+                <span>
+                  04 · SYSTEM 2048
+                </span>
+
+                <span>
+                  07 · STACK TRACE
+                </span>
+              </div>
+            </div>
+
+            <a
+              href="/play"
+              class="game-cta-button magnetic"
+            >
+              <span>
+                ENTER GAME LAB
+              </span>
+
+              <strong>
+                →
+              </strong>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
            NEXT
       ========================================================== -->
 
-      <section class="next-section">
-        <div class="container next-grid">
+      <section class="next-section reveal-section">
+        <div class="container next-grid reveal-item">
           <div>
             <p class="section-kicker">
               WHAT'S NEXT?
             </p>
 
             <h2>
-              See what
-              we built.
+              SEE WHAT
+              WE BUILT.
             </h2>
 
             <p>
@@ -729,7 +907,7 @@ const year = new Date().getFullYear();
           </div>
 
           <a
-            class="button button-primary"
+            class="button button-primary magnetic"
             href="/projects"
           >
             Explore projects
@@ -751,7 +929,6 @@ const year = new Date().getFullYear();
 
             <p>
               Built with Astro. Hosted on GitHub Pages.
-              Currently learning by building.
             </p>
 
             <span class="mono">
@@ -788,28 +965,149 @@ const year = new Date().getFullYear();
         People
       </a>
 
-      <a href="/play">
+      <a
+        href="/play"
+        class="play-item"
+      >
         <span>▶</span>
         Play
       </a>
     </nav>
+
+    <script>
+      const revealSections =
+        document.querySelectorAll(
+          ".reveal-section",
+        );
+
+      const observer =
+        new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add(
+                  "is-visible",
+                );
+
+                observer.unobserve(
+                  entry.target,
+                );
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin:
+              "0px 0px -8% 0px",
+          },
+        );
+
+      revealSections.forEach(
+        (section) => {
+          observer.observe(section);
+        },
+      );
+
+      const magneticElements =
+        document.querySelectorAll(
+          ".magnetic",
+        );
+
+      magneticElements.forEach(
+        (element) => {
+          element.addEventListener(
+            "pointermove",
+            (event) => {
+              if (window.innerWidth < 900) {
+                return;
+              }
+
+              const rect =
+                element.getBoundingClientRect();
+
+              const x =
+                (event.clientX -
+                  rect.left -
+                  rect.width / 2) *
+                0.07;
+
+              const y =
+                (event.clientY -
+                  rect.top -
+                  rect.height / 2) *
+                0.07;
+
+              element.style.setProperty(
+                "--mx",
+                `${x}px`,
+              );
+
+              element.style.setProperty(
+                "--my",
+                `${y}px`,
+              );
+            },
+          );
+
+          element.addEventListener(
+            "pointerleave",
+            () => {
+              element.style.setProperty(
+                "--mx",
+                "0px",
+              );
+
+              element.style.setProperty(
+                "--my",
+                "0px",
+              );
+            },
+          );
+        },
+      );
+
+      const cursorGlow =
+        document.querySelector(
+          ".cursor-glow",
+        );
+
+      if (
+        cursorGlow &&
+        window.innerWidth >= 900
+      ) {
+        window.addEventListener(
+          "pointermove",
+          (event) => {
+            cursorGlow.style.transform =
+              `translate3d(${event.clientX}px, ${event.clientY}px, 0)`;
+          },
+        );
+      }
+    </script>
   </body>
 </html>
 
 <style>
+  /* =============================================================
+     BASE
+  ============================================================= */
+
   :global(*) {
     box-sizing: border-box;
   }
 
   :global(html) {
-    background: #111111;
+    background: #101010;
     scroll-behavior: smooth;
   }
 
   :global(body) {
     margin: 0;
+    overflow-x: hidden;
+
     background: #f2f0ea;
     color: #111111;
+
     font-family:
       Inter,
       ui-sans-serif,
@@ -818,6 +1116,7 @@ const year = new Date().getFullYear();
       BlinkMacSystemFont,
       "Segoe UI",
       sans-serif;
+
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -833,7 +1132,11 @@ const year = new Date().getFullYear();
   }
 
   .container {
-    width: min(100% - 32px, 1180px);
+    width: min(
+      calc(100% - 28px),
+      1180px
+    );
+
     margin-inline: auto;
   }
 
@@ -846,28 +1149,122 @@ const year = new Date().getFullYear();
       monospace;
   }
 
+  .section-kicker,
+  .eyebrow,
+  .hero-meta,
+  .hero-bottom,
+  .person-number,
+  .person-category,
+  .member-repo,
+  .field-stats,
+  .final-line {
+    font-family:
+      "SFMono-Regular",
+      "Cascadia Code",
+      "Roboto Mono",
+      Consolas,
+      monospace;
+  }
+
+  .section-kicker {
+    margin: 0 0 10px;
+
+    color: #69665f;
+
+    font-size: 8px;
+    font-weight: 900;
+
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .section-kicker.light {
+    color: #99958d;
+  }
+
+  .cursor-glow {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    z-index: 200;
+
+    width: 22px;
+    height: 22px;
+
+    pointer-events: none;
+
+    border-radius: 50%;
+
+    background: rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+    filter: blur(3px);
+
+    transform:
+      translate3d(
+        -50px,
+        -50px,
+        0
+      );
+
+    opacity: 0;
+
+    mix-blend-mode: difference;
+  }
+
+  @media (min-width: 900px) {
+    .cursor-glow {
+      opacity: 1;
+    }
+  }
+
   /* =============================================================
      HEADER
   ============================================================= */
 
   .site-header {
     position: sticky;
+
     top: 0;
-    z-index: 50;
 
-    background: #101010;
-    color: #f5f3ec;
+    z-index: 80;
 
-    border-bottom: 1px solid #2b2b2b;
+    background:
+      rgba(
+        16,
+        16,
+        16,
+        0.95
+      );
+
+    color: #f2f0ea;
+
+    border-bottom: 1px solid #2c2c2c;
+
+    backdrop-filter:
+      blur(12px);
   }
 
   .header-inner {
-    width: min(100% - 24px, 1180px);
-    min-height: 64px;
+    width: min(
+      calc(100% - 20px),
+      1180px
+    );
+
+    min-height: 62px;
+
     margin-inline: auto;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     gap: 16px;
@@ -875,34 +1272,44 @@ const year = new Date().getFullYear();
 
   .brand {
     display: inline-flex;
+
     align-items: center;
+
     gap: 10px;
+
     min-width: 0;
   }
 
   .brand-mark {
     width: 34px;
     height: 34px;
+
     flex: 0 0 34px;
 
     display: grid;
+
     place-items: center;
 
-    background: #f5f3ec;
+    background: #f2f0ea;
+
     color: #101010;
 
     font-size: 10px;
-    font-weight: 900;
+
+    font-weight: 950;
   }
 
   .brand-name {
     overflow: hidden;
 
     white-space: nowrap;
+
     text-overflow: ellipsis;
 
-    font-size: 12px;
-    font-weight: 800;
+    font-size: 11px;
+
+    font-weight: 900;
+
     letter-spacing: 0.11em;
   }
 
@@ -915,85 +1322,78 @@ const year = new Date().getFullYear();
     height: 38px;
 
     display: grid;
+
     place-items: center;
 
     border: 1px solid #454545;
 
-    color: #f5f3ec;
+    color: #f2f0ea;
 
     font-size: 17px;
   }
 
   /* =============================================================
-     GENERAL
+     BUTTONS
   ============================================================= */
-
-  .eyebrow,
-  .section-kicker {
-    font-family:
-      "SFMono-Regular",
-      "Cascadia Code",
-      "Roboto Mono",
-      Consolas,
-      monospace;
-
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
-  }
-
-  .section-kicker {
-    margin: 0 0 10px;
-    color: #66645e;
-  }
-
-  .section-kicker.light {
-    color: #99968e;
-  }
 
   .button {
     min-height: 48px;
 
     display: inline-flex;
+
     align-items: center;
+
     justify-content: center;
 
     gap: 10px;
 
-    padding: 0 18px;
+    padding:
+      0
+      16px;
 
     border: 1px solid transparent;
 
-    font-size: 10px;
+    font-size: 9px;
+
     font-weight: 900;
 
     letter-spacing: 0.08em;
+
     text-transform: uppercase;
 
+    transform:
+      translate3d(
+        var(--mx, 0),
+        var(--my, 0),
+        0
+      );
+
     transition:
-      transform 120ms ease,
-      background-color 120ms ease,
-      color 120ms ease;
+      transform
+        160ms
+        cubic-bezier(
+          .2,
+          .8,
+          .2,
+          1
+        ),
+      background-color 140ms ease,
+      border-color 140ms ease;
   }
 
-  .button:active {
-    transform: translateY(1px);
-  }
-
-  .button-primary,
-  .button-dark {
+  .button-primary {
     background: #111111;
-    color: #f5f3ec;
+
+    color: #f2f0ea;
   }
 
-  .button-primary:hover,
-  .button-dark:hover {
+  .button-primary:hover {
     background: #292929;
   }
 
   .button-light {
-    background: #f5f3ec;
+    background: #f2f0ea;
+
     color: #111111;
   }
 
@@ -1002,132 +1402,260 @@ const year = new Date().getFullYear();
   }
 
   /* =============================================================
-     PAGE HERO
+     HERO
   ============================================================= */
 
   .page-hero {
-    padding: 34px 0 52px;
+    position: relative;
+
+    overflow: hidden;
+
+    padding:
+      32px
+      0
+      45px;
 
     background: #f2f0ea;
-    border-bottom: 1px solid #cbc8c0;
+
+    border-bottom:
+      1px solid
+      #cfcbc2;
+  }
+
+  .hero-grid-bg {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background-image:
+      linear-gradient(
+        rgba(
+          17,
+          17,
+          17,
+          0.035
+        )
+        1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(
+          17,
+          17,
+          17,
+          0.035
+        )
+        1px,
+        transparent 1px
+      );
+
+    background-size:
+      28px
+      28px;
+
+    mask-image:
+      linear-gradient(
+        to bottom,
+        black,
+        transparent 90%
+      );
+  }
+
+  .hero-orbit {
+    position: absolute;
+
+    border:
+      1px
+      solid
+      rgba(
+        17,
+        17,
+        17,
+        0.08
+      );
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    animation:
+      orbit-float
+      9s
+      ease-in-out
+      infinite;
+  }
+
+  .hero-orbit-one {
+    width: 260px;
+    height: 260px;
+
+    right: -140px;
+    top: 30px;
+  }
+
+  .hero-orbit-two {
+    width: 150px;
+    height: 150px;
+
+    right: -85px;
+    top: 80px;
+
+    animation-delay: -3s;
+  }
+
+  .page-hero .container {
+    position: relative;
+    z-index: 2;
   }
 
   .hero-meta {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     gap: 18px;
 
-    margin-bottom: 56px;
+    margin-bottom: 54px;
   }
 
   .back-link {
-    font-size: 11px;
-    font-weight: 800;
+    font-size: 10px;
+    font-weight: 900;
   }
 
   .hero-meta .mono {
-    color: #77736c;
-    font-size: 9px;
+    color: #7e7a72;
+
+    font-size: 8px;
+
     letter-spacing: 0.08em;
   }
 
   .hero-main {
     display: grid;
-    gap: 28px;
+
+    gap: 30px;
   }
 
-  .hero-main .eyebrow {
-    margin-bottom: 20px;
+  .hero-main-copy {
+    max-width: 900px;
   }
 
-  .hero-main h1 {
-    max-width: 850px;
+  .eyebrow {
+    margin:
+      0
+      0
+      17px;
 
-    margin: 0;
+    color: #6c6961;
 
-    font-size: clamp(
-      54px,
-      15vw,
-      120px
-    );
+    font-size: 8px;
 
     font-weight: 900;
 
-    line-height: 0.88;
-
-    letter-spacing: -0.07em;
+    letter-spacing: 0.12em;
   }
 
-  .hero-main h1 span {
+  .hero-title {
+    margin: 0;
+
+    overflow: hidden;
+
+    font-size:
+      clamp(
+        56px,
+        16vw,
+        128px
+      );
+
+    font-weight: 950;
+
+    line-height: 0.82;
+
+    letter-spacing: -0.085em;
+  }
+
+  .hero-title span {
     display: block;
-    color: #6c6962;
+
+    opacity: 0;
+
+    transform:
+      translateY(100%)
+      rotate(3deg);
+
+    animation:
+      title-in
+      800ms
+      cubic-bezier(
+        .16,
+        1,
+        .3,
+        1
+      )
+      forwards;
   }
 
-  .hero-description {
-    max-width: 580px;
+  .hero-title span:last-child {
+    color: #77736c;
+
+    animation-delay: 100ms;
   }
 
-  .hero-description p {
-    margin: 0 0 8px;
+  .hero-copy {
+    max-width: 560px;
 
-    color: #595650;
+    margin:
+      21px
+      0
+      0;
 
-    font-size: 14px;
-    line-height: 1.55;
+    color: #5f5b54;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    opacity: 0;
+
+    transform:
+      translateY(15px);
+
+    animation:
+      fade-up
+      700ms
+      280ms
+      cubic-bezier(
+        .16,
+        1,
+        .3,
+        1
+      )
+      forwards;
   }
 
-  .hero-description strong {
-    font-size: 17px;
-    line-height: 1.3;
-  }
+  .hero-status {
+    width: 145px;
 
-  /* =============================================================
-     STATS
-  ============================================================= */
+    justify-self: end;
 
-  .stats-section {
-    background: #111111;
-    color: #f5f3ec;
-  }
-
-  .stats-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  }
 
-  .stat {
-    min-height: 122px;
+    gap: 5px;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    padding: 14px;
 
-    gap: 7px;
+    background: #dedbd3;
 
-    padding: 15px 12px;
-
-    border-right: 1px solid #303030;
-  }
-
-  .stat:last-child {
-    border-right: 0;
-  }
-
-  .stat strong {
-    font-size: clamp(
-      30px,
-      8vw,
-      54px
-    );
-
-    line-height: 0.9;
-    letter-spacing: -0.06em;
-  }
-
-  .stat span {
-    color: #95928a;
+    border:
+      1px
+      solid
+      #c2beb5;
 
     font-family:
       "SFMono-Regular",
@@ -1136,28 +1664,213 @@ const year = new Date().getFullYear();
       Consolas,
       monospace;
 
-    font-size: 7px;
-    font-weight: 700;
+    transform:
+      rotate(-3deg);
 
-    line-height: 1.3;
+    opacity: 0;
+
+    animation:
+      status-in
+      800ms
+      420ms
+      cubic-bezier(
+        .16,
+        1,
+        .3,
+        1
+      )
+      forwards;
+  }
+
+  .hero-status span,
+  .hero-status small {
+    color: #77736b;
+
+    font-size: 6px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.1em;
+  }
+
+  .hero-status strong {
+    font-size: 56px;
+
+    line-height: 0.8;
+
+    letter-spacing: -0.09em;
+  }
+
+  .hero-bottom {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px 14px;
+
+    margin-top: 30px;
+
+    padding-top: 13px;
+
+    border-top:
+      1px
+      solid
+      #cfcbc2;
+
+    color: #7b776f;
+
+    font-size: 7px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.09em;
+
+    opacity: 0;
+
+    animation:
+      fade-up
+      700ms
+      520ms
+      cubic-bezier(
+        .16,
+        1,
+        .3,
+        1
+      )
+      forwards;
+  }
+
+  .hero-bottom span + span::before {
+    content: "/";
+
+    margin-right: 14px;
+
+    color: #aaa69d;
+  }
+
+  /* =============================================================
+     STATS
+  ============================================================= */
+
+  .stats-section {
+    background: #111111;
+
+    color: #f5f3ec;
+  }
+
+  .stats-grid {
+    display: grid;
+
+    grid-template-columns:
+      repeat(
+        3,
+        1fr
+      );
+  }
+
+  .stat {
+    min-height: 118px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    padding:
+      13px
+      10px;
+
+    border-right:
+      1px
+      solid
+      #303030;
+
+    opacity: 0;
+
+    transform:
+      translateY(18px);
+
+    transition:
+      opacity
+        650ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        ),
+      transform
+        650ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        );
+
+    transition-delay:
+      var(--delay, 0ms);
+  }
+
+  .is-visible .stat {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+
+  .stat:last-child {
+    border-right: 0;
+  }
+
+  .stat strong {
+    font-size:
+      clamp(
+        31px,
+        8vw,
+        54px
+      );
+
+    font-weight: 950;
+
+    line-height: 0.85;
+
+    letter-spacing: -0.07em;
+  }
+
+  .stat span {
+    color: #949089;
+
+    font-size: 6px;
+
+    font-weight: 800;
+
     letter-spacing: 0.08em;
   }
 
   /* =============================================================
-     FEATURED PERSON
+     FEATURED
   ============================================================= */
 
   .featured-section {
-    padding: 58px 0;
+    padding:
+      56px
+      0;
+
     background: #f2f0ea;
   }
 
   .section-label {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
-    gap: 20px;
+    gap: 18px;
 
     margin-bottom: 16px;
   }
@@ -1167,49 +1880,83 @@ const year = new Date().getFullYear();
   }
 
   .section-label .mono {
-    color: #86827a;
-    font-size: 9px;
+    color: #827e76;
+
+    font-size: 8px;
   }
 
   .featured-person {
-    padding: 20px;
+    overflow: hidden;
+
+    padding: 19px;
 
     background: #111111;
+
     color: #f5f3ec;
+
+    opacity: 0;
+
+    transform:
+      translateY(28px);
+
+    transition:
+      opacity
+        750ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        ),
+      transform
+        750ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        );
+
+    transition-delay:
+      var(--delay, 0ms);
+  }
+
+  .is-visible .featured-person {
+    opacity: 1;
+
+    transform:
+      translateY(0);
   }
 
   .featured-top {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
-    gap: 18px;
+    gap: 15px;
   }
 
-  .featured-top > div {
+  .featured-top-left {
     display: flex;
+
     align-items: center;
 
-    gap: 10px;
+    gap: 9px;
   }
 
   .person-number,
   .person-category {
-    font-family:
-      "SFMono-Regular",
-      "Cascadia Code",
-      "Roboto Mono",
-      Consolas,
-      monospace;
+    font-size: 8px;
 
-    font-size: 9px;
-    font-weight: 700;
+    font-weight: 800;
 
-    letter-spacing: 0.1em;
+    letter-spacing: 0.09em;
   }
 
   .person-number {
-    color: #88857d;
+    color: #8a877f;
   }
 
   .person-category {
@@ -1218,11 +1965,12 @@ const year = new Date().getFullYear();
 
   .status-pill {
     display: inline-flex;
+
     align-items: center;
 
     gap: 6px;
 
-    color: #c5d4c0;
+    color: #c8d7c2;
 
     font-family:
       "SFMono-Regular",
@@ -1231,8 +1979,9 @@ const year = new Date().getFullYear();
       Consolas,
       monospace;
 
-    font-size: 8px;
-    font-weight: 700;
+    font-size: 7px;
+
+    font-weight: 800;
 
     letter-spacing: 0.09em;
 
@@ -1243,66 +1992,289 @@ const year = new Date().getFullYear();
     width: 6px;
     height: 6px;
 
-    background: #6fa16f;
+    flex: 0 0 6px;
+
+    background: #72a46e;
+
     border-radius: 50%;
+
+    box-shadow:
+      0
+      0
+      0
+      3px
+      rgba(
+        114,
+        164,
+        110,
+        0.08
+      );
   }
 
-  .status-pill.small {
-    font-size: 7px;
+  .featured-visual {
+    position: relative;
+
+    min-height: 280px;
+
+    margin-top: 18px;
+
+    overflow: hidden;
+
+    background: #202020;
+
+    border:
+      1px
+      solid
+      #333333;
+  }
+
+  .featured-visual-grid {
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+      linear-gradient(
+        rgba(
+          255,
+          255,
+          255,
+          0.045
+        )
+        1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(
+          255,
+          255,
+          255,
+          0.045
+        )
+        1px,
+        transparent 1px
+      );
+
+    background-size:
+      25px
+      25px;
+
+    animation:
+      visual-grid-move
+      9s
+      linear
+      infinite;
+  }
+
+  .featured-crosshair {
+    position: absolute;
+
+    width: 18px;
+    height: 18px;
+
+    border:
+      1px
+      solid
+      #565656;
+  }
+
+  .featured-crosshair::before,
+  .featured-crosshair::after {
+    content: "";
+
+    position: absolute;
+
+    background: #565656;
+  }
+
+  .featured-crosshair::before {
+    left: -6px;
+    right: -6px;
+
+    top: 50%;
+
+    height: 1px;
+
+    transform:
+      translateY(-50%);
+  }
+
+  .featured-crosshair::after {
+    top: -6px;
+    bottom: -6px;
+
+    left: 50%;
+
+    width: 1px;
+
+    transform:
+      translateX(-50%);
+  }
+
+  .featured-crosshair-one {
+    top: 22px;
+    left: 22px;
+  }
+
+  .featured-crosshair-two {
+    right: 22px;
+    bottom: 22px;
   }
 
   .featured-initials {
-    width: 82px;
-    height: 82px;
+    position: absolute;
+
+    left: 50%;
+    top: 48%;
+
+    width: 104px;
+    height: 104px;
 
     display: grid;
+
     place-items: center;
 
-    margin: 30px 0 28px;
-
     background: #f5f3ec;
+
     color: #111111;
 
-    font-size: 24px;
+    font-size: 28px;
+
     font-weight: 950;
 
     letter-spacing: -0.06em;
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      );
+
+    box-shadow:
+      0
+      0
+      0
+      1px
+      #f5f3ec,
+      0
+      0
+      0
+      15px
+      rgba(
+        245,
+        243,
+        236,
+        0.035
+      );
+
+    animation:
+      profile-float
+      3.4s
+      ease-in-out
+      infinite;
+  }
+
+  .featured-visual-label {
+    position: absolute;
+
+    left: 20px;
+    bottom: 19px;
+
+    display: grid;
+
+    gap: 3px;
+  }
+
+  .featured-visual-label span {
+    color: #737069;
+
+    font-size: 6px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.1em;
+  }
+
+  .featured-visual-label strong {
+    color: #ddd9d1;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.07em;
+  }
+
+  .featured-visual-index {
+    position: absolute;
+
+    right: 20px;
+    top: 18px;
+
+    color: #6d6962;
+
+    font-family:
+      "SFMono-Regular",
+      "Cascadia Code",
+      "Roboto Mono",
+      Consolas,
+      monospace;
+
+    font-size: 34px;
+
+    font-weight: 950;
+
+    letter-spacing: -0.08em;
   }
 
   .featured-body {
     display: grid;
+
     gap: 24px;
+
+    margin-top: 27px;
   }
 
-  .featured-body .mono {
+  .featured-role {
     display: block;
 
-    margin-bottom: 8px;
+    margin:
+      0
+      0
+      8px;
 
-    color: #8f8c84;
+    color: #88857e;
 
-    font-size: 9px;
+    font-size: 8px;
+
     letter-spacing: 0.05em;
   }
 
   .featured-body h2 {
+    max-width: 760px;
+
     margin: 0;
 
-    max-width: 720px;
+    font-size:
+      clamp(
+        42px,
+        11vw,
+        90px
+      );
 
-    font-size: clamp(
-      42px,
-      11vw,
-      88px
-    );
+    font-weight: 950;
 
-    line-height: 0.9;
+    line-height: 0.86;
 
-    letter-spacing: -0.07em;
+    letter-spacing: -0.075em;
   }
 
   .person-location {
-    margin: 9px 0 0;
+    margin:
+      9px
+      0
+      0;
 
     color: #77736c;
 
@@ -1323,41 +2295,55 @@ const year = new Date().getFullYear();
 
     margin: 0;
 
-    color: #f0eee7;
+    color: #efede6;
 
-    font-size: 16px;
-    line-height: 1.55;
+    font-size: 15px;
+
+    line-height: 1.6;
   }
 
   .small-copy {
     max-width: 650px;
 
-    margin: 17px 0 0;
+    margin:
+      16px
+      0
+      0;
 
-    color: #a8a59d;
+    color: #a09c95;
 
-    font-size: 13px;
-    line-height: 1.65;
+    font-size: 12px;
+
+    line-height: 1.7;
   }
 
   .featured-facts {
     display: grid;
 
-    grid-template-columns: repeat(
-      2,
-      minmax(0, 1fr)
-    );
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
 
     gap: 10px;
 
-    margin-top: 28px;
-    padding-top: 20px;
+    margin-top: 27px;
 
-    border-top: 1px solid #343434;
+    padding-top: 19px;
+
+    border-top:
+      1px
+      solid
+      #343434;
   }
 
   .featured-facts > div {
     display: grid;
+
     gap: 5px;
   }
 
@@ -1373,121 +2359,233 @@ const year = new Date().getFullYear();
 
   .featured-facts span {
     color: #706c64;
+
     font-size: 7px;
+
     letter-spacing: 0.08em;
   }
 
   .featured-facts strong {
     color: #ddd9d1;
+
     font-size: 9px;
+
     line-height: 1.4;
   }
 
   .featured-bottom {
     display: grid;
 
-    gap: 20px;
+    gap: 19px;
 
     margin-top: 24px;
-    padding-top: 20px;
 
-    border-top: 1px solid #343434;
+    padding-top: 19px;
+
+    border-top:
+      1px
+      solid
+      #343434;
   }
 
   .technology-list {
     display: flex;
+
     flex-wrap: wrap;
-    gap: 7px;
+
+    gap: 6px;
   }
 
   .technology-list span {
-    padding: 7px 9px;
+    padding:
+      6px
+      8px;
 
-    border: 1px solid #494949;
+    border:
+      1px
+      solid
+      #494949;
+
     background: #222222;
 
     color: #f5f3ec;
 
-    font-size: 9px;
-    font-weight: 700;
+    font-size: 8px;
+
+    font-weight: 800;
   }
 
   /* =============================================================
-     OTHER MEMBERS
+     ALL MEMBERS
   ============================================================= */
 
   .all-members-section {
-    padding: 58px 0;
+    padding:
+      56px
+      0;
 
-    background: #dedbd3;
+    background: #ddd9d1;
   }
 
   .section-heading {
     display: flex;
+
     flex-direction: column;
 
-    gap: 16px;
+    gap: 15px;
 
-    margin-bottom: 28px;
+    margin-bottom: 27px;
+
+    opacity: 0;
+
+    transform:
+      translateY(22px);
+
+    transition:
+      opacity
+        700ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        ),
+      transform
+        700ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        );
+  }
+
+  .is-visible .section-heading {
+    opacity: 1;
+
+    transform:
+      translateY(0);
   }
 
   .section-heading h2 {
     margin: 0;
 
-    font-size: clamp(
-      42px,
-      11vw,
-      78px
-    );
+    font-size:
+      clamp(
+        43px,
+        11vw,
+        80px
+      );
 
-    line-height: 0.9;
-    letter-spacing: -0.06em;
+    font-weight: 950;
+
+    line-height: 0.86;
+
+    letter-spacing: -0.075em;
   }
 
   .section-heading > p {
     margin: 0;
 
-    color: #65625c;
+    color: #67645d;
 
-    font-size: 13px;
-    line-height: 1.55;
+    font-size: 12px;
+
+    line-height: 1.6;
   }
 
   .members-list {
     display: grid;
-    gap: 14px;
+
+    gap: 12px;
   }
 
   .member-card {
-    padding: 20px;
+    position: relative;
 
-    border: 1px solid #bab6ad;
+    overflow: hidden;
+
+    min-width: 0;
+
+    padding: 19px;
+
+    border:
+      1px
+      solid
+      #bbb7ae;
+
+    opacity: 0;
+
+    transform:
+      translateY(30px);
+
+    transition:
+      opacity
+        700ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        ),
+      transform
+        700ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        ),
+      background-color
+        160ms ease,
+      border-color
+        160ms ease;
+
+    transition-delay:
+      var(--delay, 0ms);
+  }
+
+  .is-visible .member-card {
+    opacity: 1;
+
+    transform:
+      translateY(0);
   }
 
   .member-light {
     background: #f5f3ec;
+
     color: #111111;
   }
 
   .member-paper {
     background: #ebe8df;
+
     color: #111111;
+  }
+
+  .member-card:hover {
+    border-color: #99958c;
   }
 
   .member-top {
     display: flex;
 
     align-items: flex-start;
+
     justify-content: space-between;
 
     gap: 14px;
   }
 
-  .member-top > div {
+  .member-top-left {
     display: flex;
+
     align-items: center;
 
     gap: 9px;
+
+    min-width: 0;
   }
 
   .member-mark {
@@ -1495,21 +2593,34 @@ const year = new Date().getFullYear();
     height: 68px;
 
     display: grid;
+
     place-items: center;
 
-    margin: 28px 0 22px;
+    margin:
+      28px
+      0
+      20px;
 
     background: #111111;
+
     color: #f5f3ec;
 
     font-size: 20px;
-    font-weight: 900;
+
+    font-weight: 950;
 
     letter-spacing: -0.05em;
   }
 
-  .member-content .member-role {
-    margin: 0 0 7px;
+  .member-content {
+    min-width: 0;
+  }
+
+  .member-role {
+    margin:
+      0
+      0
+      7px;
 
     color: #77736c;
 
@@ -1518,71 +2629,78 @@ const year = new Date().getFullYear();
     letter-spacing: 0.05em;
   }
 
-  .member-dark .member-content .member-role {
-    color: #aaa79f;
-  }
-
   .member-content h3 {
     margin: 0;
 
-    font-size: clamp(
-      31px,
-      8vw,
-      56px
-    );
+    font-size:
+      clamp(
+        30px,
+        8vw,
+        55px
+      );
 
-    line-height: 0.9;
+    font-weight: 950;
 
-    letter-spacing: -0.06em;
+    line-height: 0.89;
+
+    letter-spacing: -0.07em;
   }
 
   .member-description {
     max-width: 620px;
 
-    margin: 16px 0 0;
+    margin:
+      16px
+      0
+      0;
 
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 13px;
+
+    line-height: 1.62;
   }
 
   .member-story {
     max-width: 620px;
 
-    margin: 14px 0 0;
+    margin:
+      13px
+      0
+      0;
 
-    color: #67645d;
+    color: #68645d;
 
-    font-size: 13px;
-    line-height: 1.65;
-  }
+    font-size: 12px;
 
-  .member-dark .member-story {
-    color: #aaa79f;
+    line-height: 1.68;
   }
 
   .member-facts {
     display: grid;
 
-    grid-template-columns: repeat(
-      2,
-      minmax(0, 1fr)
-    );
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
 
     gap: 10px;
 
-    margin-top: 24px;
+    margin-top: 23px;
 
     padding-top: 18px;
 
-    border-top: 1px solid #c3bfb6;
-  }
-
-  .member-dark .member-facts {
-    border-color: #353535;
+    border-top:
+      1px
+      solid
+      #c5c1b8;
   }
 
   .member-facts > div {
     display: grid;
+
     gap: 5px;
   }
 
@@ -1597,45 +2715,43 @@ const year = new Date().getFullYear();
       monospace;
 
     font-size: 7px;
+
     font-weight: 700;
 
     letter-spacing: 0.08em;
   }
 
   .member-facts strong {
-    font-size: 9px;
+    font-size: 8px;
+
     line-height: 1.4;
   }
 
   .member-content .technology-list {
-    margin-top: 19px;
+    margin-top: 18px;
   }
 
   .member-content .technology-list span {
-    background: #f5f3ec;
-    border-color: #b9b5ac;
-    color: #111111;
-  }
+    background: #f2f0ea;
 
-  .member-dark .member-content .technology-list span {
-    background: #222222;
-    border-color: #474747;
-    color: #f5f3ec;
+    border-color: #b9b5ac;
+
+    color: #111111;
   }
 
   .member-footer {
     display: grid;
 
-    gap: 20px;
+    gap: 19px;
 
-    margin-top: 28px;
-    padding-top: 20px;
+    margin-top: 25px;
 
-    border-top: 1px solid #c7c3ba;
-  }
+    padding-top: 19px;
 
-  .member-dark .member-footer {
-    border-color: #353535;
+    border-top:
+      1px
+      solid
+      #c5c1b8;
   }
 
   .footer-label {
@@ -1643,7 +2759,7 @@ const year = new Date().getFullYear();
 
     margin-bottom: 7px;
 
-    color: #77736c;
+    color: #77736b;
 
     font-family:
       "SFMono-Regular",
@@ -1653,6 +2769,7 @@ const year = new Date().getFullYear();
       monospace;
 
     font-size: 7px;
+
     font-weight: 700;
 
     letter-spacing: 0.08em;
@@ -1665,26 +2782,154 @@ const year = new Date().getFullYear();
 
     color: #5f5b54;
 
-    font-size: 12px;
-    line-height: 1.6;
-  }
+    font-size: 11px;
 
-  .member-dark .member-footer p {
-    color: #aaa79f;
+    line-height: 1.6;
   }
 
   .member-link {
     display: inline-flex;
 
     align-items: center;
+
     gap: 8px;
 
-    font-size: 12px;
-    font-weight: 800;
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.05em;
   }
 
   .member-link span {
-    font-size: 16px;
+    font-size: 15px;
+
+    transition:
+      transform
+      140ms
+      ease;
+  }
+
+  .member-link:hover span {
+    transform:
+      translate(
+        3px,
+        -3px
+      );
+  }
+
+  /* =============================================================
+     MEMBER VISUAL
+  ============================================================= */
+
+  .member-visual {
+    position: relative;
+
+    min-height: 170px;
+
+    margin:
+      22px
+      0;
+
+    overflow: hidden;
+
+    display: grid;
+
+    place-items: center;
+
+    background: #d7d3ca;
+
+    border:
+      1px
+      solid
+      #c0bcb2;
+  }
+
+  .member-paper .member-visual,
+  .member-light .member-visual {
+    background: #d9d5cc;
+  }
+
+  .member-visual-grid {
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+      linear-gradient(
+        rgba(
+          17,
+          17,
+          17,
+          0.065
+        )
+        1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(
+          17,
+          17,
+          17,
+          0.065
+        )
+        1px,
+        transparent 1px
+      );
+
+    background-size:
+      22px
+      22px;
+
+    animation:
+      visual-grid-move
+      8s
+      linear
+      infinite;
+  }
+
+  .member-mark {
+    position: relative;
+
+    z-index: 2;
+
+    transition:
+      transform
+      180ms
+      ease;
+  }
+
+  .member-card:hover .member-mark {
+    transform:
+      rotate(
+        3deg
+      )
+      scale(
+        1.04
+      );
+  }
+
+  .member-visual-label {
+    position: absolute;
+
+    left: 12px;
+    bottom: 11px;
+
+    color: #716d66;
+
+    font-family:
+      "SFMono-Regular",
+      "Cascadia Code",
+      "Roboto Mono",
+      Consolas,
+      monospace;
+
+    font-size: 6px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.08em;
   }
 
   /* =============================================================
@@ -1692,10 +2937,66 @@ const year = new Date().getFullYear();
   ============================================================= */
 
   .internship-section {
-    padding: 58px 0;
+    position: relative;
+
+    overflow: hidden;
+
+    padding:
+      56px
+      0;
 
     background: #111111;
+
     color: #f5f3ec;
+  }
+
+  .internship-grid-bg {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.28;
+
+    background-image:
+      linear-gradient(
+        rgba(
+          255,
+          255,
+          255,
+          0.035
+        )
+        1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(
+          255,
+          255,
+          255,
+          0.035
+        )
+        1px,
+        transparent 1px
+      );
+
+    background-size:
+      25px
+      25px;
+
+    animation:
+      visual-grid-move
+      10s
+      linear
+      infinite;
+  }
+
+  .internship-section .container {
+    position: relative;
+
+    z-index: 2;
   }
 
   .internship-card {
@@ -1703,20 +3004,57 @@ const year = new Date().getFullYear();
 
     background: #171717;
 
-    border: 1px solid #373737;
+    border:
+      1px
+      solid
+      #373737;
+
+    opacity: 0;
+
+    transform:
+      translateY(28px);
+
+    transition:
+      opacity
+        750ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        ),
+      transform
+        750ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        );
+  }
+
+  .is-visible .internship-card {
+    opacity: 1;
+
+    transform:
+      translateY(0);
   }
 
   .internship-top {
     display: flex;
 
     align-items: center;
+
     justify-content: space-between;
 
     gap: 15px;
 
     padding-bottom: 16px;
 
-    border-bottom: 1px solid #343434;
+    border-bottom:
+      1px
+      solid
+      #343434;
   }
 
   .internship-top .section-kicker {
@@ -1734,11 +3072,17 @@ const year = new Date().getFullYear();
 
     gap: 27px;
 
-    padding: 30px 0 28px;
+    padding:
+      30px
+      0
+      28px;
   }
 
   .internship-kicker {
-    margin: 0 0 10px;
+    margin:
+      0
+      0
+      10px;
 
     color: #7e7a72;
 
@@ -1750,6 +3094,7 @@ const year = new Date().getFullYear();
       monospace;
 
     font-size: 8px;
+
     font-weight: 700;
 
     letter-spacing: 0.1em;
@@ -1760,11 +3105,14 @@ const year = new Date().getFullYear();
 
     margin: 0;
 
-    font-size: clamp(
-      44px,
-      12vw,
-      90px
-    );
+    font-size:
+      clamp(
+        44px,
+        12vw,
+        90px
+      );
+
+    font-weight: 950;
 
     line-height: 0.84;
 
@@ -1773,6 +3121,7 @@ const year = new Date().getFullYear();
 
   .internship-main h2 span {
     display: block;
+
     color: #717069;
   }
 
@@ -1784,6 +3133,7 @@ const year = new Date().getFullYear();
     color: #aaa79f;
 
     font-size: 13px;
+
     line-height: 1.65;
   }
 
@@ -1794,18 +3144,25 @@ const year = new Date().getFullYear();
   .internship-footer {
     display: grid;
 
-    gap: 0;
-
-    border-top: 1px solid #343434;
+    border-top:
+      1px
+      solid
+      #343434;
   }
 
   .internship-footer > div {
     display: grid;
+
     gap: 5px;
 
-    padding: 12px 0;
+    padding:
+      12px
+      0;
 
-    border-bottom: 1px solid #292929;
+    border-bottom:
+      1px
+      solid
+      #292929;
   }
 
   .internship-footer > div:last-child {
@@ -1826,6 +3183,7 @@ const year = new Date().getFullYear();
     color: #6c6860;
 
     font-size: 7px;
+
     font-weight: 700;
 
     letter-spacing: 0.08em;
@@ -1834,7 +3192,7 @@ const year = new Date().getFullYear();
   .internship-footer strong {
     color: #ddd9d1;
 
-    font-size: 9px;
+    font-size: 8px;
   }
 
   /* =============================================================
@@ -1842,70 +3200,411 @@ const year = new Date().getFullYear();
   ============================================================= */
 
   .philosophy-section {
-    padding: 58px 0;
+    padding:
+      56px
+      0;
 
     background: #ebe8e0;
   }
 
   .philosophy-grid {
     display: grid;
+
     gap: 35px;
   }
 
   .philosophy-grid h2 {
-    max-width: 750px;
+    max-width: 760px;
 
     margin: 0;
 
-    font-size: clamp(
-      40px,
-      10vw,
-      82px
-    );
+    font-size:
+      clamp(
+        40px,
+        10vw,
+        82px
+      );
 
-    line-height: 0.91;
+    font-weight: 950;
 
-    letter-spacing: -0.07em;
+    line-height: 0.89;
+
+    letter-spacing: -0.075em;
   }
 
   .philosophy-list {
-    border-top: 1px solid #c5c1b8;
+    border-top:
+      1px
+      solid
+      #c5c1b8;
   }
 
   .philosophy-list article {
     display: grid;
 
-    grid-template-columns: 30px 1fr;
+    grid-template-columns:
+      30px
+      1fr;
 
     gap: 14px;
 
-    padding: 19px 0;
+    padding:
+      18px
+      0;
 
-    border-bottom: 1px solid #c5c1b8;
+    border-bottom:
+      1px
+      solid
+      #c5c1b8;
+
+    opacity: 0;
+
+    transform:
+      translateY(15px);
+  }
+
+  .is-visible .philosophy-list article {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+
+    transition:
+      opacity
+        550ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        ),
+      transform
+        550ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        );
+  }
+
+  .is-visible
+    .philosophy-list
+    article:nth-child(2) {
+    transition-delay: 100ms;
+  }
+
+  .is-visible
+    .philosophy-list
+    article:nth-child(3) {
+    transition-delay: 200ms;
   }
 
   .philosophy-list article > span {
     color: #88847c;
 
-    font-size: 9px;
+    font-size: 8px;
   }
 
   .philosophy-list h3 {
     margin: 0;
 
-    font-size: 18px;
+    font-size: 16px;
+
+    font-weight: 900;
 
     letter-spacing: -0.02em;
   }
 
   .philosophy-list p {
-    margin: 7px 0 0;
+    margin:
+      7px
+      0
+      0;
 
     color: #636059;
+
+    font-size: 11px;
+
+    line-height: 1.65;
+  }
+
+  /* =============================================================
+     GAME CTA
+  ============================================================= */
+
+  .game-cta {
+    position: relative;
+
+    overflow: hidden;
+
+    padding:
+      16px
+      0;
+
+    background: #101010;
+
+    color: #f5f3ec;
+  }
+
+  .game-cta-grid {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.25;
+
+    background-image:
+      linear-gradient(
+        rgba(
+          255,
+          255,
+          255,
+          0.035
+        )
+        1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(
+          255,
+          255,
+          255,
+          0.035
+        )
+        1px,
+        transparent 1px
+      );
+
+    background-size:
+      25px
+      25px;
+
+    animation:
+      visual-grid-move
+      10s
+      linear
+      infinite;
+  }
+
+  .game-cta .container {
+    position: relative;
+
+    z-index: 2;
+  }
+
+  .game-cta-card {
+    padding:
+      25px
+      20px;
+
+    background: #1d1d1d;
+
+    border:
+      1px
+      solid
+      #373737;
+
+    opacity: 0;
+
+    transform:
+      translateY(28px);
+
+    transition:
+      opacity
+        750ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        ),
+      transform
+        750ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        );
+  }
+
+  .is-visible .game-cta-card {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+
+  .game-cta-top {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 14px;
+  }
+
+  .game-cta-top .section-kicker {
+    margin: 0;
+
+    color: #7f7b74;
+  }
+
+  .game-cta-top .mono {
+    color: #77736b;
+
+    font-size: 7px;
+  }
+
+  .game-cta-main {
+    display: grid;
+
+    gap: 28px;
+
+    margin-top: 29px;
+  }
+
+  .game-cta-main h2 {
+    margin: 0;
+
+    font-size:
+      clamp(
+        45px,
+        12vw,
+        88px
+      );
+
+    font-weight: 950;
+
+    line-height: 0.83;
+
+    letter-spacing: -0.08em;
+  }
+
+  .game-cta-main h2 span {
+    display: block;
+
+    color: #77736b;
+  }
+
+  .game-cta-main p {
+    max-width: 450px;
+
+    margin:
+      15px
+      0
+      0;
+
+    color: #aaa69f;
 
     font-size: 12px;
 
     line-height: 1.6;
+  }
+
+  .game-cta-list {
+    display: grid;
+
+    border-top:
+      1px
+      solid
+      #343434;
+  }
+
+  .game-cta-list span {
+    padding:
+      11px
+      0;
+
+    border-bottom:
+      1px
+      solid
+      #2e2e2e;
+
+    color: #e6e3dc;
+
+    font-family:
+      "SFMono-Regular",
+      "Cascadia Code",
+      "Roboto Mono",
+      Consolas,
+      monospace;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.05em;
+  }
+
+  .game-cta-button {
+    min-height: 52px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 16px;
+
+    margin-top: 20px;
+
+    padding:
+      0
+      15px;
+
+    background: #f5f3ec;
+
+    color: #111111;
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.09em;
+
+    transform:
+      translate3d(
+        var(--mx, 0),
+        var(--my, 0),
+        0
+      );
+
+    transition:
+      transform
+        160ms
+        cubic-bezier(
+          .2,
+          .8,
+          .2,
+          1
+        ),
+      background-color
+        140ms ease;
+  }
+
+  .game-cta-button:hover {
+    background: #ffffff;
+  }
+
+  .game-cta-button strong {
+    font-size: 17px;
+
+    transition:
+      transform
+      140ms
+      ease;
+  }
+
+  .game-cta-button:hover strong {
+    transform:
+      translateX(4px);
   }
 
   /* =============================================================
@@ -1913,35 +3612,77 @@ const year = new Date().getFullYear();
   ============================================================= */
 
   .next-section {
-    padding: 58px 0 75px;
+    padding:
+      56px
+      0
+      72px;
 
     background: #f2f0ea;
 
-    border-top: 1px solid #cbc8c0;
+    border-top:
+      1px
+      solid
+      #cbc8c0;
   }
 
   .next-grid {
     display: grid;
 
-    gap: 27px;
+    gap: 25px;
+
+    opacity: 0;
+
+    transform:
+      translateY(24px);
+
+    transition:
+      opacity
+        700ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        ),
+      transform
+        700ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        );
+  }
+
+  .is-visible .next-grid {
+    opacity: 1;
+
+    transform:
+      translateY(0);
   }
 
   .next-grid h2 {
     margin: 0;
 
-    font-size: clamp(
-      42px,
-      10vw,
-      82px
-    );
+    font-size:
+      clamp(
+        43px,
+        10vw,
+        82px
+      );
 
-    line-height: 0.9;
+    font-weight: 950;
 
-    letter-spacing: -0.07em;
+    line-height: 0.88;
+
+    letter-spacing: -0.075em;
   }
 
   .next-grid p:not(.section-kicker) {
-    margin: 13px 0 0;
+    margin:
+      13px
+      0
+      0;
 
     color: #68655e;
 
@@ -1953,24 +3694,30 @@ const year = new Date().getFullYear();
   ============================================================= */
 
   .final-section {
-    padding: 24px 0 100px;
+    padding:
+      24px
+      0
+      96px;
 
     background: #101010;
+
     color: #f5f3ec;
   }
 
   .final-line {
     display: grid;
 
-    gap: 14px;
+    gap: 13px;
   }
 
   .final-line .mono {
-    color: #89867f;
+    color: #88847c;
 
-    font-size: 9px;
+    font-size: 8px;
 
-    letter-spacing: 0.09em;
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
   }
 
   .final-line p {
@@ -1978,9 +3725,9 @@ const year = new Date().getFullYear();
 
     margin: 0;
 
-    color: #aaa79f;
+    color: #aaa69f;
 
-    font-size: 12px;
+    font-size: 11px;
 
     line-height: 1.6;
   }
@@ -1996,41 +3743,60 @@ const year = new Date().getFullYear();
   .mobile-nav {
     position: fixed;
 
-    left: 0;
     right: 0;
     bottom: 0;
+    left: 0;
 
-    z-index: 60;
+    z-index: 100;
 
     display: grid;
 
     grid-template-columns:
-      repeat(4, 1fr);
+      repeat(
+        4,
+        1fr
+      );
 
     padding-bottom:
-      env(safe-area-inset-bottom);
+      env(
+        safe-area-inset-bottom
+      );
 
-    background: #101010;
+    background:
+      rgba(
+        16,
+        16,
+        16,
+        0.97
+      );
 
-    border-top: 1px solid #333333;
+    border-top:
+      1px
+      solid
+      #2c2c2c;
+
+    backdrop-filter:
+      blur(12px);
   }
 
   .mobile-nav a {
-    min-height: 62px;
+    min-height: 61px;
 
     display: flex;
 
     flex-direction: column;
 
     align-items: center;
+
     justify-content: center;
 
     gap: 4px;
 
-    color: #89867f;
+    color: #79756e;
 
-    font-size: 9px;
-    font-weight: 800;
+    font-size: 7px;
+
+    font-weight: 900;
   }
 
   .mobile-nav a span {
@@ -2039,10 +3805,69 @@ const year = new Date().getFullYear();
     font-size: 13px;
 
     line-height: 1;
+
+    transition:
+      transform
+      140ms
+      ease;
   }
 
-  .mobile-nav a.active {
-    color: #ffffff;
+  .mobile-nav a.active,
+  .mobile-nav a.play-item {
+    color: #f5f3ec;
+  }
+
+  .mobile-nav a.active span,
+  .mobile-nav a:hover span {
+    transform:
+      translateY(-2px);
+  }
+
+  .mobile-nav .play-item {
+    background: #1a1a1a;
+  }
+
+  .mobile-nav .play-item span {
+    color: #dce5d3;
+  }
+
+  /* =============================================================
+     REVEAL
+  ============================================================= */
+
+  .reveal-item {
+    opacity: 0;
+
+    transform:
+      translateY(25px);
+
+    transition:
+      opacity
+        700ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        ),
+      transform
+        700ms
+        cubic-bezier(
+          .16,
+          1,
+          .3,
+          1
+        );
+
+    transition-delay:
+      var(--delay, 0ms);
+  }
+
+  .is-visible .reveal-item {
+    opacity: 1;
+
+    transform:
+      translateY(0);
   }
 
   /* =============================================================
@@ -2052,13 +3877,16 @@ const year = new Date().getFullYear();
   @media (min-width: 700px) {
     .container {
       width: min(
-        100% - 48px,
+        calc(100% - 48px),
         1180px
       );
     }
 
     .page-hero {
-      padding: 44px 0 80px;
+      padding:
+        44px
+        0
+        76px;
     }
 
     .hero-main {
@@ -2075,28 +3903,36 @@ const year = new Date().getFullYear();
     .all-members-section,
     .internship-section,
     .philosophy-section,
+    .game-cta,
     .next-section {
-      padding: 80px 0;
+      padding:
+        78px
+        0;
     }
 
     .featured-person {
-      padding: 32px;
+      padding: 30px;
+    }
+
+    .featured-visual {
+      min-height: 350px;
     }
 
     .featured-body {
       grid-template-columns:
-        1.05fr
-        0.95fr;
-
-      gap: 48px;
+        minmax(0, 1.05fr)
+        minmax(280px, 0.95fr);
 
       align-items: end;
+
+      gap: 50px;
     }
 
     .featured-bottom {
       display: flex;
 
       align-items: center;
+
       justify-content: space-between;
 
       gap: 30px;
@@ -2106,15 +3942,21 @@ const year = new Date().getFullYear();
       grid-template-columns:
         repeat(
           2,
-          minmax(0, 1fr)
+          minmax(
+            0,
+            1fr
+          )
         );
     }
 
     .member-card {
-      min-height: 620px;
+      min-height: 650px;
 
       display: flex;
+
       flex-direction: column;
+
+      padding: 24px;
     }
 
     .member-content {
@@ -2141,13 +3983,22 @@ const year = new Date().getFullYear();
 
     .internship-footer {
       grid-template-columns:
-        repeat(3, 1fr);
+        repeat(
+          3,
+          1fr
+        );
     }
 
     .internship-footer > div {
-      padding: 12px 15px;
+      padding:
+        12px
+        15px;
 
-      border-right: 1px solid #292929;
+      border-right:
+        1px
+        solid
+        #292929;
+
       border-bottom: 0;
     }
 
@@ -2163,6 +4014,20 @@ const year = new Date().getFullYear();
       gap: 60px;
     }
 
+    .game-cta-card {
+      padding: 34px;
+    }
+
+    .game-cta-main {
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(300px, 0.7fr);
+
+      align-items: end;
+
+      gap: 60px;
+    }
+
     .next-grid {
       grid-template-columns:
         1fr
@@ -2174,7 +4039,7 @@ const year = new Date().getFullYear();
     }
 
     .final-section {
-      padding-bottom: 48px;
+      padding-bottom: 46px;
     }
 
     .final-line {
@@ -2199,7 +4064,7 @@ const year = new Date().getFullYear();
 
   @media (min-width: 1000px) {
     .header-inner {
-      min-height: 72px;
+      min-height: 70px;
     }
 
     .brand-mark {
@@ -2222,17 +4087,20 @@ const year = new Date().getFullYear();
 
       align-items: center;
 
-      gap: 26px;
+      gap: 27px;
     }
 
     .desktop-nav a {
-      color: #bebbb3;
+      color: #97938b;
 
-      font-size: 11px;
-      font-weight: 750;
+      font-size: 10px;
+
+      font-weight: 850;
 
       transition:
-        color 140ms ease;
+        color
+        140ms
+        ease;
     }
 
     .desktop-nav a:hover,
@@ -2240,23 +4108,178 @@ const year = new Date().getFullYear();
       color: #ffffff;
     }
 
-    .hero-main h1 {
-      font-size: clamp(
-        76px,
-        9vw,
-        132px
-      );
+    .desktop-nav .nav-play {
+      padding:
+        8px
+        11px;
+
+      border:
+        1px
+        solid
+        #454545;
+
+      color: #f5f3ec;
+    }
+
+    .hero-title {
+      font-size:
+        clamp(
+          82px,
+          9vw,
+          140px
+        );
+    }
+
+    .hero-main {
+      grid-template-columns:
+        minmax(0, 1fr)
+        200px;
+    }
+
+    .featured-person {
+      min-height: 700px;
+
+      display: flex;
+
+      flex-direction: column;
+    }
+
+    .featured-body {
+      flex: 1;
     }
 
     .member-card {
       transition:
-        transform 140ms ease,
-        border-color 140ms ease;
+        transform
+          160ms
+          ease,
+        border-color
+          160ms
+          ease;
     }
 
     .member-card:hover {
-      transform: translateY(-2px);
-      border-color: #98948c;
+      transform:
+        translateY(-3px);
+
+      border-color:
+        #98948c;
+    }
+  }
+
+  /* =============================================================
+     KEYFRAMES
+  ============================================================= */
+
+  @keyframes title-in {
+    from {
+      opacity: 0;
+
+      transform:
+        translateY(100%)
+        rotate(3deg);
+    }
+
+    to {
+      opacity: 1;
+
+      transform:
+        translateY(0)
+        rotate(0);
+    }
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+
+      transform:
+        translateY(15px);
+    }
+
+    to {
+      opacity: 1;
+
+      transform:
+        translateY(0);
+    }
+  }
+
+  @keyframes status-in {
+    from {
+      opacity: 0;
+
+      transform:
+        translateY(18px)
+        rotate(-7deg)
+        scale(0.96);
+    }
+
+    to {
+      opacity: 1;
+
+      transform:
+        translateY(0)
+        rotate(-3deg)
+        scale(1);
+    }
+  }
+
+  @keyframes orbit-float {
+    0%,
+    100% {
+      transform:
+        translate3d(
+          0,
+          0,
+          0
+        )
+        rotate(0deg);
+    }
+
+    50% {
+      transform:
+        translate3d(
+          10px,
+          12px,
+          0
+        )
+        rotate(8deg);
+    }
+  }
+
+  @keyframes visual-grid-move {
+    from {
+      transform:
+        translateY(0);
+    }
+
+    to {
+      transform:
+        translateY(25px);
+    }
+  }
+
+  @keyframes profile-float {
+    0%,
+    100% {
+      transform:
+        translate(
+          -50%,
+          -50%
+        )
+        translateY(0)
+        rotate(-2deg);
+    }
+
+    50% {
+      transform:
+        translate(
+          -50%,
+          -50%
+        )
+        translateY(-9px)
+        rotate(2deg);
     }
   }
 
@@ -2269,10 +4292,36 @@ const year = new Date().getFullYear();
       scroll-behavior: auto;
     }
 
-    .button,
-    .desktop-nav a,
-    .member-card {
-      transition: none;
+    .hero-title span,
+    .hero-copy,
+    .hero-status,
+    .hero-bottom,
+    .hero-orbit,
+    .featured-visual-grid,
+    .featured-initials,
+    .member-visual-grid,
+    .internship-grid-bg,
+    .game-cta-grid {
+      animation: none !important;
+    }
+
+    .reveal-item,
+    .featured-person,
+    .member-card,
+    .internship-card,
+    .game-cta-card,
+    .next-grid,
+    .stat,
+    .philosophy-list article {
+      opacity: 1 !important;
+
+      transform: none !important;
+
+      transition: none !important;
+    }
+
+    .cursor-glow {
+      display: none;
     }
   }
 </style>

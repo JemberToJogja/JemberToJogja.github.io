@@ -78,9 +78,20 @@ const stats = [
     label: "TECHNOLOGIES",
   },
   {
-    value: "01",
-    label: "VERY GOOD REASON TO KEEP BUILDING",
+    value: "08",
+    label: "GAMES TO PLAY",
   },
+];
+
+const games = [
+  "KUNTILANAK FLY",
+  "DEBUGGER",
+  "COMMIT TYPE",
+  "SYSTEM 2048",
+  "RECEH RUN",
+  "WARUNG DEFENSE",
+  "STACK TRACE",
+  "PIXEL PANIC",
 ];
 
 const year = new Date().getFullYear();
@@ -113,7 +124,7 @@ const year = new Date().getFullYear();
 
     <meta
       property="og:description"
-      content="Things we made. Some work. Some experiments. All open to inspection."
+      content="Things we made. Some work. Some experiments."
     />
 
     <meta
@@ -137,6 +148,8 @@ const year = new Date().getFullYear();
   </head>
 
   <body>
+    <div class="cursor-glow" aria-hidden="true"></div>
+
     <!-- =========================================================
          HEADER
     ========================================================== -->
@@ -167,16 +180,19 @@ const year = new Date().getFullYear();
             People
           </a>
 
-          <a href="/play">
-            Play
-          </a>
-
           <a
             href="https://github.com/JemberToJogja"
             target="_blank"
             rel="noopener noreferrer"
           >
             GitHub ↗
+          </a>
+
+          <a
+            href="/play"
+            class="nav-play"
+          >
+            Play
           </a>
         </nav>
 
@@ -194,10 +210,15 @@ const year = new Date().getFullYear();
 
     <main>
       <!-- =========================================================
-           PAGE HERO
+           HERO
       ========================================================== -->
 
-      <section class="page-hero">
+      <section class="page-hero reveal-section">
+        <div class="hero-grid-bg" aria-hidden="true"></div>
+
+        <div class="hero-orbit hero-orbit-one" aria-hidden="true"></div>
+        <div class="hero-orbit hero-orbit-two" aria-hidden="true"></div>
+
         <div class="container">
           <div class="hero-meta">
             <a href="/" class="back-link">
@@ -210,27 +231,58 @@ const year = new Date().getFullYear();
           </div>
 
           <div class="hero-main">
-            <div>
+            <div class="hero-main-copy">
               <p class="eyebrow">
                 THINGS WE MADE
               </p>
 
-              <h1>
-                Projects
-                <span>we're building.</span>
+              <h1 class="hero-title">
+                <span>PROJECTS</span>
+                <span>WE'RE BUILDING.</span>
               </h1>
+
+              <p class="hero-copy">
+                Software, hardware experiments, maps,
+                mobile apps, and other things that started
+                with a questionable amount of confidence.
+              </p>
             </div>
 
-            <div class="hero-description">
-              <p>
-                Software, hardware experiments, maps, mobile apps,
-                and other things that started with:
-              </p>
+            <div class="hero-status">
+              <span>
+                PROJECT COUNT
+              </span>
 
               <strong>
-                "How hard could it be?"
+                03
               </strong>
+
+              <small>
+                PUBLIC
+              </small>
             </div>
+          </div>
+
+          <div class="hero-bottom">
+            <span>
+              SOFTWARE
+            </span>
+
+            <span>
+              MOBILE
+            </span>
+
+            <span>
+              GIS
+            </span>
+
+            <span>
+              GNSS
+            </span>
+
+            <span>
+              IMAGING
+            </span>
           </div>
         </div>
       </section>
@@ -239,11 +291,14 @@ const year = new Date().getFullYear();
            STATS
       ========================================================== -->
 
-      <section class="stats-section">
+      <section class="stats-section reveal-section">
         <div class="container stats-grid">
           {
-            stats.map((stat) => (
-              <div class="stat">
+            stats.map((stat, index) => (
+              <div
+                class="stat reveal-item"
+                style={`--delay: ${index * 80}ms`}
+              >
                 <strong>{stat.value}</strong>
                 <span>{stat.label}</span>
               </div>
@@ -253,12 +308,12 @@ const year = new Date().getFullYear();
       </section>
 
       <!-- =========================================================
-           FEATURED PROJECT
+           FEATURED
       ========================================================== -->
 
-      <section class="featured-section">
+      <section class="featured-section reveal-section">
         <div class="container">
-          <div class="section-label">
+          <div class="section-label reveal-item">
             <span class="section-kicker">
               FEATURED PROJECT
             </span>
@@ -268,9 +323,12 @@ const year = new Date().getFullYear();
             </span>
           </div>
 
-          <article class="featured-project">
+          <article
+            class="featured-project reveal-item"
+            style="--delay: 90ms"
+          >
             <div class="featured-top">
-              <div>
+              <div class="featured-top-left">
                 <span class="project-number">
                   {projects[0].number}
                 </span>
@@ -286,8 +344,31 @@ const year = new Date().getFullYear();
               </span>
             </div>
 
-            <div class="featured-mark">
-              {projects[0].mark}
+            <div class="featured-visual">
+              <div class="visual-grid"></div>
+
+              <div class="visual-crosshair visual-crosshair-one"></div>
+              <div class="visual-crosshair visual-crosshair-two"></div>
+
+              <div class="visual-center">
+                <span class="visual-mark">
+                  {projects[0].mark}
+                </span>
+
+                <span class="visual-label">
+                  CAMERA SYSTEM
+                </span>
+              </div>
+
+              <div class="visual-data visual-data-top">
+                <span>DEVICE</span>
+                <strong>LANDCAM</strong>
+              </div>
+
+              <div class="visual-data visual-data-bottom">
+                <span>LINK</span>
+                <strong>NFC / WI-FI</strong>
+              </div>
             </div>
 
             <div class="featured-body">
@@ -322,7 +403,7 @@ const year = new Date().getFullYear();
               </div>
 
               <a
-                class="button button-light"
+                class="button button-light magnetic"
                 href={projects[0].github}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -339,37 +420,39 @@ const year = new Date().getFullYear();
            ALL PROJECTS
       ========================================================== -->
 
-      <section class="all-projects-section">
+      <section class="all-projects-section reveal-section">
         <div class="container">
-          <div class="section-heading">
+          <div class="section-heading reveal-item">
             <div>
               <p class="section-kicker">
                 THE REST OF THE STORY
               </p>
 
               <h2>
-                More stuff.
+                MORE STUFF.
               </h2>
             </div>
 
             <p>
-              No ranking. No competition.
+              No ranking.
               <br />
-              We like all of them.
+              Just things we made.
             </p>
           </div>
 
           <div class="projects-list">
             {
-              projects.slice(1).map((project) => (
+              projects.slice(1).map((project, index) => (
                 <article
                   class:list={[
                     "project-card",
                     `project-${project.accent}`,
+                    "reveal-item",
                   ]}
+                  style={`--delay: ${index * 100 + 100}ms`}
                 >
                   <div class="project-top">
-                    <div>
+                    <div class="project-top-left">
                       <span class="project-number">
                         {project.number}
                       </span>
@@ -385,8 +468,16 @@ const year = new Date().getFullYear();
                     </span>
                   </div>
 
-                  <div class="project-mark">
-                    {project.mark}
+                  <div class="project-visual">
+                    <div class="project-visual-grid"></div>
+
+                    <span class="project-mark">
+                      {project.mark}
+                    </span>
+
+                    <span class="project-visual-label">
+                      {project.category}
+                    </span>
                   </div>
 
                   <div class="project-content">
@@ -430,7 +521,7 @@ const year = new Date().getFullYear();
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      See the code
+                      SEE THE CODE
                       <span>↗</span>
                     </a>
                   </div>
@@ -442,57 +533,130 @@ const year = new Date().getFullYear();
       </section>
 
       <!-- =========================================================
-           ENGINEERING PHILOSOPHY
+           GAME CROSSOVER
       ========================================================== -->
 
-      <section class="philosophy-section">
+      <section class="game-crossover reveal-section">
+        <div class="game-crossover-grid" aria-hidden="true"></div>
+
+        <div class="container">
+          <div class="game-crossover-card reveal-item">
+            <div class="game-crossover-top">
+              <span class="section-kicker">
+                YOU'VE SEEN THE WORK.
+              </span>
+
+              <span class="mono">
+                08 GAMES
+              </span>
+            </div>
+
+            <div class="game-crossover-main">
+              <div>
+                <h2>
+                  NOW PLAY
+                  <span>SOMETHING.</span>
+                </h2>
+
+                <p>
+                  Projects are good.
+                  Games are better at wasting your time.
+                </p>
+              </div>
+
+              <div class="game-mini-list">
+                {
+                  games.slice(0, 4).map((game, index) => (
+                    <span
+                      class="game-mini"
+                      style={`--delay: ${index * 80}ms`}
+                    >
+                      <b>
+                        0{index + 1}
+                      </b>
+                      {game}
+                    </span>
+                  ))
+                }
+              </div>
+            </div>
+
+            <a
+              href="/play"
+              class="game-crossover-button magnetic"
+            >
+              <span>
+                ENTER GAME LAB
+              </span>
+
+              <strong>
+                →
+              </strong>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           PHILOSOPHY
+      ========================================================== -->
+
+      <section class="philosophy-section reveal-section">
         <div class="container philosophy-grid">
-          <div>
+          <div class="reveal-item">
             <p class="section-kicker">
               HOW WE BUILD
             </p>
 
             <h2>
-              Start with an idea.
-              Figure out the rest.
+              START WITH AN IDEA.
+              FIGURE OUT THE REST.
             </h2>
           </div>
 
           <div class="philosophy-list">
-            <article>
-              <span class="mono">01</span>
+            <article class="reveal-item">
+              <span class="mono">
+                01
+              </span>
 
               <div>
                 <h3>
-                  Make it real.
+                  MAKE IT REAL.
                 </h3>
 
                 <p>
-                  Ideas are nice. Working software is nicer.
+                  Ideas are nice.
+                  Working software is nicer.
                 </p>
               </div>
             </article>
 
-            <article>
-              <span class="mono">02</span>
+            <article class="reveal-item">
+              <span class="mono">
+                02
+              </span>
 
               <div>
                 <h3>
-                  Break things responsibly.
+                  BREAK THINGS RESPONSIBLY.
                 </h3>
 
                 <p>
-                  Prototypes exist because perfect plans don't.
+                  Prototypes exist because
+                  perfect plans don't.
                 </p>
               </div>
             </article>
 
-            <article>
-              <span class="mono">03</span>
+            <article class="reveal-item">
+              <span class="mono">
+                03
+              </span>
 
               <div>
                 <h3>
-                  Keep learning.
+                  KEEP LEARNING.
                 </h3>
 
                 <p>
@@ -506,35 +670,35 @@ const year = new Date().getFullYear();
       </section>
 
       <!-- =========================================================
-           GITHUB CTA
+           GITHUB
       ========================================================== -->
 
-      <section class="github-section">
+      <section class="github-section reveal-section">
         <div class="container">
-          <div class="github-card">
+          <div class="github-card reveal-item">
             <div>
               <p class="section-kicker">
                 WANT THE RECEIPTS?
               </p>
 
               <h2>
-                The code is
-                <span>right over there.</span>
+                THE CODE IS
+                <span>RIGHT THERE.</span>
               </h2>
 
               <p>
                 Everything public lives on GitHub.
-                Go inspect it. We dare you.
+                Go inspect it.
               </p>
             </div>
 
             <a
-              class="button button-dark"
+              class="button button-dark magnetic"
               href="https://github.com/JemberToJogja"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Visit the GitHub
+              Visit GitHub
               <span>↗</span>
             </a>
           </div>
@@ -545,15 +709,15 @@ const year = new Date().getFullYear();
            NEXT
       ========================================================== -->
 
-      <section class="next-section">
-        <div class="container next-grid">
+      <section class="next-section reveal-section">
+        <div class="container next-grid reveal-item">
           <div>
             <p class="section-kicker">
               WHAT'S NEXT?
             </p>
 
             <h2>
-              Meet the humans.
+              MEET THE HUMANS.
             </h2>
 
             <p>
@@ -562,7 +726,7 @@ const year = new Date().getFullYear();
           </div>
 
           <a
-            class="button button-primary"
+            class="button button-primary magnetic"
             href="/members"
           >
             Meet the people
@@ -584,7 +748,6 @@ const year = new Date().getFullYear();
 
             <p>
               Built with Astro. Hosted on GitHub Pages.
-              Still trying to figure out why it works.
             </p>
 
             <span class="mono">
@@ -630,22 +793,130 @@ const year = new Date().getFullYear();
 
       <a
         href="/play"
+        class="play-item"
         aria-label="Play"
       >
         <span>▶</span>
         Play
       </a>
     </nav>
+
+    <script>
+      const revealSections =
+        document.querySelectorAll(".reveal-section");
+
+      const observer =
+        new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: "0px 0px -8% 0px",
+          },
+        );
+
+      revealSections.forEach((section) => {
+        observer.observe(section);
+      });
+
+      const magneticElements =
+        document.querySelectorAll(".magnetic");
+
+      magneticElements.forEach((element) => {
+        element.addEventListener(
+          "pointermove",
+          (event) => {
+            if (window.innerWidth < 900) {
+              return;
+            }
+
+            const rect =
+              element.getBoundingClientRect();
+
+            const x =
+              (event.clientX -
+                rect.left -
+                rect.width / 2) *
+              0.07;
+
+            const y =
+              (event.clientY -
+                rect.top -
+                rect.height / 2) *
+              0.07;
+
+            element.style.setProperty(
+              "--mx",
+              `${x}px`,
+            );
+
+            element.style.setProperty(
+              "--my",
+              `${y}px`,
+            );
+          },
+        );
+
+        element.addEventListener(
+          "pointerleave",
+          () => {
+            element.style.setProperty(
+              "--mx",
+              "0px",
+            );
+
+            element.style.setProperty(
+              "--my",
+              "0px",
+            );
+          },
+        );
+      });
+
+      const cursorGlow =
+        document.querySelector(
+          ".cursor-glow",
+        );
+
+      if (
+        cursorGlow &&
+        window.innerWidth >= 900
+      ) {
+        window.addEventListener(
+          "pointermove",
+          (event) => {
+            cursorGlow.style.transform =
+              `translate3d(${event.clientX}px, ${event.clientY}px, 0)`;
+          },
+        );
+      }
+    </script>
   </body>
 </html>
 
 <style>
+  /* =============================================================
+     BASE
+  ============================================================= */
+
+  :global(*) {
+    box-sizing: border-box;
+  }
+
   :global(html) {
+    background: #101010;
     scroll-behavior: smooth;
   }
 
   :global(body) {
     margin: 0;
+    overflow-x: hidden;
     background: #f2f0ea;
     color: #111111;
     font-family:
@@ -658,10 +929,6 @@ const year = new Date().getFullYear();
       sans-serif;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-  }
-
-  :global(*) {
-    box-sizing: border-box;
   }
 
   :global(a) {
@@ -679,7 +946,10 @@ const year = new Date().getFullYear();
   }
 
   .container {
-    width: min(100% - 32px, 1180px);
+    width: min(
+      calc(100% - 28px),
+      1180px
+    );
     margin-inline: auto;
   }
 
@@ -692,6 +962,55 @@ const year = new Date().getFullYear();
       monospace;
   }
 
+  .section-kicker,
+  .eyebrow,
+  .hero-meta,
+  .hero-bottom,
+  .project-number,
+  .project-category,
+  .featured-category,
+  .project-repo,
+  .field-stats,
+  .final-line {
+    font-family:
+      "SFMono-Regular",
+      "Cascadia Code",
+      "Roboto Mono",
+      Consolas,
+      monospace;
+  }
+
+  .section-kicker {
+    margin: 0 0 10px;
+    color: #69665f;
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+  }
+
+  .cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    width: 22px;
+    height: 22px;
+    pointer-events: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    filter: blur(3px);
+    transform:
+      translate3d(-50px, -50px, 0);
+    opacity: 0;
+    mix-blend-mode: difference;
+  }
+
+  @media (min-width: 900px) {
+    .cursor-glow {
+      opacity: 1;
+    }
+  }
+
   /* =============================================================
      HEADER
   ============================================================= */
@@ -699,15 +1018,19 @@ const year = new Date().getFullYear();
   .site-header {
     position: sticky;
     top: 0;
-    z-index: 50;
-    background: #101010;
-    color: #f5f3ec;
-    border-bottom: 1px solid #2b2b2b;
+    z-index: 80;
+    background: rgba(16, 16, 16, 0.95);
+    color: #f2f0ea;
+    border-bottom: 1px solid #2c2c2c;
+    backdrop-filter: blur(12px);
   }
 
   .header-inner {
-    width: min(100% - 24px, 1180px);
-    min-height: 64px;
+    width: min(
+      calc(100% - 20px),
+      1180px
+    );
+    min-height: 62px;
     margin-inline: auto;
     display: flex;
     align-items: center;
@@ -728,19 +1051,29 @@ const year = new Date().getFullYear();
     flex: 0 0 34px;
     display: grid;
     place-items: center;
-    background: #f5f3ec;
+    background: #f2f0ea;
     color: #101010;
     font-size: 10px;
-    font-weight: 900;
+    font-weight: 950;
     letter-spacing: -0.03em;
+    transition:
+      transform 160ms ease,
+      background-color 160ms ease;
+  }
+
+  .brand:hover .brand-mark {
+    transform:
+      rotate(-5deg)
+      scale(1.04);
+    background: #dce5d3;
   }
 
   .brand-name {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    font-size: 12px;
-    font-weight: 800;
+    font-size: 11px;
+    font-weight: 900;
     letter-spacing: 0.11em;
   }
 
@@ -754,65 +1087,40 @@ const year = new Date().getFullYear();
     display: grid;
     place-items: center;
     border: 1px solid #454545;
-    color: #f5f3ec;
+    color: #f2f0ea;
     font-size: 17px;
   }
 
   /* =============================================================
-     GENERAL
+     BUTTON
   ============================================================= */
-
-  .eyebrow,
-  .section-kicker {
-    font-family:
-      "SFMono-Regular",
-      "Cascadia Code",
-      "Roboto Mono",
-      Consolas,
-      monospace;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
-  }
-
-  .section-kicker {
-    color: #66645e;
-    margin: 0 0 10px;
-  }
 
   .button {
     min-height: 48px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    padding: 0 18px;
+    gap: 10px;
+    padding: 0 16px;
     border: 1px solid transparent;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: -0.01em;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transform:
+      translate3d(
+        var(--mx, 0),
+        var(--my, 0),
+        0
+      );
     transition:
-      transform 140ms ease,
+      transform 160ms cubic-bezier(.2,.8,.2,1),
       background-color 140ms ease,
-      color 140ms ease;
-  }
-
-  .button:active {
-    transform: translateY(1px);
-  }
-
-  .button-primary {
-    background: #111111;
-    color: #f5f3ec;
-  }
-
-  .button-primary:hover {
-    background: #292929;
+      border-color 140ms ease;
   }
 
   .button-light {
-    background: #f5f3ec;
+    background: #f2f0ea;
     color: #111111;
   }
 
@@ -822,21 +1130,87 @@ const year = new Date().getFullYear();
 
   .button-dark {
     background: #111111;
-    color: #f5f3ec;
+    color: #f2f0ea;
   }
 
   .button-dark:hover {
     background: #292929;
   }
 
+  .button-primary {
+    background: #111111;
+    color: #f2f0ea;
+  }
+
+  .button-primary:hover {
+    background: #292929;
+  }
+
   /* =============================================================
-     PAGE HERO
+     HERO
   ============================================================= */
 
   .page-hero {
-    padding: 34px 0 52px;
+    position: relative;
+    overflow: hidden;
+    padding: 32px 0 44px;
     background: #f2f0ea;
-    border-bottom: 1px solid #cbc8c0;
+    border-bottom: 1px solid #cfcbc2;
+  }
+
+  .hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(
+        rgba(17,17,17,0.035) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(17,17,17,0.035) 1px,
+        transparent 1px
+      );
+    background-size: 28px 28px;
+    mask-image:
+      linear-gradient(
+        to bottom,
+        black,
+        transparent 90%
+      );
+  }
+
+  .hero-orbit {
+    position: absolute;
+    border: 1px solid rgba(17,17,17,0.08);
+    border-radius: 50%;
+    pointer-events: none;
+    animation:
+      orbit-float
+      9s
+      ease-in-out
+      infinite;
+  }
+
+  .hero-orbit-one {
+    width: 260px;
+    height: 260px;
+    right: -140px;
+    top: 30px;
+  }
+
+  .hero-orbit-two {
+    width: 150px;
+    height: 150px;
+    right: -85px;
+    top: 80px;
+    animation-delay: -3s;
+  }
+
+  .page-hero .container {
+    position: relative;
+    z-index: 2;
   }
 
   .hero-meta {
@@ -844,59 +1218,147 @@ const year = new Date().getFullYear();
     align-items: center;
     justify-content: space-between;
     gap: 18px;
-    margin-bottom: 58px;
+    margin-bottom: 54px;
   }
 
   .back-link {
-    font-size: 11px;
-    font-weight: 800;
+    font-size: 10px;
+    font-weight: 900;
   }
 
   .hero-meta .mono {
-    color: #77736c;
-    font-size: 9px;
+    color: #7e7a72;
+    font-size: 8px;
     letter-spacing: 0.08em;
   }
 
   .hero-main {
     display: grid;
-    gap: 28px;
+    gap: 30px;
   }
 
-  .hero-main .eyebrow {
-    margin: 0 0 20px;
-    color: #69665f;
+  .hero-main-copy {
+    max-width: 900px;
   }
 
-  .hero-main h1 {
-    max-width: 850px;
-    margin: 0;
-    font-size: clamp(54px, 15vw, 120px);
-    line-height: 0.88;
-    letter-spacing: -0.07em;
+  .eyebrow {
+    margin: 0 0 17px;
+    color: #6c6961;
+    font-size: 8px;
     font-weight: 900;
+    letter-spacing: 0.12em;
   }
 
-  .hero-main h1 span {
+  .hero-title {
+    margin: 0;
+    overflow: hidden;
+    font-size: clamp(
+      56px,
+      16vw,
+      128px
+    );
+    font-weight: 950;
+    line-height: 0.82;
+    letter-spacing: -0.085em;
+  }
+
+  .hero-title span {
     display: block;
-    color: #6c6962;
+    opacity: 0;
+    transform:
+      translateY(100%)
+      rotate(3deg);
+    animation:
+      title-in
+      800ms
+      cubic-bezier(.16,1,.3,1)
+      forwards;
   }
 
-  .hero-description {
-    max-width: 570px;
+  .hero-title span:last-child {
+    color: #77736c;
+    animation-delay: 100ms;
   }
 
-  .hero-description p {
-    margin: 0 0 8px;
-    color: #595650;
-    font-size: 14px;
-    line-height: 1.55;
+  .hero-copy {
+    max-width: 560px;
+    margin: 21px 0 0;
+    color: #5f5b54;
+    font-size: 13px;
+    line-height: 1.7;
+    opacity: 0;
+    transform: translateY(15px);
+    animation:
+      fade-up
+      700ms
+      280ms
+      cubic-bezier(.16,1,.3,1)
+      forwards;
   }
 
-  .hero-description strong {
-    font-size: 17px;
-    line-height: 1.35;
-    letter-spacing: -0.02em;
+  .hero-status {
+    width: 145px;
+    justify-self: end;
+    padding: 14px;
+    display: grid;
+    gap: 5px;
+    background: #dedbd3;
+    border: 1px solid #c2beb5;
+    font-family:
+      "SFMono-Regular",
+      "Cascadia Code",
+      "Roboto Mono",
+      Consolas,
+      monospace;
+    transform:
+      rotate(-3deg);
+    opacity: 0;
+    animation:
+      status-in
+      800ms
+      420ms
+      cubic-bezier(.16,1,.3,1)
+      forwards;
+  }
+
+  .hero-status span,
+  .hero-status small {
+    color: #77736b;
+    font-size: 6px;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+  }
+
+  .hero-status strong {
+    font-size: 56px;
+    line-height: 0.8;
+    letter-spacing: -0.09em;
+  }
+
+  .hero-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    margin-top: 30px;
+    padding-top: 13px;
+    border-top: 1px solid #cfcbc2;
+    color: #7b776f;
+    font-size: 7px;
+    font-weight: 900;
+    letter-spacing: 0.09em;
+    opacity: 0;
+    animation:
+      fade-up
+      700ms
+      520ms
+      cubic-bezier(.16,1,.3,1)
+      forwards;
+  }
+
+  .hero-bottom span + span::before {
+    content: "/";
+    margin-right: 14px;
+    color: #aaa69d;
   }
 
   /* =============================================================
@@ -914,13 +1376,27 @@ const year = new Date().getFullYear();
   }
 
   .stat {
-    min-height: 122px;
+    min-height: 118px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 7px;
-    padding: 15px 12px;
+    gap: 5px;
+    padding: 13px 10px;
     border-right: 1px solid #303030;
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 650ms
+      cubic-bezier(.16,1,.3,1),
+      transform 650ms
+      cubic-bezier(.16,1,.3,1);
+    transition-delay:
+      var(--delay, 0ms);
+  }
+
+  .is-visible .stat {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .stat:last-child {
@@ -928,34 +1404,46 @@ const year = new Date().getFullYear();
   }
 
   .stat strong {
-    font-size: clamp(30px, 8vw, 54px);
-    line-height: 0.9;
-    letter-spacing: -0.06em;
+    font-size: clamp(
+      31px,
+      8vw,
+      54px
+    );
+    font-weight: 950;
+    line-height: 0.85;
+    letter-spacing: -0.07em;
   }
 
   .stat span {
-    color: #95928a;
-    font-family:
-      "SFMono-Regular",
-      "Cascadia Code",
-      "Roboto Mono",
-      Consolas,
-      monospace;
-    font-size: 7px;
-    font-weight: 700;
-    line-height: 1.3;
+    color: #949089;
+    font-size: 6px;
+    font-weight: 800;
     letter-spacing: 0.08em;
   }
 
   /* =============================================================
-     SECTION HELPERS
+     SHARED SECTIONS
   ============================================================= */
+
+  .featured-section,
+  .all-projects-section,
+  .game-crossover,
+  .philosophy-section,
+  .github-section,
+  .next-section {
+    position: relative;
+  }
+
+  .featured-section {
+    padding: 56px 0;
+    background: #f2f0ea;
+  }
 
   .section-label {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
+    gap: 18px;
     margin-bottom: 16px;
   }
 
@@ -964,73 +1452,65 @@ const year = new Date().getFullYear();
   }
 
   .section-label .mono {
-    color: #86827a;
-    font-size: 9px;
+    color: #827e76;
+    font-size: 8px;
   }
 
   /* =============================================================
-     FEATURED
+     FEATURED PROJECT
   ============================================================= */
 
-  .featured-section {
-    padding: 58px 0;
-    background: #f2f0ea;
-  }
-
   .featured-project {
-    padding: 20px;
+    overflow: hidden;
+    padding: 19px;
     background: #111111;
     color: #f5f3ec;
+    opacity: 0;
+    transform: translateY(25px);
+    transition:
+      opacity 750ms cubic-bezier(.16,1,.3,1),
+      transform 750ms cubic-bezier(.16,1,.3,1);
+    transition-delay:
+      var(--delay, 0ms);
+  }
+
+  .is-visible .featured-project {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .featured-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 18px;
+    gap: 15px;
   }
 
-  .featured-top > div {
+  .featured-top-left {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 9px;
     min-width: 0;
   }
 
   .project-number,
   .featured-category {
-    font-family:
-      "SFMono-Regular",
-      "Cascadia Code",
-      "Roboto Mono",
-      Consolas,
-      monospace;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.09em;
   }
 
   .project-number {
-    color: #88857d;
-  }
-
-  .featured-category {
-    color: #f5f3ec;
+    color: #8a877f;
   }
 
   .status-pill {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    color: #c5d4c0;
-    font-family:
-      "SFMono-Regular",
-      "Cascadia Code",
-      "Roboto Mono",
-      Consolas,
-      monospace;
-    font-size: 8px;
-    font-weight: 700;
+    color: #c8d7c2;
+    font-size: 7px;
+    font-weight: 800;
     letter-spacing: 0.09em;
     white-space: nowrap;
   }
@@ -1038,63 +1518,195 @@ const year = new Date().getFullYear();
   .status-pill > span {
     width: 6px;
     height: 6px;
-    background: #6fa16f;
+    flex: 0 0 6px;
+    background: #72a46e;
     border-radius: 50%;
+    box-shadow:
+      0 0 0 3px rgba(114,164,110,0.08);
   }
 
-  .featured-mark {
-    width: 76px;
-    height: 76px;
+  .featured-visual {
+    position: relative;
+    min-height: 270px;
+    margin-top: 18px;
+    overflow: hidden;
+    background: #202020;
+    border: 1px solid #333333;
+  }
+
+  .visual-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(
+        rgba(255,255,255,0.045) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(255,255,255,0.045) 1px,
+        transparent 1px
+      );
+    background-size: 25px 25px;
+    animation:
+      visual-grid-move
+      9s
+      linear
+      infinite;
+  }
+
+  .visual-crosshair {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #565656;
+  }
+
+  .visual-crosshair::before,
+  .visual-crosshair::after {
+    content: "";
+    position: absolute;
+    background: #565656;
+  }
+
+  .visual-crosshair::before {
+    left: -6px;
+    right: -6px;
+    top: 50%;
+    height: 1px;
+    transform:
+      translateY(-50%);
+  }
+
+  .visual-crosshair::after {
+    top: -6px;
+    bottom: -6px;
+    left: 50%;
+    width: 1px;
+    transform:
+      translateX(-50%);
+  }
+
+  .visual-crosshair-one {
+    top: 22px;
+    left: 22px;
+  }
+
+  .visual-crosshair-two {
+    right: 22px;
+    bottom: 22px;
+  }
+
+  .visual-center {
+    position: absolute;
+    inset: 0;
     display: grid;
     place-items: center;
-    margin: 30px 0 28px;
+    align-content: center;
+    gap: 12px;
+  }
+
+  .visual-mark {
+    width: 92px;
+    height: 92px;
+    display: grid;
+    place-items: center;
     background: #f5f3ec;
     color: #111111;
-    font-size: 22px;
-    font-weight: 900;
+    font-size: 25px;
+    font-weight: 950;
     letter-spacing: -0.06em;
+    box-shadow:
+      0 0 0 1px #f5f3ec,
+      0 0 0 14px rgba(245,243,236,0.035);
+    animation:
+      mark-float
+      3.2s
+      ease-in-out
+      infinite;
+  }
+
+  .visual-label {
+    color: #87837c;
+    font-size: 7px;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+  }
+
+  .visual-data {
+    position: absolute;
+    display: grid;
+    gap: 3px;
+    font-size: 6px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+  }
+
+  .visual-data span {
+    color: #77736b;
+  }
+
+  .visual-data strong {
+    color: #dcd8d1;
+    font-size: 8px;
+  }
+
+  .visual-data-top {
+    top: 20px;
+    right: 20px;
+  }
+
+  .visual-data-bottom {
+    left: 20px;
+    bottom: 20px;
   }
 
   .featured-body {
     display: grid;
     gap: 24px;
+    margin-top: 28px;
   }
 
   .featured-title .mono {
     display: block;
     margin-bottom: 8px;
-    color: #8f8c84;
-    font-size: 9px;
-    letter-spacing: 0.05em;
+    color: #87837c;
+    font-size: 8px;
+    letter-spacing: 0.04em;
   }
 
   .featured-title h2 {
     margin: 0;
-    font-size: clamp(42px, 11vw, 88px);
-    line-height: 0.9;
-    letter-spacing: -0.07em;
+    font-size: clamp(
+      43px,
+      11vw,
+      90px
+    );
+    font-weight: 950;
+    line-height: 0.86;
+    letter-spacing: -0.075em;
   }
 
   .large-copy {
     max-width: 640px;
     margin: 0;
-    color: #f0eee7;
-    font-size: 16px;
-    line-height: 1.55;
+    color: #efede6;
+    font-size: 15px;
+    line-height: 1.6;
   }
 
   .small-copy {
     max-width: 650px;
-    margin: 17px 0 0;
-    color: #a8a59d;
-    font-size: 13px;
-    line-height: 1.65;
+    margin: 16px 0 0;
+    color: #a09c95;
+    font-size: 12px;
+    line-height: 1.7;
   }
 
   .featured-bottom {
     display: grid;
     gap: 20px;
-    margin-top: 28px;
+    margin-top: 26px;
     padding-top: 20px;
     border-top: 1px solid #343434;
   }
@@ -1102,16 +1714,16 @@ const year = new Date().getFullYear();
   .technology-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 7px;
+    gap: 6px;
   }
 
   .technology-list span {
-    padding: 7px 9px;
-    border: 1px solid #aaa69c;
-    background: #f5f3ec;
+    padding: 6px 8px;
+    border: 1px solid #aaa69d;
+    background: #f2f0ea;
     color: #111111;
-    font-size: 10px;
-    font-weight: 700;
+    font-size: 8px;
+    font-weight: 800;
   }
 
   .featured-project .technology-list span {
@@ -1125,39 +1737,76 @@ const year = new Date().getFullYear();
   ============================================================= */
 
   .all-projects-section {
-    padding: 58px 0;
-    background: #dedbd3;
+    padding: 56px 0;
+    background: #ddd9d1;
   }
 
   .section-heading {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    margin-bottom: 28px;
+    gap: 15px;
+    margin-bottom: 26px;
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+      opacity 700ms
+      cubic-bezier(.16,1,.3,1),
+      transform 700ms
+      cubic-bezier(.16,1,.3,1);
+  }
+
+  .is-visible .section-heading {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .section-heading h2 {
     margin: 0;
-    font-size: clamp(42px, 11vw, 78px);
-    line-height: 0.9;
-    letter-spacing: -0.06em;
+    font-size: clamp(
+      43px,
+      11vw,
+      80px
+    );
+    font-weight: 950;
+    line-height: 0.86;
+    letter-spacing: -0.075em;
   }
 
   .section-heading > p {
     margin: 0;
-    color: #65625c;
-    font-size: 13px;
-    line-height: 1.55;
+    color: #67645d;
+    font-size: 12px;
+    line-height: 1.6;
   }
 
   .projects-list {
     display: grid;
-    gap: 14px;
+    gap: 12px;
   }
 
   .project-card {
-    padding: 20px;
-    border: 1px solid #bab6ad;
+    position: relative;
+    overflow: hidden;
+    min-width: 0;
+    padding: 19px;
+    border: 1px solid #bbb7ae;
+    opacity: 0;
+    transform:
+      translateY(30px);
+    transition:
+      opacity 700ms
+      cubic-bezier(.16,1,.3,1),
+      transform 700ms
+      cubic-bezier(.16,1,.3,1),
+      background-color 160ms ease;
+    transition-delay:
+      var(--delay, 0ms);
+  }
+
+  .is-visible .project-card {
+    opacity: 1;
+    transform:
+      translateY(0);
   }
 
   .project-dark {
@@ -1176,6 +1825,11 @@ const year = new Date().getFullYear();
     color: #111111;
   }
 
+  .project-card:hover {
+    transform:
+      translateY(-3px);
+  }
+
   .project-top {
     display: flex;
     align-items: flex-start;
@@ -1183,36 +1837,90 @@ const year = new Date().getFullYear();
     gap: 14px;
   }
 
-  .project-top > div {
+  .project-top-left {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
+    flex-wrap: wrap;
     gap: 9px;
+    min-width: 0;
   }
 
   .project-category {
-    font-family:
-      "SFMono-Regular",
-      "Cascadia Code",
-      "Roboto Mono",
-      Consolas,
-      monospace;
-    font-size: 8px;
-    font-weight: 700;
+    font-size: 7px;
+    font-weight: 800;
     letter-spacing: 0.08em;
   }
 
-  .project-mark {
-    width: 68px;
-    height: 68px;
+  .project-visual {
+    position: relative;
+    min-height: 175px;
+    margin: 22px 0;
     display: grid;
     place-items: center;
-    margin: 28px 0 22px;
+    overflow: hidden;
+    background: #d7d3ca;
+    border: 1px solid #c0bcb2;
+  }
+
+  .project-dark .project-visual {
+    background: #202020;
+    border-color: #333333;
+  }
+
+  .project-visual-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(
+        rgba(17,17,17,0.07) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(17,17,17,0.07) 1px,
+        transparent 1px
+      );
+    background-size: 22px 22px;
+    animation:
+      project-grid-move
+      8s
+      linear
+      infinite;
+  }
+
+  .project-dark .project-visual-grid {
+    background-image:
+      linear-gradient(
+        rgba(255,255,255,0.045) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(255,255,255,0.045) 1px,
+        transparent 1px
+      );
+  }
+
+  .project-mark {
+    position: relative;
+    z-index: 2;
+    width: 84px;
+    height: 84px;
+    display: grid;
+    place-items: center;
     background: #111111;
     color: #f5f3ec;
-    font-size: 20px;
-    font-weight: 900;
+    font-size: 22px;
+    font-weight: 950;
     letter-spacing: -0.05em;
+    transition:
+      transform 180ms ease;
+  }
+
+  .project-card:hover .project-mark {
+    transform:
+      rotate(3deg)
+      scale(1.04);
   }
 
   .project-dark .project-mark {
@@ -1220,53 +1928,87 @@ const year = new Date().getFullYear();
     color: #111111;
   }
 
+  .project-visual-label {
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+    color: #6f6b64;
+    font-family:
+      "SFMono-Regular",
+      "Cascadia Code",
+      "Roboto Mono",
+      Consolas,
+      monospace;
+    font-size: 6px;
+    font-weight: 900;
+    letter-spacing: 0.09em;
+  }
+
+  .project-dark .project-visual-label {
+    color: #77736b;
+  }
+
+  .project-content {
+    min-width: 0;
+  }
+
   .project-repo {
     margin: 0 0 7px;
     color: #77736c;
     font-size: 8px;
     letter-spacing: 0.04em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .project-dark .project-repo {
-    color: #858179;
+    color: #88857e;
   }
 
   .project-content h3 {
     margin: 0;
-    font-size: clamp(30px, 8vw, 54px);
-    line-height: 0.93;
-    letter-spacing: -0.06em;
+    font-size: clamp(
+      30px,
+      8vw,
+      55px
+    );
+    font-weight: 950;
+    line-height: 0.89;
+    letter-spacing: -0.07em;
   }
 
   .project-description {
-    max-width: 620px;
-    margin: 16px 0 0;
-    font-size: 14px;
-    line-height: 1.6;
+    margin: 15px 0 0;
+    font-size: 13px;
+    line-height: 1.62;
   }
 
   .project-story {
-    max-width: 620px;
-    margin: 14px 0 0;
-    color: #67645d;
-    font-size: 13px;
-    line-height: 1.65;
+    margin: 13px 0 0;
+    color: #68645d;
+    font-size: 12px;
+    line-height: 1.68;
   }
 
   .project-dark .project-story {
-    color: #aaa79f;
+    color: #aaa69f;
   }
 
   .project-content .technology-list {
-    margin-top: 19px;
+    margin-top: 18px;
+  }
+
+  .project-content .technology-list span {
+    font-size: 7px;
   }
 
   .project-footer {
     display: grid;
-    gap: 20px;
-    margin-top: 28px;
-    padding-top: 20px;
-    border-top: 1px solid #c7c3ba;
+    gap: 18px;
+    margin-top: 25px;
+    padding-top: 18px;
+    border-top: 1px solid #c6c2b9;
   }
 
   .project-dark .project-footer {
@@ -1279,33 +2021,219 @@ const year = new Date().getFullYear();
   }
 
   .capability-list span {
-    color: #5e5b54;
+    color: #65615a;
     font-family:
       "SFMono-Regular",
       "Cascadia Code",
       "Roboto Mono",
       Consolas,
       monospace;
-    font-size: 8px;
-    font-weight: 700;
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    letter-spacing: 0.07em;
   }
 
   .project-dark .capability-list span {
-    color: #aaa79f;
+    color: #a8a49d;
   }
 
   .project-link {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-size: 12px;
-    font-weight: 800;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.05em;
   }
 
   .project-link span {
-    font-size: 16px;
+    font-size: 15px;
+    transition:
+      transform 140ms ease;
+  }
+
+  .project-link:hover span {
+    transform:
+      translate(3px, -3px);
+  }
+
+  /* =============================================================
+     GAME CROSSOVER
+  ============================================================= */
+
+  .game-crossover {
+    overflow: hidden;
+    padding: 16px 0;
+    background: #101010;
+    color: #f5f3ec;
+  }
+
+  .game-crossover-grid {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.23;
+    background-image:
+      linear-gradient(
+        rgba(255,255,255,0.035) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(255,255,255,0.035) 1px,
+        transparent 1px
+      );
+    background-size: 25px 25px;
+    animation:
+      project-grid-move
+      10s
+      linear
+      infinite;
+  }
+
+  .game-crossover-card {
+    position: relative;
+    z-index: 2;
+    padding: 25px 20px;
+    background: #1d1d1d;
+    border: 1px solid #373737;
+    opacity: 0;
+    transform:
+      translateY(28px);
+    transition:
+      opacity 750ms
+      cubic-bezier(.16,1,.3,1),
+      transform 750ms
+      cubic-bezier(.16,1,.3,1);
+  }
+
+  .is-visible .game-crossover-card {
+    opacity: 1;
+    transform:
+      translateY(0);
+  }
+
+  .game-crossover-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+
+  .game-crossover-top .section-kicker {
+    color: #7f7b74;
+    margin: 0;
+  }
+
+  .game-crossover-top .mono {
+    color: #77736b;
+    font-size: 7px;
+    letter-spacing: 0.09em;
+  }
+
+  .game-crossover-main {
+    display: grid;
+    gap: 30px;
+    margin-top: 30px;
+  }
+
+  .game-crossover-main h2 {
+    margin: 0;
+    font-size: clamp(
+      44px,
+      12vw,
+      88px
+    );
+    font-weight: 950;
+    line-height: 0.83;
+    letter-spacing: -0.08em;
+  }
+
+  .game-crossover-main h2 span {
+    display: block;
+    color: #77736b;
+  }
+
+  .game-crossover-main p {
+    max-width: 450px;
+    margin: 15px 0 0;
+    color: #aaa69f;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .game-mini-list {
+    display: grid;
+    border-top: 1px solid #343434;
+  }
+
+  .game-mini {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 0;
+    border-bottom: 1px solid #2e2e2e;
+    color: #e6e3dc;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    opacity: 0;
+    transform: translateX(16px);
+  }
+
+  .is-visible .game-mini {
+    opacity: 1;
+    transform: translateX(0);
+    transition:
+      opacity 550ms cubic-bezier(.16,1,.3,1),
+      transform 550ms cubic-bezier(.16,1,.3,1);
+    transition-delay:
+      var(--delay, 0ms);
+  }
+
+  .game-mini b {
+    color: #6d6962;
+    font-size: 7px;
+  }
+
+  .game-crossover-button {
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 20px;
+    padding: 0 15px;
+    background: #f5f3ec;
+    color: #111111;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.09em;
+    transform:
+      translate3d(
+        var(--mx, 0),
+        var(--my, 0),
+        0
+      );
+    transition:
+      transform 160ms cubic-bezier(.2,.8,.2,1),
+      background-color 140ms ease;
+  }
+
+  .game-crossover-button:hover {
+    background: #ffffff;
+  }
+
+  .game-crossover-button strong {
+    font-size: 17px;
+    transition:
+      transform 140ms ease;
+  }
+
+  .game-crossover-button:hover strong {
+    transform:
+      translateX(4px);
   }
 
   /* =============================================================
@@ -1324,44 +2252,69 @@ const year = new Date().getFullYear();
   }
 
   .philosophy-grid .section-kicker {
-    color: #99968e;
+    color: #99958d;
   }
 
   .philosophy-grid h2 {
-    max-width: 750px;
+    max-width: 760px;
     margin: 0;
-    font-size: clamp(38px, 10vw, 82px);
-    line-height: 0.91;
-    letter-spacing: -0.07em;
+    font-size: clamp(
+      40px,
+      10vw,
+      84px
+    );
+    font-weight: 950;
+    line-height: 0.89;
+    letter-spacing: -0.075em;
   }
 
   .philosophy-list {
-    border-top: 1px solid #353535;
+    border-top: 1px solid #343434;
   }
 
   .philosophy-list article {
     display: grid;
-    grid-template-columns: 32px 1fr;
+    grid-template-columns: 30px 1fr;
     gap: 14px;
-    padding: 19px 0;
-    border-bottom: 1px solid #353535;
+    padding: 17px 0;
+    border-bottom: 1px solid #343434;
+    opacity: 0;
+    transform:
+      translateY(15px);
+  }
+
+  .is-visible .philosophy-list article {
+    opacity: 1;
+    transform:
+      translateY(0);
+    transition:
+      opacity 550ms cubic-bezier(.16,1,.3,1),
+      transform 550ms cubic-bezier(.16,1,.3,1);
+  }
+
+  .philosophy-list article:nth-child(2) {
+    transition-delay: 100ms;
+  }
+
+  .philosophy-list article:nth-child(3) {
+    transition-delay: 200ms;
   }
 
   .philosophy-list article > span {
-    color: #77746d;
-    font-size: 9px;
+    color: #77736b;
+    font-size: 8px;
   }
 
   .philosophy-list h3 {
     margin: 0;
-    font-size: 17px;
-    letter-spacing: -0.02em;
+    font-size: 15px;
+    letter-spacing: 0.01em;
   }
 
   .philosophy-list p {
     margin: 7px 0 0;
-    color: #aaa79f;
-    font-size: 12px;
+    color: #aaa69f;
+    font-size: 11px;
     line-height: 1.6;
   }
 
@@ -1371,33 +2324,52 @@ const year = new Date().getFullYear();
 
   .github-section {
     padding: 58px 0;
-    background: #ebe8e0;
+    background: #e9e6de;
   }
 
   .github-card {
+    display: grid;
+    gap: 24px;
     padding: 22px;
     background: #f5f3ec;
     border: 1px solid #bab6ad;
+    opacity: 0;
+    transform:
+      translateY(25px);
+    transition:
+      opacity 700ms cubic-bezier(.16,1,.3,1),
+      transform 700ms cubic-bezier(.16,1,.3,1);
+  }
+
+  .is-visible .github-card {
+    opacity: 1;
+    transform:
+      translateY(0);
   }
 
   .github-card h2 {
     max-width: 700px;
     margin: 0;
-    font-size: clamp(38px, 10vw, 80px);
-    line-height: 0.9;
-    letter-spacing: -0.07em;
+    font-size: clamp(
+      39px,
+      10vw,
+      82px
+    );
+    font-weight: 950;
+    line-height: 0.88;
+    letter-spacing: -0.075em;
   }
 
   .github-card h2 span {
     display: block;
-    color: #6d6a63;
+    color: #6d6962;
   }
 
   .github-card p:not(.section-kicker) {
-    max-width: 600px;
-    margin: 18px 0 22px;
+    max-width: 580px;
+    margin: 17px 0 0;
     color: #5d5a54;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.6;
   }
 
@@ -1406,27 +2378,44 @@ const year = new Date().getFullYear();
   ============================================================= */
 
   .next-section {
-    padding: 58px 0 70px;
+    padding: 58px 0 72px;
     background: #f2f0ea;
     border-top: 1px solid #cbc8c0;
   }
 
   .next-grid {
     display: grid;
-    gap: 28px;
+    gap: 25px;
+    opacity: 0;
+    transform:
+      translateY(25px);
+    transition:
+      opacity 700ms cubic-bezier(.16,1,.3,1),
+      transform 700ms cubic-bezier(.16,1,.3,1);
+  }
+
+  .is-visible .next-grid {
+    opacity: 1;
+    transform:
+      translateY(0);
   }
 
   .next-grid h2 {
     margin: 0;
-    font-size: clamp(40px, 10vw, 82px);
-    line-height: 0.9;
-    letter-spacing: -0.07em;
+    font-size: clamp(
+      42px,
+      10vw,
+      82px
+    );
+    font-weight: 950;
+    line-height: 0.88;
+    letter-spacing: -0.075em;
   }
 
   .next-grid p:not(.section-kicker) {
-    margin: 14px 0 0;
-    color: #68655e;
-    font-size: 14px;
+    margin: 13px 0 0;
+    color: #6a665f;
+    font-size: 13px;
   }
 
   /* =============================================================
@@ -1434,27 +2423,28 @@ const year = new Date().getFullYear();
   ============================================================= */
 
   .final-section {
-    padding: 24px 0 100px;
+    padding: 24px 0 94px;
     background: #101010;
     color: #f5f3ec;
   }
 
   .final-line {
     display: grid;
-    gap: 14px;
+    gap: 13px;
   }
 
   .final-line .mono {
-    color: #89867f;
-    font-size: 9px;
-    letter-spacing: 0.09em;
+    color: #88847c;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
   }
 
   .final-line p {
     max-width: 580px;
     margin: 0;
-    color: #aaa79f;
-    font-size: 12px;
+    color: #aaa69f;
+    font-size: 11px;
     line-height: 1.6;
   }
 
@@ -1468,79 +2458,107 @@ const year = new Date().getFullYear();
 
   .mobile-nav {
     position: fixed;
-    left: 0;
     right: 0;
     bottom: 0;
-    z-index: 60;
+    left: 0;
+    z-index: 100;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    padding-bottom: env(safe-area-inset-bottom);
-    background: #101010;
-    border-top: 1px solid #333333;
+    padding-bottom: env(
+      safe-area-inset-bottom
+    );
+    background: rgba(16,16,16,0.97);
+    border-top: 1px solid #2c2c2c;
+    backdrop-filter: blur(12px);
   }
 
   .mobile-nav a {
-    min-height: 62px;
+    min-height: 61px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 4px;
-    color: #89867f;
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 0.03em;
+    color: #79756e;
+    font-size: 7px;
+    font-weight: 900;
   }
 
   .mobile-nav a span {
     color: #f5f3ec;
     font-size: 13px;
     line-height: 1;
+    transition:
+      transform 140ms ease;
+  }
+
+  .mobile-nav a:hover span,
+  .mobile-nav a.active span {
+    transform:
+      translateY(-2px);
   }
 
   .mobile-nav a.active {
     color: #ffffff;
   }
 
+  .mobile-nav .play-item {
+    color: #f5f3ec;
+    background: #1a1a1a;
+  }
+
+  .mobile-nav .play-item span {
+    color: #dce5d3;
+  }
+
   /* =============================================================
-     TABLET
+     RESPONSIVE
   ============================================================= */
 
   @media (min-width: 700px) {
     .container {
-      width: min(100% - 48px, 1180px);
+      width: min(
+        calc(100% - 48px),
+        1180px
+      );
     }
 
     .page-hero {
-      padding: 44px 0 80px;
+      padding: 44px 0 74px;
     }
 
     .hero-main {
-      grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.75fr);
+      grid-template-columns:
+        minmax(0, 1fr)
+        180px;
       align-items: end;
-      gap: 50px;
-    }
-
-    .stats .container {
-      width: min(100% - 48px, 1180px);
+      gap: 55px;
     }
 
     .featured-section,
     .all-projects-section,
+    .game-crossover,
     .philosophy-section,
     .github-section,
     .next-section {
-      padding: 80px 0;
+      padding-top: 78px;
+      padding-bottom: 78px;
     }
 
     .featured-project {
-      padding: 32px;
+      padding: 30px;
+    }
+
+    .featured-visual {
+      min-height: 350px;
     }
 
     .featured-body {
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 48px;
+      grid-template-columns:
+        minmax(0, 1.05fr)
+        minmax(280px, 0.95fr);
       align-items: end;
+      gap: 50px;
     }
 
     .featured-bottom {
@@ -1550,47 +2568,68 @@ const year = new Date().getFullYear();
       gap: 30px;
     }
 
-    .section-heading {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: end;
+    .projects-list {
+      grid-template-columns: repeat(
+        2,
+        minmax(0, 1fr)
+      );
     }
 
-    .projects-list {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+    .project-card {
+      padding: 24px;
+    }
+
+    .game-crossover-card {
+      padding: 34px;
+    }
+
+    .game-crossover-main {
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(300px, 0.7fr);
+      align-items: end;
+      gap: 60px;
     }
 
     .philosophy-grid {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns:
+        1fr
+        1fr;
       gap: 60px;
     }
 
     .github-card {
-      padding: 36px;
-      display: flex;
+      grid-template-columns:
+        minmax(0, 1fr)
+        auto;
       align-items: end;
-      justify-content: space-between;
-      gap: 45px;
-    }
-
-    .github-card p:not(.section-kicker) {
-      margin-bottom: 0;
+      gap: 40px;
+      padding: 36px;
     }
 
     .next-grid {
-      grid-template-columns: 1fr auto;
+      grid-template-columns:
+        1fr
+        auto;
       align-items: end;
       gap: 50px;
     }
 
+    .next-section {
+      padding-bottom: 90px;
+    }
+
     .final-section {
-      padding-bottom: 48px;
+      padding-bottom: 44px;
     }
 
     .final-line {
-      grid-template-columns: auto 1fr auto;
+      grid-template-columns:
+        auto
+        1fr
+        auto;
       align-items: end;
-      gap: 24px;
+      gap: 25px;
     }
 
     .mobile-nav {
@@ -1598,13 +2637,9 @@ const year = new Date().getFullYear();
     }
   }
 
-  /* =============================================================
-     DESKTOP
-  ============================================================= */
-
   @media (min-width: 1000px) {
     .header-inner {
-      min-height: 72px;
+      min-height: 70px;
     }
 
     .brand-mark {
@@ -1624,14 +2659,15 @@ const year = new Date().getFullYear();
     .desktop-nav {
       display: flex;
       align-items: center;
-      gap: 26px;
+      gap: 27px;
     }
 
     .desktop-nav a {
-      color: #bebbb3;
-      font-size: 11px;
-      font-weight: 750;
-      transition: color 140ms ease;
+      color: #97938b;
+      font-size: 10px;
+      font-weight: 850;
+      transition:
+        color 140ms ease;
     }
 
     .desktop-nav a:hover,
@@ -1639,12 +2675,28 @@ const year = new Date().getFullYear();
       color: #ffffff;
     }
 
-    .hero-main h1 {
-      font-size: clamp(76px, 9vw, 132px);
+    .desktop-nav .nav-play {
+      padding: 8px 11px;
+      border: 1px solid #454545;
+      color: #f5f3ec;
+    }
+
+    .hero-title {
+      font-size: clamp(
+        82px,
+        9vw,
+        140px
+      );
+    }
+
+    .hero-main {
+      grid-template-columns:
+        minmax(0, 1fr)
+        200px;
     }
 
     .featured-project {
-      min-height: 610px;
+      min-height: 640px;
       display: flex;
       flex-direction: column;
     }
@@ -1653,12 +2705,8 @@ const year = new Date().getFullYear();
       flex: 1;
     }
 
-    .projects-list {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
     .project-card {
-      min-height: 650px;
+      min-height: 680px;
       display: flex;
       flex-direction: column;
     }
@@ -1672,14 +2720,116 @@ const year = new Date().getFullYear();
     .project-footer {
       margin-top: auto;
     }
+  }
 
-    .next-section {
-      padding-bottom: 90px;
+  /* =============================================================
+     KEYFRAMES
+  ============================================================= */
+
+  @keyframes title-in {
+    from {
+      opacity: 0;
+      transform:
+        translateY(100%)
+        rotate(3deg);
+    }
+
+    to {
+      opacity: 1;
+      transform:
+        translateY(0)
+        rotate(0);
+    }
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform:
+        translateY(15px);
+    }
+
+    to {
+      opacity: 1;
+      transform:
+        translateY(0);
+    }
+  }
+
+  @keyframes status-in {
+    from {
+      opacity: 0;
+      transform:
+        translateY(18px)
+        rotate(-6deg)
+        scale(0.96);
+    }
+
+    to {
+      opacity: 1;
+      transform:
+        translateY(0)
+        rotate(-3deg)
+        scale(1);
+    }
+  }
+
+  @keyframes orbit-float {
+    0%,
+    100% {
+      transform:
+        translate3d(0,0,0)
+        rotate(0);
+    }
+
+    50% {
+      transform:
+        translate3d(10px,12px,0)
+        rotate(8deg);
+    }
+  }
+
+  @keyframes visual-grid-move {
+    from {
+      transform:
+        translateY(0);
+    }
+
+    to {
+      transform:
+        translateY(25px);
+    }
+  }
+
+  @keyframes project-grid-move {
+    from {
+      transform:
+        translateY(0);
+    }
+
+    to {
+      transform:
+        translateY(22px);
+    }
+  }
+
+  @keyframes mark-float {
+    0%,
+    100% {
+      transform:
+        translateY(0)
+        rotate(-2deg);
+    }
+
+    50% {
+      transform:
+        translateY(-8px)
+        rotate(2deg);
     }
   }
 
   /* =============================================================
-     REDUCED MOTION
+     ACCESSIBILITY
   ============================================================= */
 
   @media (prefers-reduced-motion: reduce) {
@@ -1687,9 +2837,33 @@ const year = new Date().getFullYear();
       scroll-behavior: auto;
     }
 
-    .button,
-    .desktop-nav a {
-      transition: none;
+    .hero-title span,
+    .hero-copy,
+    .hero-status,
+    .hero-bottom,
+    .hero-orbit,
+    .visual-grid,
+    .visual-mark,
+    .project-visual-grid,
+    .game-crossover-grid {
+      animation: none !important;
+    }
+
+    .reveal-item,
+    .featured-project,
+    .project-card,
+    .github-card,
+    .next-grid,
+    .philosophy-list article,
+    .stat,
+    .game-crossover-card {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+
+    .cursor-glow {
+      display: none;
     }
   }
 </style>
