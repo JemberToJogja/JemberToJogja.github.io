@@ -1,0 +1,2253 @@
+---
+const year = new Date().getFullYear();
+
+const projects = [
+  {
+    number: "01",
+    name: "LANDCAM",
+    repo: "LandCam-Multispectral-Camera",
+    description:
+      "A mobile controller for a multispectral camera. Because walking to the camera is apparently no longer acceptable.",
+    technologies: ["JAVA", "FLUTTER", "NFC", "WI-FI"],
+    status: "ACTIVE",
+    url: "https://github.com/JemberToJogja/LandCam-Multispectral-Camera",
+    mark: "LC",
+  },
+  {
+    number: "02",
+    name: "TGS CONNECTION",
+    repo: "TGS-Connection-Prototype",
+    description:
+      "A small prototype connecting GNSS hardware and phones through modern mobile communication.",
+    technologies: ["DART", "FLUTTER", "GNSS", "BLUETOOTH"],
+    status: "PROTOTYPE",
+    url: "https://github.com/JemberToJogja/TGS-Connection-Prototype",
+    mark: "TG",
+  },
+  {
+    number: "03",
+    name: "WEBGIS",
+    repo: "WebGIS",
+    description:
+      "Maps, geographic data, and a suspicious amount of zooming in and out.",
+    technologies: ["JAVASCRIPT", "GIS", "GEOJSON", "MAPPING"],
+    status: "PROJECT",
+    url: "https://github.com/JemberToJogja/WebGIS",
+    mark: "WG",
+  },
+];
+
+const domains = [
+  "GEOSPATIAL",
+  "SOFTWARE",
+  "GNSS",
+  "MOBILE",
+  "GIS",
+  "CAMERAS",
+];
+
+const gameHighlights = [
+  {
+    number: "01",
+    title: "KUNTILANAK FLY",
+    type: "ARCADE",
+  },
+  {
+    number: "04",
+    title: "SYSTEM 2048",
+    type: "PUZZLE",
+  },
+  {
+    number: "07",
+    title: "STACK TRACE",
+    type: "MEMORY",
+  },
+  {
+    number: "08",
+    title: "PIXEL PANIC",
+    type: "REACTION",
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+
+    <meta
+      name="description"
+      content="JemberToJogja — software, geospatial technology, GNSS, mobile apps, cameras, experiments, and browser games."
+    />
+
+    <meta
+      name="theme-color"
+      content="#101010"
+    />
+
+    <meta
+      property="og:title"
+      content="JemberToJogja"
+    />
+
+    <meta
+      property="og:description"
+      content="We build things that sometimes work."
+    />
+
+    <meta
+      property="og:type"
+      content="website"
+    />
+
+    <meta
+      property="og:url"
+      content="https://jembertojogja.github.io/"
+    />
+
+    <link
+      rel="canonical"
+      href="https://jembertojogja.github.io/"
+    />
+
+    <title>
+      JemberToJogja — We build things that sometimes work.
+    </title>
+  </head>
+
+  <body>
+    <!-- =========================================================
+         HEADER
+    ========================================================== -->
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a
+          href="/"
+          class="brand"
+          aria-label="JemberToJogja home"
+        >
+          <span class="brand-mark">
+            JTJ
+          </span>
+
+          <span class="brand-name">
+            JEMBERTOJOGJA
+          </span>
+        </a>
+
+        <nav
+          class="desktop-nav"
+          aria-label="Primary navigation"
+        >
+          <a
+            href="/projects"
+          >
+            Projects
+          </a>
+
+          <a
+            href="/members"
+          >
+            People
+          </a>
+
+          <a
+            href="/play"
+          >
+            Play
+          </a>
+
+          <a
+            href="https://github.com/JemberToJogja"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub ↗
+          </a>
+        </nav>
+
+        <a
+          href="https://github.com/JemberToJogja"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mobile-github"
+          aria-label="Open JemberToJogja on GitHub"
+        >
+          ↗
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <!-- =========================================================
+           HERO
+      ========================================================== -->
+
+      <section class="hero">
+        <div class="container">
+          <div class="hero-topline">
+            <span>
+              JEMBERTOJOGJA / {year}
+            </span>
+
+            <span>
+              SOFTWARE · FIELD · EXPERIMENT
+            </span>
+          </div>
+
+          <div class="hero-grid">
+            <div class="hero-main">
+              <p class="eyebrow">
+                SMALL TEAM.
+                QUESTIONABLE IDEAS.
+              </p>
+
+              <h1>
+                We build things
+                <span>
+                  that sometimes work.
+                </span>
+              </h1>
+
+              <p class="hero-copy">
+                Software, maps, GNSS, cameras, mobile apps,
+                experiments, and whatever seemed like a
+                good idea at the time.
+              </p>
+
+              <div class="hero-actions">
+                <a
+                  href="/projects"
+                  class="button button-dark"
+                >
+                  Explore projects
+                  <span>↗</span>
+                </a>
+
+                <a
+                  href="/play"
+                  class="button button-outline"
+                >
+                  Open Game Lab
+                </a>
+              </div>
+            </div>
+
+            <div class="hero-side">
+              <div class="hero-card hero-card-dark">
+                <div class="hero-card-label">
+                  <span>
+                    CURRENT STATUS
+                  </span>
+
+                  <span class="status-live">
+                    ● LIVE
+                  </span>
+                </div>
+
+                <div class="hero-card-row">
+                  <span>
+                    PROJECTS
+                  </span>
+
+                  <strong>
+                    03
+                  </strong>
+                </div>
+
+                <div class="hero-card-row">
+                  <span>
+                    GAME LAB
+                  </span>
+
+                  <strong>
+                    08
+                  </strong>
+                </div>
+
+                <div class="hero-card-row">
+                  <span>
+                    INTERNSHIP
+                  </span>
+
+                  <strong>
+                    TECHNOGIS
+                  </strong>
+                </div>
+
+                <div class="hero-card-row last">
+                  <span>
+                    BACKEND
+                  </span>
+
+                  <strong>
+                    NOPE
+                  </strong>
+                </div>
+              </div>
+
+              <div class="hero-card hero-card-light">
+                <span class="hero-card-index">
+                  01 / 03
+                </span>
+
+                <p>
+                  Built as a static site.
+                  Designed for people who arrived
+                  from Instagram and have approximately
+                  seven seconds of patience.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-bottomline">
+            <span>
+              NO LOGIN
+            </span>
+
+            <span>
+              NO DATABASE
+            </span>
+
+            <span>
+              NO ADMIN PANEL
+            </span>
+
+            <span>
+              JUST THE WORK
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           INTRO
+      ========================================================== -->
+
+      <section class="intro-section">
+        <div class="container intro-grid">
+          <div class="section-marker">
+            <span>
+              01
+            </span>
+
+            <span>
+              WHAT WE DO
+            </span>
+          </div>
+
+          <div class="intro-content">
+            <h2>
+              Software gets more interesting
+              when it has to leave the screen.
+            </h2>
+
+            <p>
+              Our projects sit somewhere between software
+              engineering and the physical world:
+              geospatial systems, GNSS, field hardware,
+              cameras, mobile applications, and mapping.
+            </p>
+
+            <div class="domain-row">
+              {
+                domains.map(
+                  (domain) => (
+                    <span>
+                      {domain}
+                    </span>
+                  ),
+                )
+              }
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           PROJECTS
+      ========================================================== -->
+
+      <section class="projects-section">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">
+                SELECTED WORK
+              </p>
+
+              <h2>
+                Projects.
+              </h2>
+            </div>
+
+            <a
+              href="/projects"
+              class="section-link"
+            >
+              View all projects
+              <span>↗</span>
+            </a>
+          </div>
+
+          <div class="projects-stack">
+            {
+              projects.map(
+                (project) => (
+                  <article
+                    class="project-card"
+                  >
+                    <div class="project-number">
+                      {project.number}
+                    </div>
+
+                    <div class="project-visual">
+                      {project.mark}
+                    </div>
+
+                    <div class="project-body">
+                      <div class="project-meta">
+                        <span>
+                          {project.repo}
+                        </span>
+
+                        <span>
+                          {project.status}
+                        </span>
+                      </div>
+
+                      <h3>
+                        {project.name}
+                      </h3>
+
+                      <p>
+                        {project.description}
+                      </p>
+
+                      <div class="project-tech">
+                        {
+                          project.technologies.map(
+                            (technology) => (
+                              <span>
+                                {technology}
+                              </span>
+                            ),
+                          )
+                        }
+                      </div>
+
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-action"
+                      >
+                        OPEN REPOSITORY
+                        <span>↗</span>
+                      </a>
+                    </div>
+                  </article>
+                ),
+              )
+            }
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           INTERNSHIP
+      ========================================================== -->
+
+      <section class="internship-section">
+        <div class="container">
+          <div class="internship-grid">
+            <div class="internship-main">
+              <p class="section-kicker light">
+                CURRENTLY LEARNING IN THE FIELD
+              </p>
+
+              <h2>
+                Interning at
+                <span>
+                  TechnoGIS Indonesia.
+                </span>
+              </h2>
+
+              <p class="internship-copy">
+                This is the part where the projects get
+                closer to actual field problems:
+                geospatial technology, mapping,
+                survey equipment, GNSS, cameras,
+                and software connected to the physical world.
+              </p>
+
+              <a
+                href="https://www.technogis.co.id/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="company-link"
+              >
+                Visit TechnoGIS Indonesia
+                <span>↗</span>
+              </a>
+            </div>
+
+            <div class="internship-side">
+              <div class="company-mark">
+                TG
+              </div>
+
+              <div class="company-details">
+                <span>
+                  COMPANY
+                </span>
+
+                <strong>
+                  TECHNOGIS INDONESIA
+                </strong>
+              </div>
+
+              <div class="company-details">
+                <span>
+                  FIELD
+                </span>
+
+                <strong>
+                  GEOSPATIAL TECHNOLOGY
+                </strong>
+              </div>
+
+              <div class="company-details">
+                <span>
+                  INTERESTS
+                </span>
+
+                <strong>
+                  GIS · GNSS · REMOTE SENSING
+                </strong>
+              </div>
+
+              <div class="company-details last">
+                <span>
+                  WEBSITE
+                </span>
+
+                <strong>
+                  TECHNOGIS.CO.ID ↗
+                </strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           PEOPLE TEASER
+           No member information here.
+      ========================================================== -->
+
+      <section class="people-teaser">
+        <div class="container">
+          <div class="people-grid">
+            <div>
+              <p class="section-kicker">
+                THE PEOPLE
+              </p>
+
+              <h2>
+                Four humans.
+                <span>
+                  One website.
+                </span>
+              </h2>
+            </div>
+
+            <div>
+              <p class="people-copy">
+                The people behind the code,
+                documentation, testing, experiments,
+                and occasionally questionable decisions
+                have their own page.
+              </p>
+
+              <a
+                href="/members"
+                class="button button-light"
+              >
+                Meet the team
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           GAME LAB
+      ========================================================== -->
+
+      <section class="game-section">
+        <div class="container">
+          <div class="game-frame">
+            <div class="game-header">
+              <div>
+                <p class="section-kicker">
+                  THE UNNECESSARY DEPARTMENT
+                </p>
+
+                <h2>
+                  We made games.
+                  <span>
+                    Obviously.
+                  </span>
+                </h2>
+              </div>
+
+              <div class="game-count">
+                <strong>
+                  08
+                </strong>
+
+                <span>
+                  GAMES
+                </span>
+              </div>
+            </div>
+
+            <div class="game-grid">
+              {
+                gameHighlights.map(
+                  (game) => (
+                    <div class="game-item">
+                      <span>
+                        {game.number}
+                      </span>
+
+                      <div>
+                        <strong>
+                          {game.title}
+                        </strong>
+
+                        <small>
+                          {game.type}
+                        </small>
+                      </div>
+                    </div>
+                  ),
+                )
+              }
+            </div>
+
+            <div class="game-footer">
+              <p>
+                Fast. Static. Touch-friendly.
+                Mildly unnecessary.
+              </p>
+
+              <a
+                href="/play"
+                class="button button-light"
+              >
+                Enter Game Lab
+                <span>↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           PRINCIPLES
+      ========================================================== -->
+
+      <section class="principles-section">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">
+                HOW WE LIKE THIS SITE
+              </p>
+
+              <h2>
+                Keep it simple.
+              </h2>
+            </div>
+          </div>
+
+          <div class="principles-grid">
+            <article>
+              <span>
+                01
+              </span>
+
+              <h3>
+                STATIC
+              </h3>
+
+              <p>
+                Astro builds the pages ahead of time.
+                GitHub Pages serves the result.
+                That's it.
+              </p>
+            </article>
+
+            <article>
+              <span>
+                02
+              </span>
+
+              <h3>
+                FAST
+              </h3>
+
+              <p>
+                Small pages, no unnecessary runtime,
+                no loading ceremony, no dashboard
+                pretending to be a homepage.
+              </p>
+            </article>
+
+            <article>
+              <span>
+                03
+              </span>
+
+              <h3>
+                OPEN
+              </h3>
+
+              <p>
+                The work lives in public repositories.
+                The website is simply the front door.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           CTA
+      ========================================================== -->
+
+      <section class="cta-section">
+        <div class="container">
+          <div class="cta-card">
+            <div>
+              <p class="section-kicker">
+                THAT'S ENOUGH INTERNET
+              </p>
+
+              <h2>
+                Go look at the code.
+              </h2>
+
+              <p>
+                Or play a game first.
+                We are not your manager.
+              </p>
+            </div>
+
+            <div class="cta-actions">
+              <a
+                href="https://github.com/JemberToJogja"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="button button-dark"
+              >
+                GitHub
+                <span>↗</span>
+              </a>
+
+              <a
+                href="/projects"
+                class="button button-outline-dark"
+              >
+                Projects
+              </a>
+
+              <a
+                href="/play"
+                class="button button-outline-dark"
+              >
+                Play
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <span class="brand-mark">
+            JTJ
+          </span>
+
+          <div>
+            <strong>
+              JEMBERTOJOGJA
+            </strong>
+
+            <small>
+              SOFTWARE / FIELD / EXPERIMENT
+            </small>
+          </div>
+        </div>
+
+        <p>
+          Built with Astro.
+          Hosted on GitHub Pages.
+          Currently interning at TechnoGIS Indonesia.
+        </p>
+
+        <span class="footer-end">
+          {year} / OK BYE_
+        </span>
+      </div>
+    </footer>
+
+    <!-- =========================================================
+         MOBILE NAV
+    ========================================================== -->
+
+    <nav
+      class="mobile-nav"
+      aria-label="Mobile navigation"
+    >
+      <a
+        href="/"
+        class="active"
+        aria-label="Home"
+      >
+        <span>⌂</span>
+        Home
+      </a>
+
+      <a
+        href="/projects"
+        aria-label="Projects"
+      >
+        <span>＋</span>
+        Projects
+      </a>
+
+      <a
+        href="/members"
+        aria-label="People"
+      >
+        <span>●</span>
+        People
+      </a>
+
+      <a
+        href="/play"
+        aria-label="Play"
+      >
+        <span>▶</span>
+        Play
+      </a>
+    </nav>
+  </body>
+</html>
+
+<style>
+  /* =============================================================
+     BASE
+  ============================================================= */
+
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(html) {
+    background: #111111;
+    scroll-behavior: smooth;
+  }
+
+  :global(body) {
+    margin: 0;
+    background: #efede7;
+    color: #111111;
+    font-family:
+      Inter,
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  :global(a) {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  :global(button) {
+    font: inherit;
+  }
+
+  :global(::selection) {
+    background: #111111;
+    color: #efede7;
+  }
+
+  .container {
+    width: min(
+      calc(100% - 28px),
+      1180px
+    );
+    margin-inline: auto;
+  }
+
+  .section-kicker,
+  .hero-topline,
+  .hero-bottomline,
+  .section-marker,
+  .project-meta,
+  .project-tech,
+  .company-details,
+  .game-item,
+  .game-count,
+  .footer-grid,
+  .hero-card-label,
+  .hero-card-row {
+    font-family:
+      "SFMono-Regular",
+      "Cascadia Code",
+      "Roboto Mono",
+      Consolas,
+      monospace;
+  }
+
+  .section-kicker {
+    margin: 0 0 10px;
+    color: #6b6861;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+    line-height: 1.3;
+  }
+
+  .section-kicker.light {
+    color: #8c8982;
+  }
+
+  /* =============================================================
+     HEADER
+  ============================================================= */
+
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #111111;
+    color: #f2f0e9;
+    border-bottom: 1px solid #2d2d2d;
+  }
+
+  .header-inner {
+    width: min(
+      calc(100% - 20px),
+      1180px
+    );
+    min-height: 62px;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    display: grid;
+    place-items: center;
+    background: #f2f0e9;
+    color: #111111;
+    font-size: 9px;
+    font-weight: 950;
+    letter-spacing: -0.04em;
+  }
+
+  .brand-name {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 11px;
+    font-weight: 850;
+    letter-spacing: 0.11em;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-github {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border: 1px solid #444444;
+    color: #f2f0e9;
+    font-size: 16px;
+  }
+
+  /* =============================================================
+     BUTTONS
+  ============================================================= */
+
+  .button {
+    min-height: 46px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 15px;
+    border: 1px solid transparent;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition:
+      transform 120ms ease,
+      background-color 120ms ease,
+      color 120ms ease,
+      border-color 120ms ease;
+  }
+
+  .button:active {
+    transform: translateY(1px);
+  }
+
+  .button-dark {
+    background: #111111;
+    color: #f2f0e9;
+    border-color: #111111;
+  }
+
+  .button-dark:hover {
+    background: #292929;
+  }
+
+  .button-light {
+    background: #efede7;
+    color: #111111;
+    border-color: #efede7;
+  }
+
+  .button-light:hover {
+    background: #ffffff;
+  }
+
+  .button-outline {
+    background: transparent;
+    color: #111111;
+    border-color: #b8b5ad;
+  }
+
+  .button-outline:hover {
+    background: #dcd9d1;
+    border-color: #111111;
+  }
+
+  .button-outline-dark {
+    background: transparent;
+    color: #111111;
+    border-color: #111111;
+  }
+
+  .button-outline-dark:hover {
+    background: #111111;
+    color: #efede7;
+  }
+
+  /* =============================================================
+     HERO
+  ============================================================= */
+
+  .hero {
+    background: #efede7;
+    border-bottom: 1px solid #c8c5bd;
+  }
+
+  .hero-topline {
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    color: #77736b;
+    border-bottom: 1px solid #c8c5bd;
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 0.11em;
+  }
+
+  .hero-grid {
+    display: grid;
+    gap: 28px;
+    padding: 38px 0 34px;
+  }
+
+  .hero-main {
+    max-width: 820px;
+  }
+
+  .eyebrow {
+    margin: 0 0 15px;
+    color: #6d6961;
+    font-family:
+      "SFMono-Regular",
+      "Cascadia Code",
+      "Roboto Mono",
+      Consolas,
+      monospace;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+  }
+
+  .hero h1 {
+    margin: 0;
+    font-size: clamp(
+      52px,
+      15vw,
+      118px
+    );
+    font-weight: 950;
+    line-height: 0.83;
+    letter-spacing: -0.085em;
+  }
+
+  .hero h1 span {
+    display: block;
+    color: #737067;
+  }
+
+  .hero-copy {
+    max-width: 575px;
+    margin: 22px 0 0;
+    color: #5d5952;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .hero-actions {
+    display: grid;
+    gap: 8px;
+    margin-top: 24px;
+  }
+
+  .hero-side {
+    display: grid;
+    gap: 9px;
+  }
+
+  .hero-card {
+    padding: 15px;
+  }
+
+  .hero-card-dark {
+    background: #111111;
+    color: #efede7;
+  }
+
+  .hero-card-light {
+    background: #dbd8d0;
+    color: #111111;
+    border: 1px solid #c2beb5;
+  }
+
+  .hero-card-label,
+  .hero-card-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .hero-card-label {
+    padding-bottom: 10px;
+    margin-bottom: 3px;
+    border-bottom: 1px solid #343434;
+    color: #96928b;
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+  }
+
+  .status-live {
+    color: #a7bc9e;
+  }
+
+  .hero-card-row {
+    padding: 8px 0;
+    border-bottom: 1px solid #292929;
+    color: #7d7971;
+    font-size: 7px;
+    letter-spacing: 0.08em;
+  }
+
+  .hero-card-row strong {
+    color: #ebe8df;
+    font-size: 8px;
+    letter-spacing: 0.07em;
+  }
+
+  .hero-card-row.last {
+    border-bottom: 0;
+  }
+
+  .hero-card-index {
+    display: block;
+    color: #77736c;
+    font-family:
+      "SFMono-Regular",
+      "Cascadia Code",
+      "Roboto Mono",
+      Consolas,
+      monospace;
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+  }
+
+  .hero-card-light p {
+    max-width: 300px;
+    margin: 9px 0 0;
+    color: #54514a;
+    font-size: 11px;
+    line-height: 1.6;
+  }
+
+  .hero-bottomline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 11px 0 15px;
+    border-top: 1px solid #c8c5bd;
+    color: #78746c;
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+  }
+
+  .hero-bottomline span + span::before {
+    content: "/";
+    margin-right: 8px;
+    color: #afaca4;
+  }
+
+  /* =============================================================
+     INTRO
+  ============================================================= */
+
+  .intro-section {
+    background: #dad7cf;
+    border-bottom: 1px solid #c2beb5;
+  }
+
+  .intro-grid {
+    display: grid;
+    gap: 24px;
+    padding: 52px 0;
+  }
+
+  .section-marker {
+    display: flex;
+    gap: 10px;
+    color: #706c64;
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+  }
+
+  .section-marker span:first-child {
+    color: #969189;
+  }
+
+  .intro-content h2 {
+    max-width: 790px;
+    margin: 0;
+    font-size: clamp(
+      34px,
+      8vw,
+      72px
+    );
+    font-weight: 900;
+    line-height: 0.92;
+    letter-spacing: -0.07em;
+  }
+
+  .intro-content > p {
+    max-width: 630px;
+    margin: 18px 0 0;
+    color: #57534c;
+    font-size: 13px;
+    line-height: 1.75;
+  }
+
+  .domain-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 21px;
+  }
+
+  .domain-row span {
+    padding: 7px 8px;
+    background: #efede7;
+    border: 1px solid #bcb8af;
+    color: #47443e;
+    font-family:
+      "SFMono-Regular",
+      "Cascadia Code",
+      "Roboto Mono",
+      Consolas,
+      monospace;
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+  }
+
+  /* =============================================================
+     PROJECTS
+  ============================================================= */
+
+  .projects-section {
+    padding: 56px 0;
+    background: #efede7;
+  }
+
+  .section-header {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 25px;
+  }
+
+  .section-header h2 {
+    margin: 0;
+    font-size: clamp(
+      45px,
+      11vw,
+      86px
+    );
+    font-weight: 950;
+    line-height: 0.85;
+    letter-spacing: -0.075em;
+  }
+
+  .section-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    align-self: flex-start;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #111111;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .section-link span {
+    font-size: 14px;
+  }
+
+  .projects-stack {
+    display: grid;
+    gap: 10px;
+  }
+
+  .project-card {
+    display: grid;
+    grid-template-columns: 34px 74px 1fr;
+    gap: 14px;
+    padding: 14px;
+    background: #e5e2da;
+    border: 1px solid #c6c2b9;
+  }
+
+  .project-number {
+    padding-top: 3px;
+    color: #858078;
+    font-family:
+      "SFMono-Regular",
+      "Cascadia Code",
+      "Roboto Mono",
+      Consolas,
+      monospace;
+    font-size: 8px;
+    font-weight: 800;
+  }
+
+  .project-visual {
+    width: 74px;
+    height: 74px;
+    display: grid;
+    place-items: center;
+    background: #111111;
+    color: #efede7;
+    font-size: 18px;
+    font-weight: 950;
+    letter-spacing: -0.06em;
+  }
+
+  .project-body {
+    min-width: 0;
+  }
+
+  .project-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 7px;
+    color: #77736b;
+    font-size: 6px;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+  }
+
+  .project-meta span:first-child {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .project-meta span:last-child {
+    flex: 0 0 auto;
+    color: #5b6152;
+  }
+
+  .project-body h3 {
+    margin: 0;
+    font-size: clamp(
+      25px,
+      7vw,
+      48px
+    );
+    font-weight: 950;
+    line-height: 0.88;
+    letter-spacing: -0.065em;
+  }
+
+  .project-body > p {
+    max-width: 600px;
+    margin: 12px 0 0;
+    color: #5b5750;
+    font-size: 11px;
+    line-height: 1.65;
+  }
+
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 13px;
+  }
+
+  .project-tech span {
+    padding: 6px 7px;
+    background: #f1efe9;
+    border: 1px solid #bcb8af;
+    color: #55514a;
+    font-size: 6px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+  }
+
+  .project-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 15px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #111111;
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 0.07em;
+  }
+
+  .project-action span {
+    font-size: 12px;
+  }
+
+  /* =============================================================
+     INTERNSHIP
+  ============================================================= */
+
+  .internship-section {
+    background: #111111;
+    color: #efede7;
+  }
+
+  .internship-grid {
+    display: grid;
+    gap: 16px;
+    padding: 56px 0;
+  }
+
+  .internship-main {
+    padding: 20px;
+    background: #171717;
+    border: 1px solid #313131;
+  }
+
+  .internship-main h2 {
+    max-width: 720px;
+    margin: 0;
+    font-size: clamp(
+      42px,
+      11vw,
+      84px
+    );
+    font-weight: 950;
+    line-height: 0.84;
+    letter-spacing: -0.075em;
+  }
+
+  .internship-main h2 span {
+    display: block;
+    color: #77736b;
+  }
+
+  .internship-copy {
+    max-width: 610px;
+    margin: 20px 0 0;
+    color: #a39f97;
+    font-size: 12px;
+    line-height: 1.75;
+  }
+
+  .company-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 22px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #efede7;
+    color: #efede7;
+    font-family:
+      "SFMono-Regular",
+      "Cascadia Code",
+      "Roboto Mono",
+      Consolas,
+      monospace;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  .internship-side {
+    display: grid;
+    grid-template-columns: 62px 1fr;
+    border: 1px solid #313131;
+    background: #151515;
+  }
+
+  .company-mark {
+    width: 62px;
+    height: 62px;
+    display: grid;
+    place-items: center;
+    background: #dce5d3;
+    color: #172015;
+    font-size: 16px;
+    font-weight: 950;
+  }
+
+  .company-details {
+    min-width: 0;
+    padding: 11px 13px;
+    border-left: 1px solid #313131;
+    border-bottom: 1px solid #292929;
+  }
+
+  .company-details span {
+    display: block;
+    color: #69655e;
+    font-size: 6px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+  }
+
+  .company-details strong {
+    display: block;
+    margin-top: 4px;
+    color: #ddd9d1;
+    font-size: 8px;
+    line-height: 1.3;
+  }
+
+  .company-details.last {
+    border-bottom: 0;
+  }
+
+  /* =============================================================
+     PEOPLE TEASER
+  ============================================================= */
+
+  .people-teaser {
+    background: #d7d4cc;
+    border-bottom: 1px solid #c0bcb4;
+  }
+
+  .people-grid {
+    display: grid;
+    gap: 25px;
+    padding: 54px 0;
+  }
+
+  .people-grid h2 {
+    margin: 0;
+    font-size: clamp(
+      43px,
+      11vw,
+      88px
+    );
+    font-weight: 950;
+    line-height: 0.84;
+    letter-spacing: -0.08em;
+  }
+
+  .people-grid h2 span {
+    display: block;
+    color: #77736b;
+  }
+
+  .people-copy {
+    max-width: 520px;
+    margin: 0;
+    color: #55514a;
+    font-size: 13px;
+    line-height: 1.75;
+  }
+
+  .people-grid .button {
+    margin-top: 18px;
+  }
+
+  /* =============================================================
+     GAME LAB
+  ============================================================= */
+
+  .game-section {
+    padding: 56px 0;
+    background: #262626;
+  }
+
+  .game-frame {
+    padding: 20px;
+    background: #111111;
+    color: #efede7;
+    border: 1px solid #393939;
+  }
+
+  .game-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #323232;
+  }
+
+  .game-header h2 {
+    max-width: 680px;
+    margin: 0;
+    font-size: clamp(
+      42px,
+      11vw,
+      86px
+    );
+    font-weight: 950;
+    line-height: 0.84;
+    letter-spacing: -0.075em;
+  }
+
+  .game-header h2 span {
+    display: block;
+    color: #737069;
+  }
+
+  .game-count {
+    flex: 0 0 auto;
+    display: grid;
+    justify-items: end;
+    gap: 4px;
+  }
+
+  .game-count strong {
+    color: #efede7;
+    font-size: 42px;
+    line-height: 0.85;
+    letter-spacing: -0.08em;
+  }
+
+  .game-count span {
+    color: #69655e;
+    font-size: 6px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+  }
+
+  .game-grid {
+    display: grid;
+    gap: 0;
+    margin-top: 7px;
+  }
+
+  .game-item {
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #292929;
+  }
+
+  .game-item > span {
+    color: #66625b;
+    font-size: 7px;
+  }
+
+  .game-item strong {
+    display: block;
+    color: #eeeae1;
+    font-size: 9px;
+    letter-spacing: 0.05em;
+  }
+
+  .game-item small {
+    display: block;
+    margin-top: 4px;
+    color: #69655e;
+    font-size: 6px;
+    letter-spacing: 0.1em;
+  }
+
+  .game-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+    padding-top: 20px;
+  }
+
+  .game-footer p {
+    margin: 0;
+    color: #858078;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  /* =============================================================
+     PRINCIPLES
+  ============================================================= */
+
+  .principles-section {
+    padding: 56px 0;
+    background: #efede7;
+  }
+
+  .principles-grid {
+    display: grid;
+    gap: 0;
+    border-top: 1px solid #c4c1b9;
+  }
+
+  .principles-grid article {
+    padding: 18px 0;
+    border-bottom: 1px solid #c4c1b9;
+  }
+
+  .principles-grid article > span {
+    color: #88847d;
+    font-family:
+      "SFMono-Regular",
+      "Cascadia Code",
+      "Roboto Mono",
+      Consolas,
+      monospace;
+    font-size: 7px;
+    font-weight: 800;
+  }
+
+  .principles-grid h3 {
+    margin: 15px 0 0;
+    font-size: 22px;
+    font-weight: 950;
+    letter-spacing: -0.04em;
+  }
+
+  .principles-grid p {
+    max-width: 470px;
+    margin: 8px 0 0;
+    color: #615d55;
+    font-size: 11px;
+    line-height: 1.65;
+  }
+
+  /* =============================================================
+     CTA
+  ============================================================= */
+
+  .cta-section {
+    padding: 16px 0 0;
+    background: #111111;
+  }
+
+  .cta-card {
+    display: grid;
+    gap: 24px;
+    padding: 22px;
+    background: #dad7cf;
+    color: #111111;
+  }
+
+  .cta-card h2 {
+    margin: 0;
+    font-size: clamp(
+      42px,
+      11vw,
+      84px
+    );
+    font-weight: 950;
+    line-height: 0.85;
+    letter-spacing: -0.075em;
+  }
+
+  .cta-card p:not(.section-kicker) {
+    margin: 12px 0 0;
+    color: #59564f;
+    font-size: 12px;
+    line-height: 1.55;
+  }
+
+  .cta-actions {
+    display: grid;
+    gap: 7px;
+  }
+
+  /* =============================================================
+     FOOTER
+  ============================================================= */
+
+  .site-footer {
+    background: #111111;
+    color: #efede7;
+    padding: 25px 0 90px;
+  }
+
+  .footer-grid {
+    display: grid;
+    gap: 17px;
+  }
+
+  .footer-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer-brand .brand-mark {
+    width: 30px;
+    height: 30px;
+    flex-basis: 30px;
+    font-size: 8px;
+  }
+
+  .footer-brand div {
+    display: grid;
+    gap: 2px;
+  }
+
+  .footer-brand strong {
+    font-size: 9px;
+    letter-spacing: 0.08em;
+  }
+
+  .footer-brand small {
+    color: #69655e;
+    font-size: 6px;
+    letter-spacing: 0.08em;
+  }
+
+  .footer-grid > p {
+    max-width: 530px;
+    margin: 0;
+    color: #7e7a72;
+    font-family:
+      Inter,
+      ui-sans-serif,
+      system-ui,
+      sans-serif;
+    font-size: 10px;
+    line-height: 1.55;
+  }
+
+  .footer-end {
+    color: #ece8df;
+    font-family:
+      "SFMono-Regular",
+      "Cascadia Code",
+      "Roboto Mono",
+      Consolas,
+      monospace;
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+  }
+
+  /* =============================================================
+     MOBILE NAV
+  ============================================================= */
+
+  .mobile-nav {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 120;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    padding-bottom: env(
+      safe-area-inset-bottom
+    );
+
+    background: #111111;
+    border-top: 1px solid #323232;
+  }
+
+  .mobile-nav a {
+    min-height: 61px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+
+    color: #7f7b73;
+
+    font-size: 8px;
+    font-weight: 800;
+  }
+
+  .mobile-nav a span {
+    color: #efede7;
+    font-size: 13px;
+    line-height: 1;
+  }
+
+  .mobile-nav a.active {
+    color: #efede7;
+  }
+
+  /* =============================================================
+     TABLET
+  ============================================================= */
+
+  @media (min-width: 700px) {
+    .container {
+      width: min(
+        calc(100% - 48px),
+        1180px
+      );
+    }
+
+    .hero-grid {
+      grid-template-columns:
+        minmax(0, 1.4fr)
+        minmax(300px, 0.6fr);
+      align-items: end;
+      gap: 50px;
+      padding: 58px 0 46px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .hero-actions .button {
+      width: auto;
+    }
+
+    .intro-grid {
+      grid-template-columns: 0.45fr 1.55fr;
+      align-items: start;
+      gap: 50px;
+      padding: 78px 0;
+    }
+
+    .section-header {
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+
+    .projects-section,
+    .principles-section,
+    .game-section {
+      padding: 78px 0;
+    }
+
+    .projects-stack {
+      gap: 12px;
+    }
+
+    .project-card {
+      grid-template-columns: 42px 100px 1fr;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .project-visual {
+      width: 100px;
+      height: 100px;
+    }
+
+    .project-body h3 {
+      font-size: clamp(
+        35px,
+        6vw,
+        56px
+      );
+    }
+
+    .internship-grid {
+      grid-template-columns:
+        minmax(0, 1.25fr)
+        minmax(280px, 0.75fr);
+      align-items: stretch;
+      gap: 12px;
+      padding: 78px 0;
+    }
+
+    .internship-main {
+      padding: 30px;
+    }
+
+    .internship-side {
+      grid-template-columns: 78px 1fr;
+    }
+
+    .company-mark {
+      width: 78px;
+      height: 78px;
+    }
+
+    .people-grid {
+      grid-template-columns:
+        minmax(0, 1.1fr)
+        minmax(300px, 0.9fr);
+      align-items: end;
+      gap: 60px;
+      padding: 78px 0;
+    }
+
+    .people-grid .button {
+      width: auto;
+    }
+
+    .game-frame {
+      padding: 32px;
+    }
+
+    .game-footer {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .principles-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    .principles-grid article {
+      min-height: 190px;
+      padding: 20px;
+      border-right: 1px solid #c4c1b9;
+    }
+
+    .principles-grid article:last-child {
+      border-right: 0;
+    }
+
+    .cta-section {
+      padding-top: 18px;
+    }
+
+    .cta-card {
+      grid-template-columns:
+        minmax(0, 1.3fr)
+        minmax(250px, 0.7fr);
+      align-items: end;
+      padding: 34px;
+      gap: 50px;
+    }
+
+    .cta-actions {
+      grid-template-columns: repeat(
+        3,
+        1fr
+      );
+    }
+
+    .footer-grid {
+      grid-template-columns:
+        auto 1fr auto;
+      align-items: end;
+      gap: 30px;
+    }
+
+    .site-footer {
+      padding-bottom: 40px;
+    }
+
+    .mobile-nav {
+      display: none;
+    }
+  }
+
+  /* =============================================================
+     DESKTOP
+  ============================================================= */
+
+  @media (min-width: 1000px) {
+    .header-inner {
+      min-height: 70px;
+    }
+
+    .brand-mark {
+      width: 37px;
+      height: 37px;
+      flex-basis: 37px;
+    }
+
+    .mobile-github {
+      display: none;
+    }
+
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .desktop-nav a {
+      color: #9a978f;
+      font-size: 10px;
+      font-weight: 800;
+      transition: color 120ms ease;
+    }
+
+    .desktop-nav a:hover {
+      color: #ffffff;
+    }
+
+    .hero {
+      min-height: calc(100svh - 70px);
+      display: grid;
+      align-items: center;
+    }
+
+    .hero-grid {
+      padding: 72px 0 58px;
+    }
+
+    .hero h1 {
+      font-size: clamp(
+        80px,
+        9.2vw,
+        138px
+      );
+    }
+
+    .project-card {
+      transition:
+        transform 160ms ease,
+        border-color 160ms ease,
+        background-color 160ms ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-2px);
+      background: #ebe8e0;
+      border-color: #aaa69d;
+    }
+
+    .project-visual {
+      transition:
+        transform 160ms ease,
+        background-color 160ms ease;
+    }
+
+    .project-card:hover .project-visual {
+      transform: rotate(2deg);
+      background: #222222;
+    }
+
+    .people-grid h2 {
+      font-size: clamp(
+        58px,
+        7vw,
+        98px
+      );
+    }
+
+    .game-header h2 {
+      font-size: clamp(
+        58px,
+        7vw,
+        102px
+      );
+    }
+  }
+
+  /* =============================================================
+     ACCESSIBILITY
+  ============================================================= */
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(html) {
+      scroll-behavior: auto;
+    }
+
+    .button,
+    .desktop-nav a,
+    .project-card,
+    .project-visual {
+      transition: none;
+    }
+  }
+</style>

@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+
+# Astro
+.astro/
+dist/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+bun-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Test / coverage
+coverage/
+
+# Local cache
+.cache/
+
+# Vite
+.vite/
