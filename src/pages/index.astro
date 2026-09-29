@@ -6,50 +6,79 @@ const games = [
     number: "01",
     title: "KUNTILANAK FLY",
     type: "ARCADE",
-    description: "Fly. Don't crash. Don't ask why.",
+    description:
+      "Fly. Don't crash. Don't ask why.",
     featured: true,
   },
   {
     number: "02",
     title: "DEBUGGER",
     type: "LOGIC",
-    description: "Find the bug before the bug finds you.",
+    description:
+      "Find the bug before the bug finds you.",
   },
   {
     number: "03",
     title: "COMMIT TYPE",
     type: "REFLEX",
-    description: "Commit faster than your reviewer.",
+    description:
+      "Commit faster than your reviewer.",
   },
   {
     number: "04",
     title: "SYSTEM 2048",
     type: "PUZZLE",
-    description: "Move blocks. Regret everything.",
+    description:
+      "Move blocks. Regret everything.",
   },
   {
     number: "05",
     title: "RECEH RUN",
     type: "RUNNER",
-    description: "Run through the neighborhood.",
+    description:
+      "Run through the neighborhood.",
   },
   {
     number: "06",
     title: "WARUNG DEFENSE",
     type: "DEFENSE",
-    description: "Protect the warung at all costs.",
+    description:
+      "Protect the warung at all costs.",
   },
   {
     number: "07",
     title: "STACK TRACE",
     type: "MEMORY",
-    description: "Remember. Match. Survive.",
+    description:
+      "Remember. Match. Survive.",
   },
   {
     number: "08",
     title: "PIXEL PANIC",
     type: "REACTION",
-    description: "Tap first. Think later.",
+    description:
+      "Tap first. Think later.",
+  },
+  {
+    number: "09",
+    title: "ROUTE 404",
+    type: "NETWORK",
+    description:
+      "Route the packet from Jember to Jogja before the network collapses.",
+  },
+  {
+    number: "10",
+    title: "BUG HUNT",
+    type: "OBSERVATION",
+    description:
+      "Everything looks correct. Find the lie.",
+  },
+  {
+    number: "11",
+    title: "RAM CLASH",
+    type: "PHYSICS",
+    description:
+      "Read. Charge. Impact. Break the balance.",
   },
 ];
 
@@ -79,6 +108,8 @@ const projects = [
     url: "https://github.com/JemberToJogja/WebGIS",
   },
 ];
+
+const totalGames = games.length;
 ---
 
 <!doctype html>
@@ -198,9 +229,20 @@ const projects = [
       ========================================================== -->
 
       <section class="hero reveal-section">
-        <div class="hero-grid-bg" aria-hidden="true"></div>
-        <div class="hero-orbit hero-orbit-one" aria-hidden="true"></div>
-        <div class="hero-orbit hero-orbit-two" aria-hidden="true"></div>
+        <div
+          class="hero-grid-bg"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="hero-orbit hero-orbit-one"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="hero-orbit hero-orbit-two"
+          aria-hidden="true"
+        ></div>
 
         <div class="container hero-container">
           <div class="hero-label">
@@ -261,7 +303,7 @@ const projects = [
               </span>
 
               <strong>
-                08
+                {String(totalGames).padStart(2, "0")}
               </strong>
 
               <small>
@@ -272,8 +314,13 @@ const projects = [
 
           <div class="hero-meta">
             <div>
-              <span>08</span>
-              <small>GAMES</small>
+              <span>
+                {String(totalGames).padStart(2, "0")}
+              </span>
+
+              <small>
+                GAMES
+              </small>
             </div>
 
             <div>
@@ -310,8 +357,14 @@ const projects = [
            GAME LAB
       ========================================================== -->
 
-      <section class="game-section reveal-section">
-        <div class="game-noise" aria-hidden="true"></div>
+      <section
+        class="game-section reveal-section"
+        id="game-lab"
+      >
+        <div
+          class="game-noise"
+          aria-hidden="true"
+        ></div>
 
         <div class="container">
           <div class="game-top reveal-item">
@@ -327,8 +380,13 @@ const projects = [
             </div>
 
             <div class="game-total">
-              <strong>08</strong>
-              <span>GAMES</span>
+              <strong>
+                {String(totalGames).padStart(2, "0")}
+              </strong>
+
+              <span>
+                GAMES
+              </span>
             </div>
           </div>
 
@@ -426,6 +484,7 @@ const projects = [
                   href="/play"
                   class="game-row reveal-item magnetic"
                   style={`--delay: ${index * 55}ms`}
+                  data-game={game.number}
                 >
                   <span class="game-number">
                     {game.number}
@@ -458,7 +517,8 @@ const projects = [
             class="all-games-button magnetic reveal-item"
           >
             <span>
-              OPEN GAME LAB
+              OPEN GAME LAB /
+              {String(totalGames).padStart(2, "0")} GAMES
             </span>
 
             <span>
@@ -472,7 +532,9 @@ const projects = [
            PROJECTS
       ========================================================== -->
 
-      <section class="projects-section reveal-section">
+      <section
+        class="projects-section reveal-section"
+      >
         <div class="container">
           <div class="section-head reveal-item">
             <div>
@@ -535,9 +597,18 @@ const projects = [
            FIELD / TECHNOGIS
       ========================================================== -->
 
-      <section class="field-section reveal-section">
-        <div class="field-shape field-shape-one" aria-hidden="true"></div>
-        <div class="field-shape field-shape-two" aria-hidden="true"></div>
+      <section
+        class="field-section reveal-section"
+      >
+        <div
+          class="field-shape field-shape-one"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="field-shape field-shape-two"
+          aria-hidden="true"
+        ></div>
 
         <div class="container">
           <div class="field-content reveal-item">
@@ -607,8 +678,13 @@ const projects = [
            PEOPLE
       ========================================================== -->
 
-      <section class="people-section reveal-section">
-        <div class="people-grid-art" aria-hidden="true">
+      <section
+        class="people-section reveal-section"
+      >
+        <div
+          class="people-grid-art"
+          aria-hidden="true"
+        >
           <span></span>
           <span></span>
           <span></span>
@@ -646,10 +722,15 @@ const projects = [
            FINAL CTA
       ========================================================== -->
 
-      <section class="final-section reveal-section">
+      <section
+        class="final-section reveal-section"
+      >
         <div class="container">
           <div class="final-card reveal-item">
-            <div class="final-lines" aria-hidden="true"></div>
+            <div
+              class="final-lines"
+              aria-hidden="true"
+            ></div>
 
             <p class="section-kicker">
               BEFORE YOU LEAVE
@@ -726,6 +807,10 @@ const projects = [
           </span>
 
           <span>
+            {String(totalGames).padStart(2, "0")} GAMES
+          </span>
+
+          <span>
             OK BYE_
           </span>
         </div>
@@ -768,77 +853,150 @@ const projects = [
     </nav>
 
     <script>
-      const revealSections = document.querySelectorAll(".reveal-section");
+      const revealSections =
+        document.querySelectorAll(
+          ".reveal-section",
+        );
 
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        {
-          threshold: 0.12,
-          rootMargin: "0px 0px -10% 0px",
+      const observer =
+        new IntersectionObserver(
+          (entries) => {
+            entries.forEach(
+              (entry) => {
+                if (
+                  entry.isIntersecting
+                ) {
+                  entry.target.classList.add(
+                    "is-visible",
+                  );
+
+                  observer.unobserve(
+                    entry.target,
+                  );
+                }
+              },
+            );
+          },
+          {
+            threshold: 0.12,
+            rootMargin:
+              "0px 0px -10% 0px",
+          },
+        );
+
+      revealSections.forEach(
+        (section) => {
+          observer.observe(
+            section,
+          );
         },
       );
 
-      revealSections.forEach((section) => {
-        observer.observe(section);
-      });
-
       const magneticElements =
-        document.querySelectorAll(".magnetic");
+        document.querySelectorAll(
+          ".magnetic",
+        );
 
-      magneticElements.forEach((element) => {
-        element.addEventListener("pointermove", (event) => {
-          if (window.innerWidth < 900) {
-            return;
-          }
+      magneticElements.forEach(
+        (element) => {
+          element.addEventListener(
+            "pointermove",
+            (event) => {
+              if (
+                window.innerWidth < 900
+              ) {
+                return;
+              }
 
-          const rect = element.getBoundingClientRect();
+              const rect =
+                element.getBoundingClientRect();
 
-          const x =
-            (event.clientX - rect.left - rect.width / 2) * 0.08;
+              const x =
+                (event.clientX -
+                  rect.left -
+                  rect.width / 2) *
+                0.08;
 
-          const y =
-            (event.clientY - rect.top - rect.height / 2) * 0.08;
+              const y =
+                (event.clientY -
+                  rect.top -
+                  rect.height / 2) *
+                0.08;
 
-          element.style.setProperty(
-            "--mx",
-            `${x}px`,
+              element.style.setProperty(
+                "--mx",
+                `${x}px`,
+              );
+
+              element.style.setProperty(
+                "--my",
+                `${y}px`,
+              );
+            },
           );
 
-          element.style.setProperty(
-            "--my",
-            `${y}px`,
-          );
-        });
+          element.addEventListener(
+            "pointerleave",
+            () => {
+              element.style.setProperty(
+                "--mx",
+                "0px",
+              );
 
-        element.addEventListener("pointerleave", () => {
-          element.style.setProperty(
-            "--mx",
-            "0px",
+              element.style.setProperty(
+                "--my",
+                "0px",
+              );
+            },
           );
-
-          element.style.setProperty(
-            "--my",
-            "0px",
-          );
-        });
-      });
+        },
+      );
 
       const cursorGlow =
-        document.querySelector(".cursor-glow");
+        document.querySelector(
+          ".cursor-glow",
+        );
 
-      if (cursorGlow && window.innerWidth >= 900) {
-        window.addEventListener("pointermove", (event) => {
-          cursorGlow.style.transform =
-            `translate3d(${event.clientX}px, ${event.clientY}px, 0)`;
-        });
+      if (
+        cursorGlow &&
+        window.innerWidth >=
+          900
+      ) {
+        window.addEventListener(
+          "pointermove",
+          (event) => {
+            cursorGlow.style.transform =
+              `translate3d(${event.clientX}px, ${event.clientY}px, 0)`;
+          },
+        );
       }
+
+      const gameRows =
+        document.querySelectorAll(
+          ".game-row",
+        );
+
+      gameRows.forEach(
+        (row) => {
+          row.addEventListener(
+            "pointerenter",
+            () => {
+              row.classList.add(
+                "is-hovered",
+              );
+            },
+          );
+
+          row.addEventListener(
+            "pointerleave",
+            () => {
+              row.classList.remove(
+                "is-hovered",
+              );
+            },
+          );
+        },
+      );
     </script>
   </body>
 </html>
@@ -927,6 +1085,7 @@ const projects = [
 
   .cursor-glow {
     position: fixed;
+
     top: 0;
     left: 0;
     z-index: 200;
@@ -938,16 +1097,27 @@ const projects = [
 
     border-radius: 50%;
 
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
 
     filter: blur(3px);
 
     transform:
-      translate3d(-50px, -50px, 0);
+      translate3d(
+        -50px,
+        -50px,
+        0
+      );
 
     transition:
-      transform 80ms linear,
-      opacity 180ms ease;
+      transform
+      80ms linear,
+      opacity
+      180ms ease;
 
     opacity: 0;
 
@@ -966,15 +1136,27 @@ const projects = [
 
   .site-header {
     position: sticky;
+
     top: 0;
     z-index: 100;
 
-    background: rgba(16, 16, 16, 0.96);
+    background:
+      rgba(
+        16,
+        16,
+        16,
+        0.96
+      );
+
     color: #f4f1e9;
 
-    border-bottom: 1px solid #2a2a2a;
+    border-bottom:
+      1px
+      solid
+      #2a2a2a;
 
-    backdrop-filter: blur(12px);
+    backdrop-filter:
+      blur(12px);
   }
 
   .header-inner {
@@ -988,14 +1170,19 @@ const projects = [
     margin-inline: auto;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
     gap: 14px;
   }
 
   .brand {
     display: flex;
+
     align-items: center;
+
     gap: 9px;
   }
 
@@ -1004,6 +1191,7 @@ const projects = [
     height: 33px;
 
     display: grid;
+
     place-items: center;
 
     background: #f4f1e9;
@@ -1014,12 +1202,17 @@ const projects = [
     letter-spacing: -0.05em;
 
     transition:
-      transform 180ms ease,
-      background-color 180ms ease;
+      transform
+      180ms ease,
+      background-color
+      180ms ease;
   }
 
   .brand:hover .brand-mark {
-    transform: rotate(-5deg) scale(1.04);
+    transform:
+      rotate(-5deg)
+      scale(1.04);
+
     background: #dce5d3;
   }
 
@@ -1034,9 +1227,14 @@ const projects = [
   }
 
   .mobile-play {
-    padding: 9px 11px;
+    padding:
+      9px
+      11px;
 
-    border: 1px solid #494949;
+    border:
+      1px
+      solid
+      #494949;
 
     font-family:
       "SFMono-Regular",
@@ -1058,26 +1256,43 @@ const projects = [
     min-height: 48px;
 
     display: inline-flex;
+
     align-items: center;
     justify-content: center;
+
     gap: 10px;
 
-    padding: 0 16px;
+    padding:
+      0
+      16px;
 
-    border: 1px solid transparent;
+    border:
+      1px
+      solid
+      transparent;
 
     font-size: 9px;
+
     font-weight: 950;
+
     letter-spacing: 0.08em;
 
     transform:
-      translate3d(var(--mx, 0), var(--my, 0), 0);
+      translate3d(
+        var(--mx, 0),
+        var(--my, 0),
+        0
+      );
 
     transition:
-      transform 160ms cubic-bezier(.2,.8,.2,1),
-      background-color 140ms ease,
-      border-color 140ms ease,
-      color 140ms ease;
+      transform
+      160ms cubic-bezier(.2,.8,.2,1),
+      background-color
+      140ms ease,
+      border-color
+      140ms ease,
+      color
+      140ms ease;
   }
 
   .button-primary {
@@ -1119,11 +1334,15 @@ const projects = [
 
   .button-arrow {
     display: inline-block;
-    transition: transform 140ms ease;
+
+    transition:
+      transform
+      140ms ease;
   }
 
   .button:hover .button-arrow {
-    transform: translateX(4px);
+    transform:
+      translateX(4px);
   }
 
   /* =============================================================
@@ -1132,41 +1351,56 @@ const projects = [
 
   .hero {
     position: relative;
+
     overflow: hidden;
 
-    min-height: calc(100svh - 60px);
+    min-height:
+      calc(
+        100svh - 60px
+      );
 
     display: flex;
     align-items: center;
 
-    background:
-      radial-gradient(
-        circle at 80% 20%,
-        rgba(17, 17, 17, 0.04),
-        transparent 28%
-      ),
-      #f4f1e9;
+    background: #f4f1e9;
 
-    border-bottom: 1px solid #d0cbc2;
+    border-bottom:
+      1px
+      solid
+      #d0cbc2;
   }
 
   .hero-grid-bg {
     position: absolute;
+
     inset: 0;
 
     background-image:
       linear-gradient(
-        rgba(17, 17, 17, 0.045) 1px,
+        rgba(
+          17,
+          17,
+          17,
+          0.045
+        )
+        1px,
         transparent 1px
       ),
       linear-gradient(
         90deg,
-        rgba(17, 17, 17, 0.045) 1px,
+        rgba(
+          17,
+          17,
+          17,
+          0.045
+        )
+        1px,
         transparent 1px
       );
 
     background-size:
-      28px 28px;
+      28px
+      28px;
 
     mask-image:
       linear-gradient(
@@ -1176,18 +1410,36 @@ const projects = [
       );
 
     pointer-events: none;
+
+    animation:
+      hero-grid-drift
+      14s
+      linear
+      infinite;
   }
 
   .hero-orbit {
     position: absolute;
 
-    border: 1px solid rgba(17, 17, 17, 0.08);
+    border:
+      1px
+      solid
+      rgba(
+        17,
+        17,
+        17,
+        0.08
+      );
+
     border-radius: 50%;
 
     pointer-events: none;
 
     animation:
-      orbit-float 8s ease-in-out infinite;
+      orbit-float
+      8s
+      ease-in-out
+      infinite;
   }
 
   .hero-orbit-one {
@@ -1205,11 +1457,13 @@ const projects = [
     top: 16%;
     right: -100px;
 
-    animation-delay: -2s;
+    animation-delay:
+      -2s;
   }
 
   .hero-container {
     position: relative;
+
     z-index: 2;
   }
 
@@ -1217,44 +1471,62 @@ const projects = [
     min-height: 42px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
     gap: 16px;
 
     color: #77736b;
 
-    border-bottom: 1px solid #d0cbc2;
+    border-bottom:
+      1px
+      solid
+      #d0cbc2;
 
     font-size: 7px;
+
     font-weight: 900;
+
     letter-spacing: 0.1em;
   }
 
   .hero-content {
-    padding: 58px 0 38px;
+    padding:
+      58px
+      0
+      38px;
 
     display: grid;
+
     gap: 30px;
   }
 
   .hero-kicker {
-    margin: 0 0 15px;
+    margin:
+      0
+      0
+      15px;
 
     color: #77736b;
 
     font-size: 8px;
+
     font-weight: 900;
+
     letter-spacing: 0.12em;
   }
 
   .hero-title {
     margin: 0;
 
-    font-size: clamp(
-      66px,
-      19vw,
-      130px
-    );
+    font-size:
+      clamp(
+        66px,
+        19vw,
+        130px
+      );
 
     font-weight: 950;
 
@@ -1275,46 +1547,63 @@ const projects = [
       rotate(4deg);
 
     animation:
-      hero-line-in 900ms cubic-bezier(.16,1,.3,1)
+      hero-line-in
+      900ms
+      cubic-bezier(.16,1,.3,1)
       forwards;
   }
 
   .line-two {
     color: #77736b;
-    animation-delay: 120ms;
+
+    animation-delay:
+      120ms;
   }
 
   .hero-description {
     max-width: 560px;
 
-    margin: 22px 0 0;
+    margin:
+      22px
+      0
+      0;
 
     color: #5c5851;
 
     font-size: 13px;
+
     line-height: 1.7;
 
     opacity: 0;
 
-    transform: translateY(18px);
+    transform:
+      translateY(18px);
 
     animation:
-      fade-up 700ms 320ms cubic-bezier(.16,1,.3,1)
+      fade-up
+      700ms
+      320ms
+      cubic-bezier(.16,1,.3,1)
       forwards;
   }
 
   .hero-actions {
     display: grid;
+
     gap: 8px;
 
     margin-top: 24px;
 
     opacity: 0;
 
-    transform: translateY(14px);
+    transform:
+      translateY(14px);
 
     animation:
-      fade-up 700ms 420ms cubic-bezier(.16,1,.3,1)
+      fade-up
+      700ms
+      420ms
+      cubic-bezier(.16,1,.3,1)
       forwards;
   }
 
@@ -1324,15 +1613,32 @@ const projects = [
     justify-self: end;
 
     display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto auto;
+
+    grid-template-columns:
+      1fr
+      auto;
+
+    grid-template-rows:
+      auto
+      auto
+      auto;
+
     gap: 6px 8px;
 
     padding: 14px;
 
-    border: 1px solid #c8c3ba;
+    border:
+      1px
+      solid
+      #c8c3ba;
 
-    background: rgba(244, 241, 233, 0.75);
+    background:
+      rgba(
+        244,
+        241,
+        233,
+        0.75
+      );
 
     font-family:
       "SFMono-Regular",
@@ -1347,12 +1653,16 @@ const projects = [
     opacity: 0;
 
     animation:
-      corner-in 800ms 500ms cubic-bezier(.16,1,.3,1)
+      corner-in
+      800ms
+      500ms
+      cubic-bezier(.16,1,.3,1)
       forwards;
   }
 
   .hero-corner-line {
-    grid-column: 1 / -1;
+    grid-column:
+      1 / -1;
 
     width: 24px;
     height: 2px;
@@ -1364,18 +1674,24 @@ const projects = [
     color: #77736b;
 
     font-size: 6px;
+
     font-weight: 900;
+
     letter-spacing: 0.09em;
   }
 
   .hero-corner strong {
-    grid-row: 2 / 4;
+    grid-row:
+      2 / 4;
+
     grid-column: 2;
 
     align-self: center;
 
     font-size: 46px;
+
     line-height: 0.8;
+
     letter-spacing: -0.08em;
   }
 
@@ -1385,57 +1701,85 @@ const projects = [
     color: #77736b;
 
     font-size: 6px;
+
     font-weight: 900;
+
     letter-spacing: 0.1em;
   }
 
   .hero-meta {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
 
-    border-top: 1px solid #d0cbc2;
+    grid-template-columns:
+      repeat(
+        4,
+        1fr
+      );
+
+    border-top:
+      1px
+      solid
+      #d0cbc2;
   }
 
   .hero-meta div {
     min-height: 56px;
 
     display: flex;
+
     flex-direction: column;
+
     justify-content: center;
+
     gap: 3px;
 
-    padding: 10px 0;
+    padding:
+      10px
+      0;
 
     animation:
-      meta-in 700ms cubic-bezier(.16,1,.3,1) both;
+      meta-in
+      700ms
+      cubic-bezier(.16,1,.3,1)
+      both;
 
     opacity: 0;
   }
 
   .hero-meta div:nth-child(1) {
-    animation-delay: 520ms;
+    animation-delay:
+      520ms;
   }
 
   .hero-meta div:nth-child(2) {
-    animation-delay: 600ms;
+    animation-delay:
+      600ms;
   }
 
   .hero-meta div:nth-child(3) {
-    animation-delay: 680ms;
+    animation-delay:
+      680ms;
   }
 
   .hero-meta div:nth-child(4) {
-    animation-delay: 760ms;
+    animation-delay:
+      760ms;
   }
 
   .hero-meta div + div {
     padding-left: 10px;
-    border-left: 1px solid #d0cbc2;
+
+    border-left:
+      1px
+      solid
+      #d0cbc2;
   }
 
   .hero-meta span {
     font-size: 13px;
+
     font-weight: 950;
+
     letter-spacing: -0.03em;
   }
 
@@ -1443,13 +1787,17 @@ const projects = [
     color: #77736b;
 
     font-size: 6px;
+
     font-weight: 900;
+
     letter-spacing: 0.07em;
   }
 
   .hero-scroll {
     display: flex;
+
     align-items: center;
+
     gap: 9px;
 
     margin-top: 16px;
@@ -1464,7 +1812,9 @@ const projects = [
       monospace;
 
     font-size: 6px;
+
     font-weight: 900;
+
     letter-spacing: 0.1em;
   }
 
@@ -1475,12 +1825,18 @@ const projects = [
     background: #aaa69d;
 
     animation:
-      scroll-pulse 1.8s ease-in-out infinite;
+      scroll-pulse
+      1.8s
+      ease-in-out
+      infinite;
   }
 
   .scroll-arrow {
     animation:
-      scroll-bounce 1.5s ease-in-out infinite;
+      scroll-bounce
+      1.5s
+      ease-in-out
+      infinite;
   }
 
   /* =============================================================
@@ -1489,32 +1845,49 @@ const projects = [
 
   .game-section {
     position: relative;
+
     overflow: hidden;
 
-    padding: 54px 0 58px;
+    padding:
+      54px
+      0
+      58px;
 
     background: #101010;
+
     color: #f4f1e9;
   }
 
   .game-noise {
     position: absolute;
+
     inset: 0;
 
     pointer-events: none;
 
-    opacity: 0.18;
+    opacity: 0.14;
 
     background-image:
       radial-gradient(
-        rgba(255,255,255,.9) 0.5px,
-        transparent 0.5px
+        rgba(
+          255,
+          255,
+          255,
+          .9
+        )
+        .5px,
+        transparent .5px
       );
 
-    background-size: 5px 5px;
+    background-size:
+      5px
+      5px;
 
     animation:
-      noise-shift 0.35s steps(2) infinite;
+      noise-shift
+      .35s
+      steps(2)
+      infinite;
   }
 
   .game-section .container {
@@ -1524,8 +1897,11 @@ const projects = [
 
   .game-top {
     display: flex;
+
     align-items: flex-end;
+
     justify-content: space-between;
+
     gap: 18px;
 
     margin-bottom: 19px;
@@ -1534,11 +1910,12 @@ const projects = [
   .game-top h2 {
     margin: 0;
 
-    font-size: clamp(
-      42px,
-      12vw,
-      84px
-    );
+    font-size:
+      clamp(
+        42px,
+        12vw,
+        84px
+      );
 
     font-weight: 950;
 
@@ -1549,19 +1926,25 @@ const projects = [
 
   .game-top h2 span {
     display: block;
+
     color: #77736b;
   }
 
   .game-total {
     display: grid;
+
     justify-items: end;
+
     gap: 3px;
   }
 
   .game-total strong {
     font-size: 42px;
+
     font-weight: 950;
+
     line-height: 0.8;
+
     letter-spacing: -0.08em;
   }
 
@@ -1569,48 +1952,69 @@ const projects = [
     color: #6b6761;
 
     font-size: 6px;
+
     font-weight: 900;
+
     letter-spacing: 0.11em;
   }
 
   .featured-game {
     display: block;
+
     overflow: hidden;
 
-    border: 1px solid #343434;
+    border:
+      1px
+      solid
+      #343434;
 
     background: #181818;
 
     transform:
-      translate3d(var(--mx, 0), var(--my, 0), 0);
+      translate3d(
+        var(--mx, 0),
+        var(--my, 0),
+        0
+      );
 
     transition:
-      transform 180ms cubic-bezier(.2,.8,.2,1),
-      border-color 180ms ease;
+      transform
+      180ms cubic-bezier(.2,.8,.2,1),
+      border-color
+      180ms ease;
   }
 
   .featured-game:hover {
-    border-color: #5a5a5a;
+    border-color:
+      #5a5a5a;
   }
 
   .featured-game-top {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     padding: 12px;
 
-    border-bottom: 1px solid #2f2f2f;
+    border-bottom:
+      1px
+      solid
+      #2f2f2f;
 
     color: #78736d;
 
     font-size: 7px;
+
     font-weight: 900;
+
     letter-spacing: 0.08em;
   }
 
   .featured-game-stage {
     position: relative;
+
     min-height: 280px;
 
     overflow: hidden;
@@ -1620,45 +2024,74 @@ const projects = [
 
   .stage-grid {
     position: absolute;
+
     inset: 0;
 
     background-image:
       linear-gradient(
-        rgba(255,255,255,0.05) 1px,
+        rgba(
+          255,
+          255,
+          255,
+          .05
+        )
+        1px,
         transparent 1px
       ),
       linear-gradient(
         90deg,
-        rgba(255,255,255,0.05) 1px,
+        rgba(
+          255,
+          255,
+          255,
+          .05
+        )
+        1px,
         transparent 1px
       );
 
     background-size:
-      22px 22px;
+      22px
+      22px;
 
     transform:
       translateY(0);
 
     animation:
-      stage-grid-move 7s linear infinite;
+      stage-grid-move
+      7s
+      linear
+      infinite;
   }
 
   .stage-scanline {
     position: absolute;
+
     inset: 0;
 
     background:
       linear-gradient(
         to bottom,
         transparent 0%,
-        rgba(255,255,255,0.06) 50%,
+        rgba(
+          255,
+          255,
+          255,
+          .06
+        )
+        50%,
         transparent 100%
       );
 
-    background-size: 100% 18px;
+    background-size:
+      100%
+      18px;
 
     animation:
-      scanline 4s linear infinite;
+      scanline
+      4s
+      linear
+      infinite;
   }
 
   .stage-crosshair {
@@ -1668,7 +2101,9 @@ const projects = [
     height: 14px;
 
     border:
-      1px solid #5b5b5b;
+      1px
+      solid
+      #5b5b5b;
   }
 
   .stage-crosshair::before,
@@ -1682,22 +2117,26 @@ const projects = [
 
   .stage-crosshair::before {
     top: 50%;
+
     left: -5px;
     right: -5px;
 
     height: 1px;
 
-    transform: translateY(-50%);
+    transform:
+      translateY(-50%);
   }
 
   .stage-crosshair::after {
     top: -5px;
     bottom: -5px;
+
     left: 50%;
 
     width: 1px;
 
-    transform: translateX(-50%);
+    transform:
+      translateX(-50%);
   }
 
   .stage-crosshair-one {
@@ -1720,10 +2159,16 @@ const projects = [
     height: 84px;
 
     transform:
-      translate(-50%, -50%);
+      translate(
+        -50%,
+        -50%
+      );
 
     animation:
-      ghost-float 2.4s ease-in-out infinite;
+      ghost-float
+      2.4s
+      ease-in-out
+      infinite;
   }
 
   .ghost-head {
@@ -1736,7 +2181,10 @@ const projects = [
     height: 52px;
 
     border-radius:
-      45% 45% 35% 35%;
+      45%
+      45%
+      35%
+      35%;
 
     background: #f4f1e9;
   }
@@ -1817,6 +2265,7 @@ const projects = [
     position: absolute;
 
     display: grid;
+
     gap: 3px;
 
     color: #74706a;
@@ -1842,7 +2291,9 @@ const projects = [
   .stage-altitude span,
   .stage-score span {
     font-size: 6px;
+
     font-weight: 900;
+
     letter-spacing: 0.1em;
   }
 
@@ -1851,6 +2302,7 @@ const projects = [
     color: #d8d4cb;
 
     font-size: 9px;
+
     letter-spacing: 0.08em;
   }
 
@@ -1873,17 +2325,25 @@ const projects = [
       monospace;
 
     font-size: 7px;
+
     font-weight: 900;
+
     letter-spacing: 0.1em;
 
     animation:
-      message-blink 1.4s steps(2) infinite;
+      message-blink
+      1.4s
+      steps(2)
+      infinite;
   }
 
   .featured-game-bottom {
     display: flex;
+
     align-items: flex-end;
+
     justify-content: space-between;
+
     gap: 14px;
 
     padding: 17px;
@@ -1893,6 +2353,7 @@ const projects = [
     margin: 0;
 
     font-size: 28px;
+
     font-weight: 950;
 
     line-height: 0.88;
@@ -1908,11 +2369,15 @@ const projects = [
     color: #8d8982;
 
     font-size: 10px;
+
     line-height: 1.45;
   }
 
   .play-arrow {
-    flex: 0 0 auto;
+    flex:
+      0
+      0
+      auto;
 
     margin: 0 !important;
 
@@ -1926,50 +2391,83 @@ const projects = [
       monospace !important;
 
     font-size: 8px !important;
+
     font-weight: 900 !important;
 
     letter-spacing: 0.08em;
 
     animation:
-      arrow-pulse 1.8s ease-in-out infinite;
+      arrow-pulse
+      1.8s
+      ease-in-out
+      infinite;
   }
 
   .game-list {
     margin-top: 8px;
 
-    border-top: 1px solid #2a2a2a;
+    border-top:
+      1px
+      solid
+      #2a2a2a;
   }
 
   .game-row {
     position: relative;
 
     display: grid;
-    grid-template-columns: 28px 1fr auto;
+
+    grid-template-columns:
+      28px
+      1fr
+      auto;
 
     gap: 10px;
 
-    padding: 14px 0;
+    padding:
+      14px
+      0;
 
-    border-bottom: 1px solid #2a2a2a;
+    border-bottom:
+      1px
+      solid
+      #2a2a2a;
 
     transform:
-      translate3d(var(--mx, 0), var(--my, 0), 0);
+      translate3d(
+        var(--mx, 0),
+        var(--my, 0),
+        0
+      );
 
     transition:
-      transform 180ms cubic-bezier(.2,.8,.2,1),
-      padding-left 180ms ease,
-      background-color 180ms ease;
+      transform
+      180ms cubic-bezier(.2,.8,.2,1),
+      padding-left
+      180ms ease,
+      background-color
+      180ms ease;
   }
 
   .game-row:hover {
     padding-left: 7px;
   }
 
+  .game-row.is-hovered
+    .game-number {
+    color: #caff32;
+  }
+
   .game-number {
     color: #65615b;
 
     font-size: 7px;
+
     font-weight: 900;
+
+    transition:
+      color
+      150ms ease;
   }
 
   .game-row-main strong {
@@ -1978,7 +2476,9 @@ const projects = [
     color: #f4f1e9;
 
     font-size: 10px;
+
     font-weight: 900;
+
     letter-spacing: 0.06em;
   }
 
@@ -1990,6 +2490,7 @@ const projects = [
     color: #77736b;
 
     font-size: 9px;
+
     line-height: 1.4;
   }
 
@@ -1999,7 +2500,9 @@ const projects = [
     color: #69655e;
 
     font-size: 6px;
+
     font-weight: 900;
+
     letter-spacing: 0.08em;
   }
 
@@ -2011,37 +2514,52 @@ const projects = [
     font-size: 16px;
 
     transition:
-      transform 140ms ease;
+      transform
+      140ms ease;
   }
 
   .game-row:hover .game-arrow {
-    transform: translateX(4px);
+    transform:
+      translateX(4px);
   }
 
   .all-games-button {
     min-height: 52px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     margin-top: 15px;
 
-    padding: 0 16px;
+    padding:
+      0
+      16px;
 
     background: #f4f1e9;
+
     color: #111;
 
     font-size: 9px;
+
     font-weight: 950;
+
     letter-spacing: 0.09em;
 
     transform:
-      translate3d(var(--mx, 0), var(--my, 0), 0);
+      translate3d(
+        var(--mx, 0),
+        var(--my, 0),
+        0
+      );
 
     transition:
-      transform 160ms ease,
-      background-color 140ms ease;
+      transform
+      160ms ease,
+      background-color
+      140ms ease;
   }
 
   .all-games-button:hover {
@@ -2053,17 +2571,25 @@ const projects = [
   ============================================================= */
 
   .projects-section {
-    padding: 56px 0;
+    padding:
+      56px
+      0;
 
     background: #f4f1e9;
 
-    border-bottom: 1px solid #d0cbc2;
+    border-bottom:
+      1px
+      solid
+      #d0cbc2;
   }
 
   .section-head {
     display: flex;
+
     align-items: flex-end;
+
     justify-content: space-between;
+
     gap: 16px;
 
     margin-bottom: 20px;
@@ -2072,11 +2598,12 @@ const projects = [
   .section-head h2 {
     margin: 0;
 
-    font-size: clamp(
-      44px,
-      11vw,
-      78px
-    );
+    font-size:
+      clamp(
+        44px,
+        11vw,
+        78px
+      );
 
     font-weight: 950;
 
@@ -2086,42 +2613,70 @@ const projects = [
   }
 
   .text-link {
-    flex: 0 0 auto;
+    flex:
+      0
+      0
+      auto;
 
     padding-bottom: 4px;
 
-    border-bottom: 1px solid #111;
+    border-bottom:
+      1px
+      solid
+      #111;
 
     font-size: 8px;
+
     font-weight: 950;
+
     letter-spacing: 0.06em;
   }
 
   .project-list {
-    border-top: 1px solid #c9c5bc;
+    border-top:
+      1px
+      solid
+      #c9c5bc;
   }
 
   .project-row {
     display: grid;
-    grid-template-columns: 28px 1fr auto;
+
+    grid-template-columns:
+      28px
+      1fr
+      auto;
 
     gap: 11px;
 
-    padding: 17px 0;
+    padding:
+      17px
+      0;
 
-    border-bottom: 1px solid #c9c5bc;
+    border-bottom:
+      1px
+      solid
+      #c9c5bc;
 
     transform:
-      translate3d(var(--mx, 0), var(--my, 0), 0);
+      translate3d(
+        var(--mx, 0),
+        var(--my, 0),
+        0
+      );
 
     transition:
-      transform 170ms cubic-bezier(.2,.8,.2,1),
-      padding-left 170ms ease,
-      background-color 170ms ease;
+      transform
+      170ms cubic-bezier(.2,.8,.2,1),
+      padding-left
+      170ms ease,
+      background-color
+      170ms ease;
   }
 
   .project-row:hover {
     padding-left: 7px;
+
     background: #ebe7df;
   }
 
@@ -2129,6 +2684,7 @@ const projects = [
     color: #8b877f;
 
     font-size: 7px;
+
     font-weight: 900;
   }
 
@@ -2136,16 +2692,22 @@ const projects = [
     display: block;
 
     font-size: 20px;
+
     font-weight: 950;
+
     letter-spacing: -0.04em;
   }
 
   .project-main p {
-    margin: 6px 0 0;
+    margin:
+      6px
+      0
+      0;
 
     color: #605c55;
 
     font-size: 10px;
+
     line-height: 1.5;
   }
 
@@ -2157,7 +2719,9 @@ const projects = [
     color: #87837c;
 
     font-size: 6px;
+
     font-weight: 900;
+
     letter-spacing: 0.08em;
   }
 
@@ -2167,12 +2731,16 @@ const projects = [
     font-size: 17px;
 
     transition:
-      transform 140ms ease;
+      transform
+      140ms ease;
   }
 
   .project-row:hover .project-arrow {
     transform:
-      translate(3px, -3px);
+      translate(
+        3px,
+        -3px
+      );
   }
 
   /* =============================================================
@@ -2181,24 +2749,41 @@ const projects = [
 
   .field-section {
     position: relative;
+
     overflow: hidden;
 
-    padding: 56px 0;
+    padding:
+      56px
+      0;
 
     background: #d8d4cb;
 
-    border-bottom: 1px solid #c2beb4;
+    border-bottom:
+      1px
+      solid
+      #c2beb4;
   }
 
   .field-shape {
     position: absolute;
 
-    border: 1px solid rgba(17,17,17,.08);
+    border:
+      1px
+      solid
+      rgba(
+        17,
+        17,
+        17,
+        0.08
+      );
 
     pointer-events: none;
 
     animation:
-      field-float 9s ease-in-out infinite;
+      field-float
+      9s
+      ease-in-out
+      infinite;
   }
 
   .field-shape-one {
@@ -2222,11 +2807,13 @@ const projects = [
     transform:
       rotate(10deg);
 
-    animation-delay: -3s;
+    animation-delay:
+      -3s;
   }
 
   .field-content {
     position: relative;
+
     z-index: 2;
   }
 
@@ -2235,11 +2822,12 @@ const projects = [
 
     max-width: 800px;
 
-    font-size: clamp(
-      45px,
-      12vw,
-      86px
-    );
+    font-size:
+      clamp(
+        45px,
+        12vw,
+        86px
+      );
 
     font-weight: 950;
 
@@ -2250,17 +2838,22 @@ const projects = [
 
   .field-content h2 span {
     display: block;
+
     color: #77736c;
   }
 
   .field-content > p:not(.section-kicker) {
     max-width: 620px;
 
-    margin: 18px 0 0;
+    margin:
+      18px
+      0
+      0;
 
     color: #5f5b54;
 
     font-size: 12px;
+
     line-height: 1.7;
   }
 
@@ -2268,59 +2861,91 @@ const projects = [
     display: inline-flex;
 
     margin-top: 19px;
+
     padding-bottom: 4px;
 
-    border-bottom: 1px solid #111;
+    border-bottom:
+      1px
+      solid
+      #111;
 
     font-size: 8px;
+
     font-weight: 900;
+
     letter-spacing: 0.08em;
 
     transform:
-      translate3d(var(--mx, 0), var(--my, 0), 0);
+      translate3d(
+        var(--mx, 0),
+        var(--my, 0),
+        0
+      );
 
     transition:
-      transform 160ms ease;
+      transform
+      160ms ease;
   }
 
   .field-stats {
     position: relative;
+
     z-index: 2;
 
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+
+    grid-template-columns:
+      repeat(
+        3,
+        1fr
+      );
 
     margin-top: 34px;
 
-    border-top: 1px solid #bcb7ad;
+    border-top:
+      1px
+      solid
+      #bcb7ad;
   }
 
   .field-stats div {
     min-height: 62px;
 
     display: flex;
+
     flex-direction: column;
+
     justify-content: center;
+
     gap: 4px;
 
-    padding: 12px 0;
+    padding:
+      12px
+      0;
   }
 
   .field-stats div + div {
     padding-left: 10px;
-    border-left: 1px solid #bcb7ad;
+
+    border-left:
+      1px
+      solid
+      #bcb7ad;
   }
 
   .field-stats span {
     color: #87827a;
 
     font-size: 6px;
+
     font-weight: 900;
+
     letter-spacing: 0.08em;
   }
 
   .field-stats strong {
     font-size: 7px;
+
     letter-spacing: 0.06em;
   }
 
@@ -2330,9 +2955,12 @@ const projects = [
 
   .people-section {
     position: relative;
+
     overflow: hidden;
 
-    padding: 56px 0;
+    padding:
+      56px
+      0;
 
     background: #f4f1e9;
   }
@@ -2347,7 +2975,13 @@ const projects = [
     height: 170px;
 
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+
+    grid-template-columns:
+      repeat(
+        2,
+        1fr
+      );
+
     gap: 6px;
 
     transform:
@@ -2357,37 +2991,48 @@ const projects = [
   }
 
   .people-grid-art span {
-    border: 1px solid #cfc9bf;
+    border:
+      1px
+      solid
+      #cfc9bf;
 
     animation:
-      people-blink 3s ease-in-out infinite;
+      people-blink
+      3s
+      ease-in-out
+      infinite;
   }
 
   .people-grid-art span:nth-child(2) {
-    animation-delay: 0.3s;
+    animation-delay:
+      0.3s;
   }
 
   .people-grid-art span:nth-child(3) {
-    animation-delay: 0.6s;
+    animation-delay:
+      0.6s;
   }
 
   .people-grid-art span:nth-child(4) {
-    animation-delay: 0.9s;
+    animation-delay:
+      0.9s;
   }
 
   .people-content {
     position: relative;
+
     z-index: 2;
   }
 
   .people-content h2 {
     margin: 0;
 
-    font-size: clamp(
-      50px,
-      13vw,
-      96px
-    );
+    font-size:
+      clamp(
+        50px,
+        13vw,
+        96px
+      );
 
     font-weight: 950;
 
@@ -2398,17 +3043,22 @@ const projects = [
 
   .people-content h2 span {
     display: block;
+
     color: #77736b;
   }
 
   .people-content > p:not(.section-kicker) {
     max-width: 500px;
 
-    margin: 16px 0 0;
+    margin:
+      16px
+      0
+      0;
 
     color: #625e57;
 
     font-size: 12px;
+
     line-height: 1.65;
   }
 
@@ -2421,59 +3071,86 @@ const projects = [
   ============================================================= */
 
   .final-section {
-    padding: 14px 0 0;
+    padding:
+      14px
+      0
+      0;
 
     background: #101010;
   }
 
   .final-card {
     position: relative;
+
     overflow: hidden;
 
-    padding: 27px 20px 29px;
+    padding:
+      27px
+      20px
+      29px;
 
     background: #242424;
+
     color: #f4f1e9;
   }
 
   .final-lines {
     position: absolute;
+
     inset: 0;
 
     background:
       linear-gradient(
         135deg,
         transparent 46%,
-        rgba(244,241,233,0.08) 46.5%,
+        rgba(
+          244,
+          241,
+          233,
+          .08
+        )
+        46.5%,
         transparent 47%
       ),
       linear-gradient(
         315deg,
         transparent 46%,
-        rgba(244,241,233,0.08) 46.5%,
+        rgba(
+          244,
+          241,
+          233,
+          .08
+        )
+        46.5%,
         transparent 47%
       );
 
     background-size:
-      30px 30px;
+      30px
+      30px;
 
     animation:
-      final-lines-move 8s linear infinite;
+      final-lines-move
+      8s
+      linear
+      infinite;
   }
 
   .final-card > *:not(.final-lines) {
     position: relative;
+
     z-index: 2;
   }
 
   .final-card h2 {
     margin: 0;
 
-    font-size: clamp(
-      60px,
-      17vw,
-      110px
-    );
+    font-size:
+      clamp(
+        60px,
+        17vw,
+        110px
+      );
 
     font-weight: 950;
 
@@ -2484,22 +3161,28 @@ const projects = [
 
   .final-card h2 span {
     display: block;
+
     color: #77736b;
   }
 
   .final-card p:not(.section-kicker) {
     max-width: 470px;
 
-    margin: 16px 0 0;
+    margin:
+      16px
+      0
+      0;
 
     color: #a19d95;
 
     font-size: 11px;
+
     line-height: 1.6;
   }
 
   .final-actions {
     display: grid;
+
     gap: 8px;
 
     margin-top: 22px;
@@ -2509,28 +3192,44 @@ const projects = [
     min-height: 48px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
-    border: 1px solid #454545;
+    border:
+      1px
+      solid
+      #454545;
 
     color: #f4f1e9;
 
     font-size: 8px;
+
     font-weight: 950;
+
     letter-spacing: 0.08em;
 
     transform:
-      translate3d(var(--mx, 0), var(--my, 0), 0);
+      translate3d(
+        var(--mx, 0),
+        var(--my, 0),
+        0
+      );
 
     transition:
-      transform 160ms ease,
-      border-color 140ms ease,
-      background-color 140ms ease;
+      transform
+      160ms ease,
+      border-color
+      140ms ease,
+      background-color
+      140ms ease;
   }
 
   .final-github:hover {
-    border-color: #777;
+    border-color:
+      #777;
+
     background: #2e2e2e;
   }
 
@@ -2539,22 +3238,31 @@ const projects = [
   ============================================================= */
 
   .site-footer {
-    padding: 26px 0 90px;
+    padding:
+      26px
+      0
+      90px;
 
     background: #101010;
+
     color: #f4f1e9;
   }
 
   .footer-top {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
     gap: 15px;
   }
 
   .footer-brand {
     display: flex;
+
     align-items: center;
+
     gap: 9px;
   }
 
@@ -2565,11 +3273,13 @@ const projects = [
 
   .footer-brand div {
     display: grid;
+
     gap: 2px;
   }
 
   .footer-brand strong {
     font-size: 8px;
+
     letter-spacing: 0.08em;
   }
 
@@ -2577,6 +3287,7 @@ const projects = [
     color: #69655e;
 
     font-size: 6px;
+
     letter-spacing: 0.08em;
   }
 
@@ -2584,24 +3295,34 @@ const projects = [
     color: #69655e;
 
     font-size: 7px;
+
     font-weight: 900;
+
     letter-spacing: 0.08em;
   }
 
   .footer-bottom {
     display: flex;
+
     flex-wrap: wrap;
+
     gap: 8px 14px;
 
     margin-top: 24px;
+
     padding-top: 13px;
 
-    border-top: 1px solid #292929;
+    border-top:
+      1px
+      solid
+      #292929;
 
     color: #69655e;
 
     font-size: 6px;
+
     font-weight: 900;
+
     letter-spacing: 0.08em;
   }
 
@@ -2611,36 +3332,60 @@ const projects = [
 
   .mobile-nav {
     position: fixed;
+
     right: 0;
     bottom: 0;
     left: 0;
+
     z-index: 120;
 
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
 
-    padding-bottom: env(
-      safe-area-inset-bottom
-    );
+    grid-template-columns:
+      repeat(
+        4,
+        1fr
+      );
 
-    background: rgba(16, 16, 16, 0.97);
-    border-top: 1px solid #2c2c2c;
+    padding-bottom:
+      env(
+        safe-area-inset-bottom
+      );
 
-    backdrop-filter: blur(12px);
+    background:
+      rgba(
+        16,
+        16,
+        16,
+        .97
+      );
+
+    border-top:
+      1px
+      solid
+      #2c2c2c;
+
+    backdrop-filter:
+      blur(12px);
   }
 
   .mobile-nav a {
     min-height: 61px;
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
+
     justify-content: center;
+
     gap: 4px;
 
     color: #737069;
 
     font-size: 7px;
+
     font-weight: 900;
   }
 
@@ -2648,15 +3393,18 @@ const projects = [
     color: #f4f1e9;
 
     font-size: 13px;
+
     line-height: 1;
 
     transition:
-      transform 140ms ease;
+      transform
+      140ms ease;
   }
 
   .mobile-nav a:hover span,
   .mobile-nav a.active span {
-    transform: translateY(-2px);
+    transform:
+      translateY(-2px);
   }
 
   .mobile-nav a.active,
@@ -2678,267 +3426,30 @@ const projects = [
 
   .reveal-item {
     opacity: 0;
+
     transform:
       translateY(28px);
+
     transition:
-      opacity 700ms cubic-bezier(.16,1,.3,1),
-      transform 700ms cubic-bezier(.16,1,.3,1);
+      opacity
+      700ms cubic-bezier(.16,1,.3,1),
+      transform
+      700ms cubic-bezier(.16,1,.3,1);
 
     transition-delay:
       var(--delay, 0ms);
   }
 
-  .reveal-section.is-visible .reveal-item {
+  .reveal-section.is-visible
+    .reveal-item {
     opacity: 1;
+
     transform:
       translateY(0);
   }
 
   .reveal-section {
     opacity: 1;
-  }
-
-  /* =============================================================
-     KEYFRAMES
-  ============================================================= */
-
-  @keyframes hero-line-in {
-    from {
-      opacity: 0;
-      transform:
-        translateY(110%)
-        rotate(4deg);
-    }
-
-    to {
-      opacity: 1;
-      transform:
-        translateY(0)
-        rotate(0);
-    }
-  }
-
-  @keyframes fade-up {
-    from {
-      opacity: 0;
-      transform:
-        translateY(18px);
-    }
-
-    to {
-      opacity: 1;
-      transform:
-        translateY(0);
-    }
-  }
-
-  @keyframes corner-in {
-    from {
-      opacity: 0;
-      transform:
-        translateY(20px)
-        rotate(-7deg)
-        scale(0.94);
-    }
-
-    to {
-      opacity: 1;
-      transform:
-        translateY(0)
-        rotate(-3deg)
-        scale(1);
-    }
-  }
-
-  @keyframes meta-in {
-    from {
-      opacity: 0;
-      transform:
-        translateY(10px);
-    }
-
-    to {
-      opacity: 1;
-      transform:
-        translateY(0);
-    }
-  }
-
-  @keyframes orbit-float {
-    0%,
-    100% {
-      transform:
-        translate3d(0, 0, 0)
-        rotate(0deg);
-    }
-
-    50% {
-      transform:
-        translate3d(10px, 12px, 0)
-        rotate(8deg);
-    }
-  }
-
-  @keyframes scroll-pulse {
-    0%,
-    100% {
-      transform:
-        scaleX(1);
-      opacity: 0.6;
-    }
-
-    50% {
-      transform:
-        scaleX(1.55);
-      opacity: 1;
-    }
-  }
-
-  @keyframes scroll-bounce {
-    0%,
-    100% {
-      transform:
-        translateY(0);
-    }
-
-    50% {
-      transform:
-        translateY(4px);
-    }
-  }
-
-  @keyframes stage-grid-move {
-    from {
-      transform:
-        translateY(0);
-    }
-
-    to {
-      transform:
-        translateY(22px);
-    }
-  }
-
-  @keyframes scanline {
-    from {
-      transform:
-        translateY(-100%);
-    }
-
-    to {
-      transform:
-        translateY(100%);
-    }
-  }
-
-  @keyframes ghost-float {
-    0%,
-    100% {
-      transform:
-        translate(-50%, -50%)
-        translateY(0)
-        rotate(-2deg);
-    }
-
-    50% {
-      transform:
-        translate(-50%, -50%)
-        translateY(-13px)
-        rotate(2deg);
-    }
-  }
-
-  @keyframes message-blink {
-    0%,
-    46%,
-    100% {
-      opacity: 1;
-    }
-
-    50%,
-    96% {
-      opacity: 0.3;
-    }
-  }
-
-  @keyframes arrow-pulse {
-    0%,
-    100% {
-      transform:
-        translateX(0);
-    }
-
-    50% {
-      transform:
-        translateX(5px);
-    }
-  }
-
-  @keyframes noise-shift {
-    0% {
-      transform:
-        translate3d(0, 0, 0);
-    }
-
-    25% {
-      transform:
-        translate3d(-2px, 1px, 0);
-    }
-
-    50% {
-      transform:
-        translate3d(1px, -1px, 0);
-    }
-
-    75% {
-      transform:
-        translate3d(2px, 2px, 0);
-    }
-
-    100% {
-      transform:
-        translate3d(0, 0, 0);
-    }
-  }
-
-  @keyframes field-float {
-    0%,
-    100% {
-      transform:
-        rotate(25deg)
-        translate3d(0, 0, 0);
-    }
-
-    50% {
-      transform:
-        rotate(34deg)
-        translate3d(-10px, 10px, 0);
-    }
-  }
-
-  @keyframes people-blink {
-    0%,
-    100% {
-      opacity: 0.3;
-    }
-
-    50% {
-      opacity: 0.75;
-    }
-  }
-
-  @keyframes final-lines-move {
-    from {
-      background-position:
-        0 0,
-        0 0;
-    }
-
-    to {
-      background-position:
-        30px 30px,
-        -30px 30px;
-    }
   }
 
   /* =============================================================
@@ -2954,7 +3465,10 @@ const projects = [
     }
 
     .hero {
-      min-height: calc(100svh - 68px);
+      min-height:
+        calc(
+          100svh - 68px
+        );
     }
 
     .hero-content {
@@ -2966,6 +3480,7 @@ const projects = [
 
     .hero-actions {
       display: flex;
+
       align-items: center;
     }
 
@@ -3004,6 +3519,7 @@ const projects = [
 
     .final-actions {
       display: flex;
+
       align-items: center;
     }
 
@@ -3029,7 +3545,9 @@ const projects = [
 
     .desktop-nav {
       display: flex;
+
       align-items: center;
+
       gap: 26px;
     }
 
@@ -3037,11 +3555,14 @@ const projects = [
       color: #949089;
 
       font-size: 9px;
+
       font-weight: 900;
+
       letter-spacing: 0.04em;
 
       transition:
-        color 140ms ease;
+        color
+        140ms ease;
     }
 
     .desktop-nav a:hover {
@@ -3056,13 +3577,17 @@ const projects = [
         11px;
 
       border:
-        1px solid
+        1px
+        solid
         #464646;
     }
 
     .hero-content {
       grid-template-columns:
-        minmax(0, 1fr)
+        minmax(
+          0,
+          1fr
+        )
         190px;
 
       align-items: end;
@@ -3076,11 +3601,12 @@ const projects = [
     }
 
     .hero-title {
-      font-size: clamp(
-        90px,
-        10vw,
-        145px
-      );
+      font-size:
+        clamp(
+          90px,
+          10vw,
+          145px
+        );
     }
 
     .hero-description {
@@ -3133,15 +3659,325 @@ const projects = [
     .field-content h2,
     .people-content h2,
     .final-card h2 {
-      font-size: clamp(
-        72px,
-        8vw,
-        114px
-      );
+      font-size:
+        clamp(
+          72px,
+          8vw,
+          114px
+        );
     }
 
     .final-card {
       padding: 54px;
+    }
+  }
+
+  /* =============================================================
+     KEYFRAMES
+  ============================================================= */
+
+  @keyframes hero-line-in {
+    from {
+      opacity: 0;
+
+      transform:
+        translateY(110%)
+        rotate(4deg);
+    }
+
+    to {
+      opacity: 1;
+
+      transform:
+        translateY(0)
+        rotate(0);
+    }
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+
+      transform:
+        translateY(18px);
+    }
+
+    to {
+      opacity: 1;
+
+      transform:
+        translateY(0);
+    }
+  }
+
+  @keyframes corner-in {
+    from {
+      opacity: 0;
+
+      transform:
+        translateY(20px)
+        rotate(-7deg)
+        scale(.94);
+    }
+
+    to {
+      opacity: 1;
+
+      transform:
+        translateY(0)
+        rotate(-3deg)
+        scale(1);
+    }
+  }
+
+  @keyframes meta-in {
+    from {
+      opacity: 0;
+
+      transform:
+        translateY(10px);
+    }
+
+    to {
+      opacity: 1;
+
+      transform:
+        translateY(0);
+    }
+  }
+
+  @keyframes orbit-float {
+    0%,
+    100% {
+      transform:
+        translate3d(
+          0,
+          0,
+          0
+        )
+        rotate(0deg);
+    }
+
+    50% {
+      transform:
+        translate3d(
+          10px,
+          12px,
+          0
+        )
+        rotate(8deg);
+    }
+  }
+
+  @keyframes hero-grid-drift {
+    from {
+      background-position:
+        0 0,
+        0 0;
+    }
+
+    to {
+      background-position:
+        28px 28px,
+        28px 28px;
+    }
+  }
+
+  @keyframes scroll-pulse {
+    0%,
+    100% {
+      transform:
+        scaleX(1);
+
+      opacity: .6;
+    }
+
+    50% {
+      transform:
+        scaleX(1.55);
+
+      opacity: 1;
+    }
+  }
+
+  @keyframes scroll-bounce {
+    0%,
+    100% {
+      transform:
+        translateY(0);
+    }
+
+    50% {
+      transform:
+        translateY(4px);
+    }
+  }
+
+  @keyframes stage-grid-move {
+    from {
+      transform:
+        translateY(0);
+    }
+
+    to {
+      transform:
+        translateY(22px);
+    }
+  }
+
+  @keyframes scanline {
+    from {
+      transform:
+        translateY(-100%);
+    }
+
+    to {
+      transform:
+        translateY(100%);
+    }
+  }
+
+  @keyframes ghost-float {
+    0%,
+    100% {
+      transform:
+        translate(
+          -50%,
+          -50%
+        )
+        translateY(0)
+        rotate(-2deg);
+    }
+
+    50% {
+      transform:
+        translate(
+          -50%,
+          -50%
+        )
+        translateY(-13px)
+        rotate(2deg);
+    }
+  }
+
+  @keyframes message-blink {
+    0%,
+    46%,
+    100% {
+      opacity: 1;
+    }
+
+    50%,
+    96% {
+      opacity: .3;
+    }
+  }
+
+  @keyframes arrow-pulse {
+    0%,
+    100% {
+      transform:
+        translateX(0);
+    }
+
+    50% {
+      transform:
+        translateX(5px);
+    }
+  }
+
+  @keyframes noise-shift {
+    0% {
+      transform:
+        translate3d(
+          0,
+          0,
+          0
+        );
+    }
+
+    25% {
+      transform:
+        translate3d(
+          -2px,
+          1px,
+          0
+        );
+    }
+
+    50% {
+      transform:
+        translate3d(
+          1px,
+          -1px,
+          0
+        );
+    }
+
+    75% {
+      transform:
+        translate3d(
+          2px,
+          2px,
+          0
+        );
+    }
+
+    100% {
+      transform:
+        translate3d(
+          0,
+          0,
+          0
+        );
+    }
+  }
+
+  @keyframes field-float {
+    0%,
+    100% {
+      transform:
+        rotate(25deg)
+        translate3d(
+          0,
+          0,
+          0
+        );
+    }
+
+    50% {
+      transform:
+        rotate(34deg)
+        translate3d(
+          -10px,
+          10px,
+          0
+        );
+    }
+  }
+
+  @keyframes people-blink {
+    0%,
+    100% {
+      opacity: .3;
+    }
+
+    50% {
+      opacity: .75;
+    }
+  }
+
+  @keyframes final-lines-move {
+    from {
+      background-position:
+        0 0,
+        0 0;
+    }
+
+    to {
+      background-position:
+        30px 30px,
+        -30px 30px;
     }
   }
 
@@ -3160,6 +3996,7 @@ const projects = [
     .hero-corner,
     .hero-meta div,
     .hero-orbit,
+    .hero-grid-bg,
     .scroll-line,
     .scroll-arrow,
     .stage-grid,
@@ -3182,7 +4019,9 @@ const projects = [
     .field-link,
     .final-github {
       transition: none !important;
-      transform: none !important;
+
+      transform:
+        none !important;
     }
 
     .reveal-item {
